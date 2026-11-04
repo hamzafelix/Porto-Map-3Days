@@ -1,0 +1,1067 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<name>Porto City Break - 111 destinations</name>
+<description>From the official Visit Porto 2023 city-break guide.</description>
+<Style id="s_7023"><IconStyle><color>ff2b39c0</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_5701"><IconStyle><color>ffad448e</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_7"><IconStyle><color>ffeb6f1f</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_8775"><IconStyle><color>ff6d8a0e</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_6135"><IconStyle><color>ff1089d6</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Folder><name>Historic Centre - Ribeira</name>
+<Placemark><name>1. Clérigos Church and Tower</name>
+<description><![CDATA[<b>Clérigos Church and Tower</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Torre_de_los_Cl%C3%A9rigos%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG/960px-Torre_de_los_Cl%C3%A9rigos%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 09:00-19:00<br/><a href="https://www.torredosclerigos.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1456547,-8.6146275">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6146275,41.1456547,0</coordinates></Point></Placemark>
+<Placemark><name>2. S. Bento Railway Station</name>
+<description><![CDATA[<b>S. Bento Railway Station</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Porto_-_S%C3%A3o_Bento.JPG/960px-Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Porto_-_S%C3%A3o_Bento.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1454799,-8.610522">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.610522,41.1454799,0</coordinates></Point></Placemark>
+<Placemark><name>3. Teatro Nacional S. João</name>
+<description><![CDATA[<b>Teatro Nacional S. João</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/S%C3%A9-Teatro_de_S%C3%A3o_Jo%C3%A3o.jpg/960px-S%C3%A9-Teatro_de_S%C3%A3o_Jo%C3%A3o.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/><a href="https://www.tnsj.pt">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1445633,-8.6075376">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6075376,41.1445633,0</coordinates></Point></Placemark>
+<Placemark><name>4. Portuguese Centre for Photography</name>
+<description><![CDATA[<b>Portuguese Centre for Photography</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Version_2_%2838287223755%29.jpg/960px-Version_2_%2838287223755%29.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1447171,-8.615892">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.615892,41.1447171,0</coordinates></Point></Placemark>
+<Placemark><name>5. Church of Almas / São José das Taipas</name>
+<description><![CDATA[<b>Church of Almas / São José das Taipas</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas.jpg/960px-Igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1498571,-8.6056923">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6056923,41.1498571,0</coordinates></Point></Placemark>
+<Placemark><name>6. S. Bento da Vitória Monastery</name>
+<description><![CDATA[<b>S. Bento da Vitória Monastery</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Porto_-_S%C3%A3o_Bento.JPG/960px-Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Porto_-_S%C3%A3o_Bento.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1439239,-8.6168822">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6168822,41.1439239,0</coordinates></Point></Placemark>
+<Placemark><name>7. Nossa Senhora da Vitória Church</name>
+<description><![CDATA[<b>Nossa Senhora da Vitória Church</b><br/>Historic Centre - Ribeira<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1433754,-8.6159061">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6159061,41.1433754,0</coordinates></Point></Placemark>
+<Placemark><name>8. MMIPO - Misericórdia do Porto Museum</name>
+<description><![CDATA[<b>MMIPO - Misericórdia do Porto Museum</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Museu_da_Miseric%C3%B3rdia_do_Porto_%283%29.JPG/960px-Museu_da_Miseric%C3%B3rdia_do_Porto_%283%29.JPG?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 10:00-17:30; Apr 01-Sep 30 10:00-17:30; Jan 01 off; Dec 24-25 off<br/><a href="https://www.mmipo.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.143705,-8.6147037">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6147037,41.143705,0</coordinates></Point></Placemark>
+<Placemark><name>9. Tourism Office - Sé</name>
+<description><![CDATA[<b>Tourism Office - Sé</b><br/>Historic Centre - Ribeira<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1426908,-8.612099">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.612099,41.1426908,0</coordinates></Point></Placemark>
+<Placemark><name>10. Muralha Primitiva (Medieval Wall)</name>
+<description><![CDATA[<b>Muralha Primitiva (Medieval Wall)</b><br/>Historic Centre - Ribeira<br/><a href="https://portodeantanho.blogspot.com/2016/11/5-muralhas.html">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1430725,-8.6104704">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6104704,41.1430725,0</coordinates></Point></Placemark>
+<Placemark><name>11. Porto Puppets Museum</name>
+<description><![CDATA[<b>Porto Puppets Museum</b><br/>Historic Centre - Ribeira<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1424526,-8.6167379">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6167379,41.1424526,0</coordinates></Point></Placemark>
+<Placemark><name>12. Port and Douro Wines Institute</name>
+<description><![CDATA[<b>Port and Douro Wines Institute</b><br/>Historic Centre - Ribeira (approximate location)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Oporto%2C_old_and_new_-_being_a_historical_record_of_the_port_wine_trade%2C_and_a_tribute_to_British_commercial_enterprize_in_the_north_of_Portugal_%28IA_cu31924085185100%29.pdf/page1-960px-thumbnail.pdf.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1419428,-8.6154181">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6154181,41.1419428,0</coordinates></Point></Placemark>
+<Placemark><name>13. Ferreira Borges Market / Hard Club</name>
+<description><![CDATA[<b>Ferreira Borges Market / Hard Club</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/S%C3%A3o_Nicolau-Mercado_Ferreira_Borges.jpg/960px-S%C3%A3o_Nicolau-Mercado_Ferreira_Borges.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.141976,-8.6149052">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6149052,41.141976,0</coordinates></Point></Placemark>
+<Placemark><name>14. S. Lourenço Church / Sacred Art Museum</name>
+<description><![CDATA[<b>S. Lourenço Church / Sacred Art Museum</b><br/>Historic Centre - Ribeira<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1418049,-8.6123997">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6123997,41.1418049,0</coordinates></Point></Placemark>
+<Placemark><name>15. Sé Cathedral</name>
+<description><![CDATA[<b>Sé Cathedral</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Porto%2C_S%C3%A9_do_Porto_%289%29.jpg/960px-Porto%2C_S%C3%A9_do_Porto_%289%29.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1427992,-8.6112059">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6112059,41.1427992,0</coordinates></Point></Placemark>
+<Placemark><name>16. Guerra Junqueiro House Museum</name>
+<description><![CDATA[<b>Guerra Junqueiro House Museum</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Casa-Museu_Guerra_Junqueiro_88.JPG/960px-Casa-Museu_Guerra_Junqueiro_88.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Tu-Su 10:00-17:30; PH off<br/><a href="https://museudoporto.pt/estacao/museu-guerra-junqueiro/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1424653,-8.6107578">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6107578,41.1424653,0</coordinates></Point></Placemark>
+<Placemark><name>17. Santa Clara Church</name>
+<description><![CDATA[<b>Santa Clara Church</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Igreja_Sta_Clara_%28Porto%29.jpg/960px-Igreja_Sta_Clara_%28Porto%29.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 09:00-13:00,14:00-18:00; PH off<br/><a href="https://santaclaraporto.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1425058,-8.6092307">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6092307,41.1425058,0</coordinates></Point></Placemark>
+<Placemark><name>18. Palácio da Bolsa</name>
+<description><![CDATA[<b>Palácio da Bolsa</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Palacio_da_Bolsa_in_Porto_%282%29.jpg/960px-Palacio_da_Bolsa_in_Porto_%282%29.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/><a href="https://cciporto.com">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1413117,-8.6160004">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6160004,41.1413117,0</coordinates></Point></Placemark>
+<Placemark><name>19. Feitoria Inglesa (British Factory House)</name>
+<description><![CDATA[<b>Feitoria Inglesa (British Factory House)</b><br/>Historic Centre - Ribeira<br/><img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Feitoria_Inglesa_%28Porto%29.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1414926,-8.6135438">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6135438,41.1414926,0</coordinates></Point></Placemark>
+<Placemark><name>20. Paço Episcopal (Bishop&#x27;s Palace)</name>
+<description><![CDATA[<b>Paço Episcopal (Bishop&#x27;s Palace)</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Paco_Episcopal_%28Porto%29.JPG/960px-Paco_Episcopal_%28Porto%29.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 09:00-13:00,14:00-18:00<br/><a href="http://www.diocese-porto.pt/index.php?option=com_content&amp;view=article&amp;id=3812:visitas-paco-episcopal&amp;catid=76:noticias">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1419678,-8.6115473">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6115473,41.1419678,0</coordinates></Point></Placemark>
+<Placemark><name>21. Muralha Fernandina</name>
+<description><![CDATA[<b>Muralha Fernandina</b><br/>Historic Centre - Ribeira<br/><a href="https://portodeantanho.blogspot.com/2016/11/5-muralhas.html">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1406768,-8.6113369">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6113369,41.1406768,0</coordinates></Point></Placemark>
+<Placemark><name>22. S. Francisco Church</name>
+<description><![CDATA[<b>S. Francisco Church</b><br/>Historic Centre - Ribeira<br/><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Oporto-S-Francisco-IPPAR1.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1409824,-8.6157079">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6157079,41.1409824,0</coordinates></Point></Placemark>
+<Placemark><name>23. S. Nicolau Church</name>
+<description><![CDATA[<b>S. Nicolau Church</b><br/>Historic Centre - Ribeira<br/><img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Igreja_S_Nicolau_%28Porto%29.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1405059,-8.6152064">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6152064,41.1405059,0</coordinates></Point></Placemark>
+<Placemark><name>24. Casa do Infante</name>
+<description><![CDATA[<b>Casa do Infante</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Casa_Infante_5_%28Porto%29.JPG/960px-Casa_Infante_5_%28Porto%29.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Tu-Su 10:00-17:30; PH off<br/><a href="https://www.cm-porto.pt/cultura/museus-e-arquivos/casa-do-infante">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1407174,-8.6141613">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6141613,41.1407174,0</coordinates></Point></Placemark>
+<Placemark><name>25. Praça da Ribeira</name>
+<description><![CDATA[<b>Praça da Ribeira</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Porto_July_2014-34a.jpg/960px-Porto_July_2014-34a.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/><a href="www.ribeiradoportohotel.com">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1406913,-8.6130072">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6130072,41.1406913,0</coordinates></Point></Placemark>
+<Placemark><name>26. Ribeira Negra Tile Panel</name>
+<description><![CDATA[<b>Ribeira Negra Tile Panel</b><br/>Historic Centre - Ribeira<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1412796,-8.6105387">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6105387,41.1412796,0</coordinates></Point></Placemark>
+<Placemark><name>27. Pênsil Bridge Columns</name>
+<description><![CDATA[<b>Pênsil Bridge Columns</b><br/>Historic Centre - Ribeira<br/><img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Pontes_Luis_I_Pensil_%28Porto%29.JPG?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1405929,-8.6098925">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6098925,41.1405929,0</coordinates></Point></Placemark>
+<Placemark><name>28. Luís I Bridge</name>
+<description><![CDATA[<b>Luís I Bridge</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Dom_Lu%C3%ADs_I_Bridge_%2836961760686%29.jpg/960px-Dom_Lu%C3%ADs_I_Bridge_%2836961760686%29.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.138383,-8.6088624">Directions</a>]]></description>
+<styleUrl>#s_7023</styleUrl>
+<Point><coordinates>-8.6088624,41.138383,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Baixa (City Centre)</name>
+<Placemark><name>1. Fradelos Chapel</name>
+<description><![CDATA[<b>Fradelos Chapel</b><br/>Baixa (City Centre) (approximate location)<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1461432,-8.60568">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.60568,41.1461432,0</coordinates></Point></Placemark>
+<Placemark><name>2. Trindade Church</name>
+<description><![CDATA[<b>Trindade Church</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Igreja_Trindade_%28Porto%29.jpg/960px-Igreja_Trindade_%28Porto%29.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.151066,-8.6102488">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6102488,41.151066,0</coordinates></Point></Placemark>
+<Placemark><name>3. Paços do Concelho (City Hall)</name>
+<description><![CDATA[<b>Paços do Concelho (City Hall)</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Ayuntamiento_de_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_02.JPG/960px-Ayuntamiento_de_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_02.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1500931,-8.6106672">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6106672,41.1500931,0</coordinates></Point></Placemark>
+<Placemark><name>4. Bolhão Market</name>
+<description><![CDATA[<b>Bolhão Market</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Bolh%C3%A3o2023.jpg/960px-Bolh%C3%A3o2023.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Sa 08:00-20:00<br/><a href="https://mercadobolhao.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1493156,-8.606947">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.606947,41.1493156,0</coordinates></Point></Placemark>
+<Placemark><name>5. Almas Church</name>
+<description><![CDATA[<b>Almas Church</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Capela_das_Almas_%28Porto%29.jpg/960px-Capela_das_Almas_%28Porto%29.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Tu 03:00-05:15<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1498314,-8.6055786">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6055786,41.1498314,0</coordinates></Point></Placemark>
+<Placemark><name>6. Santo Ildefonso Church</name>
+<description><![CDATA[<b>Santo Ildefonso Church</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/2025-08-07_Porto%2C_Igreja_de_Santo_Ildefonso.jpg/960px-2025-08-07_Porto%2C_Igreja_de_Santo_Ildefonso.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1462029,-8.6065767">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6065767,41.1462029,0</coordinates></Point></Placemark>
+<Placemark><name>7. Avenida dos Aliados</name>
+<description><![CDATA[<b>Avenida dos Aliados</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Oporto_-_Metro_Aliados_-_20110424_160847.jpg/960px-Oporto_-_Metro_Aliados_-_20110424_160847.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/><a href="www.hotelaliados.com">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1477341,-8.6109611">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6109611,41.1477341,0</coordinates></Point></Placemark>
+<Placemark><name>8. Teatro do Bolhão</name>
+<description><![CDATA[<b>Teatro do Bolhão</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Bolh%C3%A3o2023.jpg/960px-Bolh%C3%A3o2023.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1491248,-8.6080724">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6080724,41.1491248,0</coordinates></Point></Placemark>
+<Placemark><name>9. Museu Nacional Soares dos Reis</name>
+<description><![CDATA[<b>Museu Nacional Soares dos Reis</b><br/>Baixa (City Centre)<br/><img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Carrancas_Porto.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>Hours: Tu 14:00-18:00; We-Su 10:00-18:00; Jan 1 off; May 1 off; Dec 1 off<br/><a href="https://museusoaresdosreis.gov.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1482774,-8.6213973">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6213973,41.1482774,0</coordinates></Point></Placemark>
+<Placemark><name>10. Carmo e Carmelitas Church</name>
+<description><![CDATA[<b>Carmo e Carmelitas Church</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/19._Igreja_do_Carmo_%28Porto%29.JPG/960px-19._Igreja_do_Carmo_%28Porto%29.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.147456,-8.6162547">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6162547,41.147456,0</coordinates></Point></Placemark>
+<Placemark><name>11. Rua Cândido dos Reis</name>
+<description><![CDATA[<b>Rua Cândido dos Reis</b><br/>Baixa (City Centre)<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1469316,-8.6139437">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6139437,41.1469316,0</coordinates></Point></Placemark>
+<Placemark><name>13. Rivoli Teatro Municipal</name>
+<description><![CDATA[<b>Rivoli Teatro Municipal</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Porto_Teatro_Rivoli_4.JPG/960px-Porto_Teatro_Rivoli_4.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Tu-Sa 11:00-20:00<br/><a href="https://www.teatromunicipaldoporto.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1478215,-8.6099393">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6099393,41.1478215,0</coordinates></Point></Placemark>
+<Placemark><name>14. Café Majestic</name>
+<description><![CDATA[<b>Café Majestic</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Porto_Cafe_Majestic.JPG/960px-Porto_Cafe_Majestic.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Sa 09:00-23:30<br/><a href="www.cafemajestic.com">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1471629,-8.6065817">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6065817,41.1471629,0</coordinates></Point></Placemark>
+<Placemark><name>15. Hospital de Santo António</name>
+<description><![CDATA[<b>Hospital de Santo António</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Hospital_Santo_Antonio_%28Porto%29.JPG/960px-Hospital_Santo_Antonio_%28Porto%29.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.147065,-8.6190983">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6190983,41.147065,0</coordinates></Point></Placemark>
+<Placemark><name>17. Livraria Lello</name>
+<description><![CDATA[<b>Livraria Lello</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Lello_Bookshop_9_April_2026.jpg/960px-Lello_Bookshop_9_April_2026.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 09:30-19:00<br/><a href="https://www.livrarialello.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1468317,-8.6148485">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6148485,41.1468317,0</coordinates></Point></Placemark>
+<Placemark><name>18. Rua Galeria de Paris</name>
+<description><![CDATA[<b>Rua Galeria de Paris</b><br/>Baixa (City Centre)<br/><img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Rua_Galeria_Paris_placa_%28Porto%29.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.147153,-8.614376">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.614376,41.147153,0</coordinates></Point></Placemark>
+<Placemark><name>20. Congregados Church</name>
+<description><![CDATA[<b>Congregados Church</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Iglesia_de_los_Congregados%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG/960px-Iglesia_de_los_Congregados%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 07:15-18:30<br/><a href="http://www.igrejacongregados.com">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1463196,-8.6106933">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6106933,41.1463196,0</coordinates></Point></Placemark>
+<Placemark><name>21. Coliseu Porto Ageas</name>
+<description><![CDATA[<b>Coliseu Porto Ageas</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Coliseu_do_Porto.JPG/960px-Coliseu_do_Porto.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/><a href="https://www.coliseu.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1471403,-8.6051922">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6051922,41.1471403,0</coordinates></Point></Placemark>
+<Placemark><name>22. Jardim da Cordoaria</name>
+<description><![CDATA[<b>Jardim da Cordoaria</b><br/>Baixa (City Centre)<br/><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Cordoaria_Porto.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>Hours: 24/7<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1456642,-8.6164778">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6164778,41.1456642,0</coordinates></Point></Placemark>
+<Placemark><name>23. Rectory of University of Porto</name>
+<description><![CDATA[<b>Rectory of University of Porto</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Rectory_of_the_University_of_Porto_%281%29.jpg/960px-Rectory_of_the_University_of_Porto_%281%29.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1464769,-8.6156691">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6156691,41.1464769,0</coordinates></Point></Placemark>
+<Placemark><name>24. Museum of Natural History (U.P.)</name>
+<description><![CDATA[<b>Museum of Natural History (U.P.)</b><br/>Baixa (City Centre)<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican06ameruoft%29.pdf/page1-500px-Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican06ameruoft%29.pdf.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.153623,-8.642456">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.642456,41.153623,0</coordinates></Point></Placemark>
+<Placemark><name>25. House of Filigree</name>
+<description><![CDATA[<b>House of Filigree</b><br/>Baixa (City Centre)<br/>Hours: Tu-Sa 10:00-19:00<br/><a href="https://houseoffiligree.com/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1461746,-8.6121169">Directions</a>]]></description>
+<styleUrl>#s_5701</styleUrl>
+<Point><coordinates>-8.6121169,41.1461746,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>West Porto / Boavista</name>
+<Placemark><name>1. Pharmacy Museum</name>
+<description><![CDATA[<b>Pharmacy Museum</b><br/>West Porto / Boavista<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1751341,-8.645448">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.645448,41.1751341,0</coordinates></Point></Placemark>
+<Placemark><name>2. Paper Money Museum</name>
+<description><![CDATA[<b>Paper Money Museum</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Museu_Papel_Moeda_%28Porto%29.JPG/960px-Museu_Papel_Moeda_%28Porto%29.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1644955,-8.673509">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.673509,41.1644955,0</coordinates></Point></Placemark>
+<Placemark><name>3. Quinta da Avenida (Souto de Moura)</name>
+<description><![CDATA[<b>Quinta da Avenida (Souto de Moura)</b><br/>West Porto / Boavista<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1395342,-8.6366212">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6366212,41.1395342,0</coordinates></Point></Placemark>
+<Placemark><name>4. Bolsa de Derivados Building</name>
+<description><![CDATA[<b>Bolsa de Derivados Building</b><br/>West Porto / Boavista (approximate location)<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.159757,-8.6398926">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6398926,41.159757,0</coordinates></Point></Placemark>
+<Placemark><name>5. Oceanus Building</name>
+<description><![CDATA[<b>Oceanus Building</b><br/>West Porto / Boavista<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1630672,-8.6618558">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6618558,41.1630672,0</coordinates></Point></Placemark>
+<Placemark><name>7. Foco Building</name>
+<description><![CDATA[<b>Foco Building</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Edif%C3%ADcio_Foco_Porto_%2817901892651%29.jpg/960px-Edif%C3%ADcio_Foco_Porto_%2817901892651%29.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1615942,-8.6482814">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6482814,41.1615942,0</coordinates></Point></Placemark>
+<Placemark><name>8. Burgo Tower</name>
+<description><![CDATA[<b>Burgo Tower</b><br/>West Porto / Boavista<br/><img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Edificio_Burgo_%28Oporto%29.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1600372,-8.6452381">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6452381,41.1600372,0</coordinates></Point></Placemark>
+<Placemark><name>9. Bessa Stadium</name>
+<description><![CDATA[<b>Bessa Stadium</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Est%C3%A1dio_do_Bessa_-_Porto_-_Portugal_%286488730091%29.jpg/960px-Est%C3%A1dio_do_Bessa_-_Porto_-_Portugal_%286488730091%29.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1621978,-8.6426013">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6426013,41.1621978,0</coordinates></Point></Placemark>
+<Placemark><name>10. Eng. António de Almeida Foundation</name>
+<description><![CDATA[<b>Eng. António de Almeida Foundation</b><br/>West Porto / Boavista<br/><a href="https://www.feaa.pt/Inicio.aspx">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1619299,-8.6403021">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6403021,41.1619299,0</coordinates></Point></Placemark>
+<Placemark><name>11. Casa da Música</name>
+<description><![CDATA[<b>Casa da Música</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Casa_Da_Musica_%283190746009%29.jpg/960px-Casa_Da_Musica_%283190746009%29.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 09:30-18:00<br/><a href="https://www.casadamusica.com/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1589025,-8.6307748">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6307748,41.1589025,0</coordinates></Point></Placemark>
+<Placemark><name>12. Casa da Música Metro Station</name>
+<description><![CDATA[<b>Casa da Música Metro Station</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Casa_da_M%C3%BAsica_station_plaftorms.jpg/960px-Casa_da_M%C3%BAsica_station_plaftorms.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1607223,-8.6292964">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6292964,41.1607223,0</coordinates></Point></Placemark>
+<Placemark><name>13. Casa Cinema Manoel de Oliveira</name>
+<description><![CDATA[<b>Casa Cinema Manoel de Oliveira</b><br/>West Porto / Boavista<br/>Hours: Mo-Fr 10:00-18:00; Sa,Su,PH 10:00-19:00; Apr-Sep: Mo-Fr 10:00-19:00; Apr-Sep: Sa,Su,PH 10:00-20:00<br/><a href="https://www.serralves.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1589949,-8.6552518">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6552518,41.1589949,0</coordinates></Point></Placemark>
+<Placemark><name>14. Serralves Foundation</name>
+<description><![CDATA[<b>Serralves Foundation</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Lonely_Dancer_%284937475766%29.jpg/960px-Lonely_Dancer_%284937475766%29.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1590425,-8.6593536">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6593536,41.1590425,0</coordinates></Point></Placemark>
+<Placemark><name>15. Casa das Artes</name>
+<description><![CDATA[<b>Casa das Artes</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_1_%28c%C3%B3digo_M08%29.jpg/960px-Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_1_%28c%C3%B3digo_M08%29.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>Hours: Tu-Fr 11:00-18:30; Sa 14:30-20:45<br/><a href="https://casadasartes.gov.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1563979,-8.6431694">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6431694,41.1563979,0</coordinates></Point></Placemark>
+<Placemark><name>16. Kadoorie Mekor Haim Synagogue</name>
+<description><![CDATA[<b>Kadoorie Mekor Haim Synagogue</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Kadoorie_Mekor_Haim_Synagogue.jpg/960px-Kadoorie_Mekor_Haim_Synagogue.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1559158,-8.6368867">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6368867,41.1559158,0</coordinates></Point></Placemark>
+<Placemark><name>17. EDP Head Office</name>
+<description><![CDATA[<b>EDP Head Office</b><br/>West Porto / Boavista<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1585616,-8.631933">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.631933,41.1585616,0</coordinates></Point></Placemark>
+<Placemark><name>18. Marta Ortigão Sampaio House-Museum</name>
+<description><![CDATA[<b>Marta Ortigão Sampaio House-Museum</b><br/>West Porto / Boavista<br/><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Sofia_martins_souza_auto_retrato_chapeu.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1594273,-8.6255051">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6255051,41.1594273,0</coordinates></Point></Placemark>
+<Placemark><name>19. Faculty of Architecture (U.P.)</name>
+<description><![CDATA[<b>Faculty of Architecture (U.P.)</b><br/>West Porto / Boavista (approximate location)<br/><img src="https://upload.wikimedia.org/wikipedia/pt/d/d4/Arquiteturaporto.png?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.149674,-8.6358273">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6358273,41.149674,0</coordinates></Point></Placemark>
+<Placemark><name>20. Porto Planetarium</name>
+<description><![CDATA[<b>Porto Planetarium</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Edificio_CAUP_%26_Planet%C3%A1rio_do_Porto.jpg/960px-Edificio_CAUP_%26_Planet%C3%A1rio_do_Porto.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1508285,-8.6384626">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6384626,41.1508285,0</coordinates></Point></Placemark>
+<Placemark><name>21. Campo Alegre Theatre</name>
+<description><![CDATA[<b>Campo Alegre Theatre</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Campo_Alegre_Theater.JPG/960px-Campo_Alegre_Theater.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1507848,-8.6395243">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6395243,41.1507848,0</coordinates></Point></Placemark>
+<Placemark><name>22. Botanical Garden / Biodiversity Gallery</name>
+<description><![CDATA[<b>Botanical Garden / Biodiversity Gallery</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Jardim_Bot%C3%A2nico_Porto_-_tras.jpg/960px-Jardim_Bot%C3%A2nico_Porto_-_tras.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1528901,-8.6428421">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6428421,41.1528901,0</coordinates></Point></Placemark>
+<Placemark><name>23. Bom Sucesso Market</name>
+<description><![CDATA[<b>Bom Sucesso Market</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Mercado_Bom_Sucesso_%28Porto%29.jpg/960px-Mercado_Bom_Sucesso_%28Porto%29.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Th,Su,PH 08:00-23:00; Fr-Sa 08:00-24:00<br/><a href="https://www.mercadobomsucesso.pt/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1558288,-8.6291949">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6291949,41.1558288,0</coordinates></Point></Placemark>
+<Placemark><name>24. Palácio de Cristal Gardens</name>
+<description><![CDATA[<b>Palácio de Cristal Gardens</b><br/>West Porto / Boavista<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Porto%2C_Domingos_Alv%C3%A3o_87_%289289451845%29.jpg/960px-Porto%2C_Domingos_Alv%C3%A3o_87_%289289451845%29.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Oct-Mar: Mo-Su 08:00-19:00; Apr-Sep: Mo-Su 08:00-21:00<br/><a href="https://ambiente.cm-porto.pt/parques-e-jardins/jardins-do-palacio-de-cristal">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1470339,-8.6262765">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6262765,41.1470339,0</coordinates></Point></Placemark>
+<Placemark><name>25. Holocaust Museum</name>
+<description><![CDATA[<b>Holocaust Museum</b><br/>West Porto / Boavista<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1531072,-8.6378592">Directions</a>]]></description>
+<styleUrl>#s_7</styleUrl>
+<Point><coordinates>-8.6378592,41.1531072,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>River and Sea</name>
+<Placemark><name>1. S. Francisco Xavier Fort</name>
+<description><![CDATA[<b>S. Francisco Xavier Fort</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Aerial_photograph_of_Castelo_do_Queijo_%284%29.jpg/960px-Aerial_photograph_of_Castelo_do_Queijo_%284%29.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1685311,-8.690032">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.690032,41.1685311,0</coordinates></Point></Placemark>
+<Placemark><name>2. Castelo do Queijo</name>
+<description><![CDATA[<b>Castelo do Queijo</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Aerial_photograph_of_Castelo_do_Queijo_%284%29.jpg/960px-Aerial_photograph_of_Castelo_do_Queijo_%284%29.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1685311,-8.690032">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.690032,41.1685311,0</coordinates></Point></Placemark>
+<Placemark><name>3. Edifício Transparente</name>
+<description><![CDATA[<b>Edifício Transparente</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Edificio_Transparente_%28Porto%29.JPG/960px-Edificio_Transparente_%28Porto%29.JPG?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1717645,-8.6877987">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6877987,41.1717645,0</coordinates></Point></Placemark>
+<Placemark><name>4. SEA LIFE Porto</name>
+<description><![CDATA[<b>SEA LIFE Porto</b><br/>River and Sea<br/>Hours: Mo-Fr 10:00-18:00; Sa, Su 10:00-19:00<br/><a href="https://www.visitsealife.com/porto/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1687202,-8.6874591">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6874591,41.1687202,0</coordinates></Point></Placemark>
+<Placemark><name>5. Water Pavilion</name>
+<description><![CDATA[<b>Water Pavilion</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Pavilh%C3%A3o_da_%C3%81gua.jpg/960px-Pavilh%C3%A3o_da_%C3%81gua.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1714441,-8.6765582">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6765582,41.1714441,0</coordinates></Point></Placemark>
+<Placemark><name>6. City Park</name>
+<description><![CDATA[<b>City Park</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Parque_da_Cidade_%28sunset%29.jpg/960px-Parque_da_Cidade_%28sunset%29.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1693616,-8.6797879">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6797879,41.1693616,0</coordinates></Point></Placemark>
+<Placemark><name>7. Pérgola da Foz</name>
+<description><![CDATA[<b>Pérgola da Foz</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Pergola_Foz_%28Porto%29.jpg/960px-Pergola_Foz_%28Porto%29.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1577827,-8.6830308">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6830308,41.1577827,0</coordinates></Point></Placemark>
+<Placemark><name>8. Minigolf Foz do Douro</name>
+<description><![CDATA[<b>Minigolf Foz do Douro</b><br/>River and Sea<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1481185,-8.6718074">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6718074,41.1481185,0</coordinates></Point></Placemark>
+<Placemark><name>9. S. João Baptista Fort</name>
+<description><![CDATA[<b>S. João Baptista Fort</b><br/>River and Sea<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1488813,-8.6739554">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6739554,41.1488813,0</coordinates></Point></Placemark>
+<Placemark><name>10. Jardim do Passeio Alegre</name>
+<description><![CDATA[<b>Jardim do Passeio Alegre</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Chalet_Sui%C3%A7o.jpg/960px-Chalet_Sui%C3%A7o.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/><a href="https://ambiente.cm-porto.pt/parques-e-jardins/jardim-do-passeio-alegre">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1482984,-8.6710202">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6710202,41.1482984,0</coordinates></Point></Placemark>
+<Placemark><name>11. S. Miguel Lighthouse</name>
+<description><![CDATA[<b>S. Miguel Lighthouse</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/S%C3%A3o_Miguel-O-Anjo_Lighthouse_02.JPG/960px-S%C3%A3o_Miguel-O-Anjo_Lighthouse_02.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1470766,-8.6667702">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6667702,41.1470766,0</coordinates></Point></Placemark>
+<Placemark><name>12. Arrábida Bridge / Bridge Climb</name>
+<description><![CDATA[<b>Arrábida Bridge / Bridge Climb</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Ponte_da_Arr%C3%A1bida_by_Ant%C3%B3nio_Amen-2.jpg/960px-Ponte_da_Arr%C3%A1bida_by_Ant%C3%B3nio_Amen-2.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1474326,-8.6403404">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6403404,41.1474326,0</coordinates></Point></Placemark>
+<Placemark><name>13. Tram Museum</name>
+<description><![CDATA[<b>Tram Museum</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Oporto_horse_tram_Crich_2014.JPG/960px-Oporto_horse_tram_Crich_2014.JPG?utm_source=commons.wikimedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1479791,-8.6326383">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6326383,41.1479791,0</coordinates></Point></Placemark>
+<Placemark><name>15. Port Wine Museum</name>
+<description><![CDATA[<b>Port Wine Museum</b><br/>River and Sea<br/><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/CRAT_1_%28Porto%29.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1400698,-8.615297">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.615297,41.1400698,0</coordinates></Point></Placemark>
+<Placemark><name>16. World of Discoveries</name>
+<description><![CDATA[<b>World of Discoveries</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/World_of_Discoveries_%281%29.JPG/960px-World_of_Discoveries_%281%29.JPG?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1435027,-8.620811">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.620811,41.1435027,0</coordinates></Point></Placemark>
+<Placemark><name>17. Transport &amp; Communications Museum</name>
+<description><![CDATA[<b>Transport &amp; Communications Museum</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Alf%C3%A2ndega_Nova_-_Entrada_principal.jpg/960px-Alf%C3%A2ndega_Nova_-_Entrada_principal.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1426364,-8.6210085">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6210085,41.1426364,0</coordinates></Point></Placemark>
+<Placemark><name>20. Maria Pia Bridge</name>
+<description><![CDATA[<b>Maria Pia Bridge</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Ponte_Maria_Pia_-_Porto.JPG/960px-Ponte_Maria_Pia_-_Porto.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1397452,-8.5971689">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.5971689,41.1397452,0</coordinates></Point></Placemark>
+<Placemark><name>21. S. João Bridge</name>
+<description><![CDATA[<b>S. João Bridge</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Ponte_S._Joao_-_Porto.JPG/960px-Ponte_S._Joao_-_Porto.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1388826,-8.5953414">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.5953414,41.1388826,0</coordinates></Point></Placemark>
+<Placemark><name>22. Freixo Bridge</name>
+<description><![CDATA[<b>Freixo Bridge</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/A_Montante_%284381115427%29.jpg/960px-A_Montante_%284381115427%29.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1423692,-8.5809157">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.5809157,41.1423692,0</coordinates></Point></Placemark>
+<Placemark><name>23. Press National Museum</name>
+<description><![CDATA[<b>Press National Museum</b><br/>River and Sea<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1434021,-8.5767371">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.5767371,41.1434021,0</coordinates></Point></Placemark>
+<Placemark><name>24. Palácio do Freixo</name>
+<description><![CDATA[<b>Palácio do Freixo</b><br/>River and Sea<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Pal%C3%A1cio_do_Freixo_-_Fachada.jpg/960px-Pal%C3%A1cio_do_Freixo_-_Fachada.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1425243,-8.5748889">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.5748889,41.1425243,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>East Porto</name>
+<Placemark><name>1. Senhora da Conceição Church</name>
+<description><![CDATA[<b>Senhora da Conceição Church</b><br/>East Porto<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1614016,-8.6058106">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.6058106,41.1614016,0</coordinates></Point></Placemark>
+<Placemark><name>2. São Roque Park</name>
+<description><![CDATA[<b>São Roque Park</b><br/>East Porto<br/><img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Quinta_da_Lameira_Porto_Henrique_Matos.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail_unscaled" width="240"/><br/>Hours: Apr-Sep Mo-Su 08:00-20:00; Oct-Mar Mo-Su 08:00-19:00<br/><a href="https://ambiente.cm-porto.pt/parques-e-jardins/parque-de-s-roque-2">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1590714,-8.5890149">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5890149,41.1590714,0</coordinates></Point></Placemark>
+<Placemark><name>3. Dragão Stadium / FC Porto Museum</name>
+<description><![CDATA[<b>Dragão Stadium / FC Porto Museum</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Porto_Est%C3%A1dio_do_Drag%C3%A3o_2.jpg/960px-Porto_Est%C3%A1dio_do_Drag%C3%A3o_2.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1618235,-8.5837492">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5837492,41.1618235,0</coordinates></Point></Placemark>
+<Placemark><name>4. East Park</name>
+<description><![CDATA[<b>East Park</b><br/>East Porto<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1599258,-8.5651222">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5651222,41.1599258,0</coordinates></Point></Placemark>
+<Placemark><name>5. Campo 24 de Agosto Garden</name>
+<description><![CDATA[<b>Campo 24 de Agosto Garden</b><br/>East Porto<br/>Hours: 24/7<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1495609,-8.5988973">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5988973,41.1495609,0</coordinates></Point></Placemark>
+<Placemark><name>6. Quinta da Bonjóia</name>
+<description><![CDATA[<b>Quinta da Bonjóia</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Casa_de_Bonjoia-1.jpg/960px-Casa_de_Bonjoia-1.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 07:00-19:00<br/><a href="https://ambiente.cm-porto.pt/parques-e-jardins/quinta-de-bonjoia">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1528408,-8.5768767">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5768767,41.1528408,0</coordinates></Point></Placemark>
+<Placemark><name>7. Marques de Oliveira Garden</name>
+<description><![CDATA[<b>Marques de Oliveira Garden</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Jardim_de_S%C3%A3o_L%C3%A1zaro-lago.jpg/960px-Jardim_de_S%C3%A3o_L%C3%A1zaro-lago.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1459853,-8.6026142">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.6026142,41.1459853,0</coordinates></Point></Placemark>
+<Placemark><name>8. Municipal Public Library</name>
+<description><![CDATA[<b>Municipal Public Library</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Biblioteca_publica_municipal_do_Porto.jpg/960px-Biblioteca_publica_municipal_do_Porto.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1482546,-8.6269177">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.6269177,41.1482546,0</coordinates></Point></Placemark>
+<Placemark><name>9. Museum of Fine Arts (U.P.)</name>
+<description><![CDATA[<b>Museum of Fine Arts (U.P.)</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Faculdade_Belas_Artes_Porto.jpg/960px-Faculdade_Belas_Artes_Porto.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1453385,-8.6002243">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.6002243,41.1453385,0</coordinates></Point></Placemark>
+<Placemark><name>10. António Carneiro House Workshop</name>
+<description><![CDATA[<b>António Carneiro House Workshop</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Casa_Museu_Antonio_Carneiro_by_Henrique_Matos_02.jpg/960px-Casa_Museu_Antonio_Carneiro_by_Henrique_Matos_02.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Tu-Su 10:00-17:30; PH off<br/><a href="https://www.cm-porto.pt/cultura/museus-e-arquivos/casa-oficina-antonio-carneiro">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1494118,-8.593837">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.593837,41.1494118,0</coordinates></Point></Placemark>
+<Placemark><name>11. Campanhã Railway Station</name>
+<description><![CDATA[<b>Campanhã Railway Station</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Campanh%C3%A3-Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Campanh%C3%A3.jpg/960px-Campanh%C3%A3-Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Campanh%C3%A3.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Jun-Sep: Mo-Su 09:30-18:30<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.148741,-8.5854585">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5854585,41.148741,0</coordinates></Point></Placemark>
+<Placemark><name>12. Military Museum</name>
+<description><![CDATA[<b>Military Museum</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Museu_Militar_Porto.jpg/960px-Museu_Militar_Porto.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1455784,-8.5950102">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5950102,41.1455784,0</coordinates></Point></Placemark>
+<Placemark><name>13. Parque das Águas</name>
+<description><![CDATA[<b>Parque das Águas</b><br/>East Porto<br/>Hours: Mo-Fr 10:00-19:00<br/><a href="https://portowatercity.aguasdoporto.pt/pt/parque-das-aguas/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1436656,-8.5901512">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5901512,41.1436656,0</coordinates></Point></Placemark>
+<Placemark><name>14. Quinta de Villar d&#x27;Allen</name>
+<description><![CDATA[<b>Quinta de Villar d&#x27;Allen</b><br/>East Porto<br/>Hours: Mo-Fr 08:30-18:00; Sa 09:00-17:00<br/><a href="https://villardallenwines.com/villar-dallen/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1437965,-8.5714005">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5714005,41.1437965,0</coordinates></Point></Placemark>
+<Placemark><name>15. Casa de São Roque</name>
+<description><![CDATA[<b>Casa de São Roque</b><br/>East Porto<br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1577572,-8.5868487">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5868487,41.1577572,0</coordinates></Point></Placemark>
+<Placemark><name>16. Casa Museu Fernando de Castro</name>
+<description><![CDATA[<b>Casa Museu Fernando de Castro</b><br/>East Porto<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Casa_Museu_Fernando_de_Castro_02.jpg/960px-Casa_Museu_Fernando_de_Castro_02.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/><a href="https://museusoaresdosreis.gov.pt/museu/casa-museu-fernando-de-castro/">Website</a><br/>
+<a href="https://www.google.com/maps/dir/?api=1&destination=41.1663944,-8.5959023">Directions</a>]]></description>
+<styleUrl>#s_6135</styleUrl>
+<Point><coordinates>-8.5959023,41.1663944,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Halal food (certified / friendly)</name>
+<Placemark><name>Palmeira</name><description><![CDATA[certified halal]]></description>
+<Point><coordinates>-8.6052241,41.1508984,0</coordinates></Point></Placemark>
+<Placemark><name>Garden Porto</name><description><![CDATA[certified halal · Rua de Fernandes Tomás 979,985,987 · 09:00-19:00]]></description>
+<Point><coordinates>-8.61004,41.1506223,0</coordinates></Point></Placemark>
+<Placemark><name>Tayyebah</name><description><![CDATA[certified halal · kebab · Rua de Santa Catarina 1000 · 13:00-05:00]]></description>
+<Point><coordinates>-8.6045949,41.1549876,0</coordinates></Point></Placemark>
+<Placemark><name>Turmeric</name><description><![CDATA[certified halal · indian;pakistani]]></description>
+<Point><coordinates>-8.6090446,41.1490482,0</coordinates></Point></Placemark>
+<Placemark><name>Halal Bangla Super Shop</name><description><![CDATA[certified halal · Rua do Cativo 18;20]]></description>
+<Point><coordinates>-8.609132,41.1441753,0</coordinates></Point></Placemark>
+<Placemark><name>O Indiano</name><description><![CDATA[halal-friendly · kebab;pizza · Mo-Su 09:00-22:00; Tu off]]></description>
+<Point><coordinates>-8.5864759,41.1493734,0</coordinates></Point></Placemark>
+<Placemark><name>Estambul Döner Kebap Pizza</name><description><![CDATA[halal-friendly · kebab · Praça da Liberdade · PH,Mo-Su 11:00-02:30]]></description>
+<Point><coordinates>-8.6108078,41.1468138,0</coordinates></Point></Placemark>
+<Placemark><name>Al-Hassan Kebab &amp; Pizza</name><description><![CDATA[halal-friendly · kebab;pizza]]></description>
+<Point><coordinates>-8.6897625,41.1757536,0</coordinates></Point></Placemark>
+<Placemark><name>Aywa</name><description><![CDATA[halal-friendly · arab;kebab · Rua de Belomonte]]></description>
+<Point><coordinates>-8.6163108,41.1426544,0</coordinates></Point></Placemark>
+<Placemark><name>Rocky</name><description><![CDATA[halal-friendly · kebab]]></description>
+<Point><coordinates>-8.6115655,41.1450665,0</coordinates></Point></Placemark>
+<Placemark><name>BD Kebab</name><description><![CDATA[halal-friendly · kebab · Rua de Guedes de Azevedo 246]]></description>
+<Point><coordinates>-8.6079221,41.1526516,0</coordinates></Point></Placemark>
+<Placemark><name>Sabores do Sebouh</name><description><![CDATA[halal-friendly · arab · Rua de Miguel Bombarda 34 · Mo 19:30-23:30, Tu-Fr 15:00-23:30, Sa 13:00-15:30, Sa 19:30-23:30, Su 13:00-15:30]]></description>
+<Point><coordinates>-8.6173453,41.1501853,0</coordinates></Point></Placemark>
+<Placemark><name>HITSS KEBAB &amp; INDIAN RESTAURANT</name><description><![CDATA[halal-friendly · indian;kebab · Rua de Sampaio Bruno 10]]></description>
+<Point><coordinates>-8.6106258,41.1467813,0</coordinates></Point></Placemark>
+<Placemark><name>Sabores do Sebouh</name><description><![CDATA[halal-friendly · arab]]></description>
+<Point><coordinates>-8.6173579,41.1501814,0</coordinates></Point></Placemark>
+<Placemark><name>Istambul</name><description><![CDATA[halal-friendly · kebab]]></description>
+<Point><coordinates>-8.6054724,41.1456182,0</coordinates></Point></Placemark>
+<Placemark><name>Murshid</name><description><![CDATA[halal-friendly · burger;kebab;pizza · Rua de Oliveira Monteiro 34]]></description>
+<Point><coordinates>-8.6206686,41.1568882,0</coordinates></Point></Placemark>
+<Placemark><name>Joshua&#x27;s Shoarma Grill</name><description><![CDATA[halal-friendly · kebab]]></description>
+<Point><coordinates>-8.6882966,41.2093673,0</coordinates></Point></Placemark>
+<Placemark><name>PizzaB</name><description><![CDATA[halal-friendly · pizza;kebab · Avenida de Fernão de Magalhães 3363 · Tu-Su 06:00-00:30]]></description>
+<Point><coordinates>-8.5831617,41.1781529,0</coordinates></Point></Placemark>
+<Placemark><name>Mega Bar Nandita 2 Silvia</name><description><![CDATA[halal-friendly · burger;sandwich;kebab;hot_dog]]></description>
+<Point><coordinates>-8.5809714,41.113457,0</coordinates></Point></Placemark>
+<Placemark><name>Sabores do Kebab</name><description><![CDATA[halal-friendly · kebab]]></description>
+<Point><coordinates>-8.6387173,41.1375581,0</coordinates></Point></Placemark>
+<Placemark><name>Joshua&#x27;s Shoarma Grill</name><description><![CDATA[halal-friendly · kebab]]></description>
+<Point><coordinates>-8.6365498,41.1420176,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Supermarkets</name>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua de Aval de Baixo · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5982629,41.1679272,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6115143,41.1926745,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6098806,41.1934718,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6661234,41.1592577,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6826241,41.1808261,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua Costa Cabral 2320 · Mo-Su 08:00-21:00; easter off]]></description>
+<Point><coordinates>-8.5855793,41.1761443,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Modelo</name><description><![CDATA[Rua das Macieiras 330 · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.5460437,41.2022293,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Avenida da Boavista 1319 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6393339,41.15945,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6772709,41.1518331,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Praça de Francisco Sá Carneiro 205 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5929753,41.1628775,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Su 08:00-20:00]]></description>
+<Point><coordinates>-8.5964924,41.1883599,0</coordinates></Point></Placemark>
+<Placemark><name>Lima 5 (My Super)</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6004923,41.1619685,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Sa 08:30-21:00; Su 09:00-20:30]]></description>
+<Point><coordinates>-8.6922441,41.184446,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Su 08:00-20:00]]></description>
+<Point><coordinates>-8.6061368,41.1163894,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Avenida da República 1895 · Mo-Su,PH 08:00-21:00]]></description>
+<Point><coordinates>-8.6057479,41.1216493,0</coordinates></Point></Placemark>
+<Placemark><name>Santa Justa</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.5613868,41.2042485,0</coordinates></Point></Placemark>
+<Placemark><name>(unnamed)</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.5828612,41.1806005,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua do Amial 667/681 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6141984,41.1786395,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Avenida da República 1174/1182 · Mo-Su 08:00-21:30; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6058706,41.1279383,0</coordinates></Point></Placemark>
+<Placemark><name>Belpreço</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6355005,41.110272,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5977348,41.1661217,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua de Passos Manuel 221/223 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6047409,41.1466839,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6121627,41.1246557,0</coordinates></Point></Placemark>
+<Placemark><name>Minipreço</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6115438,41.126484,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.5344689,41.1437637,0</coordinates></Point></Placemark>
+<Placemark><name>Froiz</name><description><![CDATA[Avenida Heróis e Mártires Guerra de Angola 49 · Mo-Sa 09:00-22:00]]></description>
+<Point><coordinates>-8.6108579,41.15161,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Praça da República 58 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6135705,41.1538458,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Fr 08:30-20:00; Sa,PH 09:00-20:00; Su off]]></description>
+<Point><coordinates>-8.611532,41.1503404,0</coordinates></Point></Placemark>
+<Placemark><name>Supermercado Santa Justa - Rio Tinto</name><description><![CDATA[Rua das Cavadas]]></description>
+<Point><coordinates>-8.5542204,41.1890901,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.7102619,41.198584,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua de Sá da Bandeira 295 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6081158,41.1487297,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua de Cedofeita 435 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6182789,41.1531756,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua de São João de Brito · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6494559,41.1668866,0</coordinates></Point></Placemark>
+<Placemark><name>Meu Super</name><description><![CDATA[Rua da Boavista 400 · Mo-Sa 09:00-21:00; Su 11:00-20:00]]></description>
+<Point><coordinates>-8.6180014,41.1561624,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan Supermercado</name><description><![CDATA[Rua de Latino Coelho 271]]></description>
+<Point><coordinates>-8.6018346,41.1595736,0</coordinates></Point></Placemark>
+<Placemark><name>Mercado Frutos E Sabores</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6226014,41.1085881,0</coordinates></Point></Placemark>
+<Placemark><name>Froiz</name><description><![CDATA[Rua Salgueiro Maia 349 · Mo-Sa 09:00-22:00]]></description>
+<Point><coordinates>-8.5890922,41.100722,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Su 09:00-21:00]]></description>
+<Point><coordinates>-8.6077774,41.1359665,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Rua da Firmeza · Mo-Su 08:00-13:00,15:00-20:00]]></description>
+<Point><coordinates>-8.6005336,41.1511148,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6217201,41.1567413,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Su 08:00-13:00,15:00-20:00]]></description>
+<Point><coordinates>-8.6966061,41.1924061,0</coordinates></Point></Placemark>
+<Placemark><name>Minipreço</name><description><![CDATA[Rua das Condominhas · Mo-Su 09:00-20:00]]></description>
+<Point><coordinates>-8.6495404,41.1513342,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua da Prelada 19 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6268383,41.1670218,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Campo 24 Agosto 170-172 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5981112,41.150003,0</coordinates></Point></Placemark>
+<Placemark><name>3 Desejos</name><description><![CDATA[PH,Mo-Su 08:00-19:30]]></description>
+<Point><coordinates>-8.6590934,41.1695589,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua da Senhora da Luz 238 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6765189,41.1512328,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6807705,41.1574818,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:30-21:00]]></description>
+<Point><coordinates>-8.6581726,41.1483186,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua Engenheiro Ferreira Dias 954 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6468746,41.1772045,0</coordinates></Point></Placemark>
+<Placemark><name>Spar</name><description><![CDATA[Avenida da França 82;84 · Mo-Sa 07:30-20:00; Su off; PH 07:30-20:00]]></description>
+<Point><coordinates>-8.6284866,41.1596239,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Praça do Bom Sucesso 74-90 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6288498,41.1553385,0</coordinates></Point></Placemark>
+<Placemark><name>Froiz</name><description><![CDATA[Praça do Bom Sucesso 61 · Mo-Sa 09:00-22:00]]></description>
+<Point><coordinates>-8.6297219,41.1552405,0</coordinates></Point></Placemark>
+<Placemark><name>IdealBio</name><description><![CDATA[Rua de Cinco de Outubro 352 · Mo-Fr 09:00-20:00; Sa 09:00-19:00; Su 09:00-17:00]]></description>
+<Point><coordinates>-8.6319925,41.1615201,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Avenida da Beira Mar 2363 · PH,Mo-Su 08:30-21:00]]></description>
+<Point><coordinates>-8.6619305,41.1165185,0</coordinates></Point></Placemark>
+<Placemark><name>Entrem... Entrem</name><description><![CDATA[Mo-Sa 09:00-19:30]]></description>
+<Point><coordinates>-8.5951607,41.1551686,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua Engenheiro Mário Giesta 30 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5549893,41.1411812,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Su 08:00-20:00]]></description>
+<Point><coordinates>-8.6811766,41.1850034,0</coordinates></Point></Placemark>
+<Placemark><name>Celeiro</name><description><![CDATA[Rua dos Campeões Europeus 28-198 · Mo-Th 10:00-23:00; Fr,Sa 10:00-00:00; Su 10:00-22:00; Dec 24 09:00-18:00; Dec 31 10:00-19:00]]></description>
+<Point><coordinates>-8.5848024,41.1634466,0</coordinates></Point></Placemark>
+<Placemark><name>Spar</name><description><![CDATA[Passeio das Virtudes 7 · Mo-Su 09:30-20:00; PH off]]></description>
+<Point><coordinates>-8.6180908,41.1444511,0</coordinates></Point></Placemark>
+<Placemark><name>biorigem</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6105678,41.1614886,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:30; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6537569,41.1782113,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua Azemel 38 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6848176,41.2137029,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua Dom Marcos da Cruz 50 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.697807,41.2021552,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Sa 08:30-20:00; Su 09:00-19:00]]></description>
+<Point><coordinates>-8.5861897,41.1477005,0</coordinates></Point></Placemark>
+<Placemark><name>Supermercado Asiático</name><description><![CDATA[Praça da República 103]]></description>
+<Point><coordinates>-8.6134661,41.1548227,0</coordinates></Point></Placemark>
+<Placemark><name>Mercado Orgânico</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6754675,41.1536257,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua de Santa Catarina 312-350 · Mo-Su 10:00-21:00]]></description>
+<Point><coordinates>-8.6047044,41.1489582,0</coordinates></Point></Placemark>
+<Placemark><name>Continente</name><description><![CDATA[Rua dos Campeões Europeus 28-198 · Mo-Sa 08:00-23:00; Su 08:00-22:00]]></description>
+<Point><coordinates>-8.5847475,41.1635465,0</coordinates></Point></Placemark>
+<Placemark><name>Celeiro</name><description><![CDATA[Rua de Santa Catarina 312-350 · Mo-Su 10:00-21:00; Dec 24 10:00-18:00; Dec 31 10:00-19:00]]></description>
+<Point><coordinates>-8.6051946,41.1490666,0</coordinates></Point></Placemark>
+<Placemark><name>Já agora</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.606558,41.1432268,0</coordinates></Point></Placemark>
+<Placemark><name>Spar</name><description><![CDATA[Largo de Soares dos Reis 94 · Mo-Sa 08:00-21:30; Su 08:00-14:00; PH 08:00-21:30]]></description>
+<Point><coordinates>-8.5961728,41.1465015,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua da Quinta do Castro · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6518751,41.1297188,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:30; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6927501,41.196294,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:30; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6969646,41.1999746,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua da Bataria 45 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6965392,41.2046067,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5591252,41.2133148,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan Supermercado</name><description><![CDATA[Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5803204,41.187523,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Santos Dias 725 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.6103287,41.1992239,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Modelo</name><description><![CDATA[Rua da Mainça 697 · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.6213207,41.2005652,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua de Recarei · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6338708,41.205115,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan Supermercado</name><description><![CDATA[Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.646059,41.2014402,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6654023,41.19813,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6685707,41.1923788,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Avenida António Domingues dos Santos 431-461 · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.6592912,41.1857023,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua de Serpa Pinto 700/738 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6201375,41.1666414,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Alameda de Basílio Teles 152 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6339901,41.1478267,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua Luís de Aguiar 16-26 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6129979,41.166833,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Conceição Fernandes 1339 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.593622,41.1081901,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua de Sá da Bandeira 389 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6075876,41.1496468,0</coordinates></Point></Placemark>
+<Placemark><name>Lavradores &amp; Co.</name><description><![CDATA[Rua de Miguel Bombarda 541 · Mo-Sa 10:00-19:00]]></description>
+<Point><coordinates>-8.6233883,41.1492515,0</coordinates></Point></Placemark>
+<Placemark><name>Intermarché</name><description><![CDATA[Rua de António Francisco de Sousa · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6374636,41.1074452,0</coordinates></Point></Placemark>
+<Placemark><name>Spar</name><description><![CDATA[Avenida da França 256 · Mo-Fr 07:30-18:00; Sa,Su,PH off]]></description>
+<Point><coordinates>-8.627943,41.1613006,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua de Sangemil · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5773286,41.1967462,0</coordinates></Point></Placemark>
+<Placemark><name>Celeiro</name><description><![CDATA[Rua Doutor Plácido da Costa · Mo-Su 09:00-21:00; Dec 24,Dec 31 09:00-16:00]]></description>
+<Point><coordinates>-8.6044519,41.1802754,0</coordinates></Point></Placemark>
+<Placemark><name>My Auchan</name><description><![CDATA[Mo-Sa 08:30-20:00; Su,PH 09:00-19:00]]></description>
+<Point><coordinates>-8.6051244,41.1625943,0</coordinates></Point></Placemark>
+<Placemark><name>Meireles</name><description><![CDATA[Mo-Sa 09:00-19:30; Su,PH off]]></description>
+<Point><coordinates>-8.605101,41.1624315,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua de Manuel Pinto de Azevedo 7 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6443582,41.1696388,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[08:00-21:00]]></description>
+<Point><coordinates>-8.6170739,41.1771883,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Estrada Interior da Circunvalação 9399 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.6185687,41.1805383,0</coordinates></Point></Placemark>
+<Placemark><name>Supermercado Chen</name><description><![CDATA[Mo-Sa 10:00-19:30]]></description>
+<Point><coordinates>-8.607519,41.1512206,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.60054,41.15111,0</coordinates></Point></Placemark>
+<Placemark><name>PrimaPrix Fernandes Tomás</name><description><![CDATA[Rua de Fernandes Tomás 793 · Mo-Su 09:30-21:30]]></description>
+<Point><coordinates>-8.6078933,41.1501657,0</coordinates></Point></Placemark>
+<Placemark><name>Intermarché</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.5098647,41.1170448,0</coordinates></Point></Placemark>
+<Placemark><name>Intermarché</name><description><![CDATA[Rua Escola Central 801]]></description>
+<Point><coordinates>-8.5530297,41.1099372,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua 25 de Abril 180 · Mo-Su,PH 08:30-21:00]]></description>
+<Point><coordinates>-8.6005816,41.1263283,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Modelo</name><description><![CDATA[Avenida do Lidador da Maia · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.5607958,41.2065604,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua Dona Maria Faria · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5630768,41.2127522,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.5507771,41.2129932,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua Bombeiros Voluntários de Coimbrões 99 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6298853,41.1291705,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6318366,41.1103178,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua da Quinta da Palmeira · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5747648,41.1975046,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua da Ponte da Pedra 240-302 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6117912,41.2071363,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Modelo</name><description><![CDATA[Avenida Doutor Domingos Gonçalves de Sá · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.5553023,41.1744834,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua Infante Dom Henrique · Mo-Su 08:00-21:30; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5481188,41.1713992,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:30; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5074715,41.2017824,0</coordinates></Point></Placemark>
+<Placemark><name>E.Leclerc</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.5113756,41.1964728,0</coordinates></Point></Placemark>
+<Placemark><name>Intermarché</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.6118508,41.2103506,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan Supermercado</name><description><![CDATA[Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5501816,41.2056915,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan Supermercado</name><description><![CDATA[Rua Nova de Laborim 266 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6036972,41.1040653,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Avenida Vasco da Gama · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5904602,41.1132615,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan Supermercado</name><description><![CDATA[Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.569662,41.1043787,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Avenida Villagarcia de Arosa · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.680377,41.1793783,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua de João dos Santos Ferreira · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6353886,41.1706344,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua Central de Francos 744/758 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6388104,41.1728757,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Modelo</name><description><![CDATA[Rua Nova de Santa Eulália 300-326 · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.5293841,41.1548049,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Modelo</name><description><![CDATA[Rua Luís de Camões 706 · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.5529223,41.1452832,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6296791,41.1816653,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan</name><description><![CDATA[Rua do Emissor 236;238 · Mo-Su 08:30-21:00;easter, Dec 25, Jan 01 off]]></description>
+<Point><coordinates>-8.6470474,41.1321347,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Avenida da Boavista 2528 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6533158,41.1623108,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Dom António Castro Meireles 243 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5375801,41.1823882,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Professor Joaquim Bastos 182-200 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.6103476,41.1693588,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Estrada interior da Circunvalação 13941-13975 · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.6552058,41.1769752,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua de Monte Pedral 31 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6149399,41.1627283,0</coordinates></Point></Placemark>
+<Placemark><name>Santa Justa</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.5110506,41.1193193,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua Nova do Seixo 689 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6311102,41.1856412,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5160214,41.1513097,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Estrada Dom Miguel 1576 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5163467,41.1535003,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6363565,41.1911103,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6369434,41.1975837,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Roberto Ivens 898 · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.6909569,41.1794968,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Nova de Alvites 231 · Mo-Sa 08:00-21:00]]></description>
+<Point><coordinates>-8.6513625,41.1278245,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5062599,41.1528727,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6267942,41.1763758,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Avenida dos Descobrimentos 66 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6266682,41.11958,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua António Feliciano de Castilho 1171 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5823971,41.1856252,0</coordinates></Point></Placemark>
+<Placemark><name>Supercor</name><description><![CDATA[Rua de Aleixo Mota 306]]></description>
+<Point><coordinates>-8.6553254,41.1512043,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua de Monsenhor Fonseca Soares 291-329 · Mo-Su,PH 08:00-21:30]]></description>
+<Point><coordinates>-8.6334517,41.1579426,0</coordinates></Point></Placemark>
+<Placemark><name>Froiz</name><description><![CDATA[Rua Fernão de Magalhães 555 · Mo-Sa 08:00-21:00]]></description>
+<Point><coordinates>-8.5516321,41.1731147,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6586852,41.1708725,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua do Professor Mota Pinto · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6547536,41.1675453,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua das Coletividades 36 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.589175,41.1020051,0</coordinates></Point></Placemark>
+<Placemark><name>Intermarché</name><description><![CDATA[Rua José Bonaparte]]></description>
+<Point><coordinates>-8.5898447,41.1220863,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6011358,41.1133317,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua José Gomes Soares 249 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6201388,41.1089646,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua João Pedro Ribeiro 694,698,700 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6065853,41.1611389,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Avenida Engenheiro Ludgero Marques 542 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.631227,41.1266762,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Avenida de Camilo 26;32;50;56 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.5942877,41.1494132,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua António Costa Reis 302 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.632022,41.184455,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua Escola Central 822 · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5524266,41.1087425,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan Supermercado</name><description><![CDATA[Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5301096,41.1597609,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Avenida Poeta Eugenio de Andrade · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6479052,41.1162168,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Rua Joaquim Ribeiro 30 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.5416961,41.169012,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Rua Sousa Aroso 705 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.6820736,41.1775113,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Diogo Botelho 440 · Mo-Su 08:30-21:30]]></description>
+<Point><coordinates>-8.6528498,41.1527612,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Rua do Emissor 447 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.6453126,41.1313547,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:30-21:00; easter 08:30-14:00]]></description>
+<Point><coordinates>-8.6235169,41.1273376,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua Raimundo de Carvalho 727 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5965538,41.1255115,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Rua Domingos Sequeira 225 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.630006,41.1627642,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Rua Raimundo de Carvalho 724 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.5971636,41.123963,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.664332,41.1580271,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua de Fernandes Tomás · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5995991,41.148966,0</coordinates></Point></Placemark>
+<Placemark><name>Intermarché</name><description><![CDATA[]]></description>
+<Point><coordinates>-8.550986,41.2136571,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Diamantina 346 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.5806365,41.179823,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Avenida Engenheiro José Joaquim Ribeiro Teles 902 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.546938,41.2100959,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua Serafim Pereira Coutinho 56 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.542654,41.1735513,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua das Colectividades · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5876422,41.1019012,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Estrada Exterior da Circunvalação · Mo-Su 08:00-21:30; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6083774,41.185104,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Avenida 25 de Abril 222 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5323397,41.1389094,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[R. Henrique de Sousa Reis · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5914513,41.1777398,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Travessa Tomás Barbosa Leão 30 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5380566,41.1839506,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Avenida de Fernão de Magalhães 897-1009 · Mo-Fr 08:00-21:00; Sa,Su,PH 08:00-19:00]]></description>
+<Point><coordinates>-8.5937739,41.1585592,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua Brito Capelo 332 · Mo-Su 08:00-21:30; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6885167,41.1755418,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Rua da Pasteleira 263 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.6538283,41.1528952,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua de Álvares Cabral 1 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.609153,41.1285925,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Avenida Oliveira Zina 435 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.5053569,41.1912073,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Rua das Icas 307 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.6951654,41.201064,0</coordinates></Point></Placemark>
+<Placemark><name>Froiz</name><description><![CDATA[Rua da Constituição 1982;1984;1986;1988;1990 · Mo-Sa 08:00-21:00]]></description>
+<Point><coordinates>-8.6214629,41.1642523,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Avenida Doutor Domingos Gonçalves de Sá 381 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.556722,41.1754186,0</coordinates></Point></Placemark>
+<Placemark><name>Celeiro</name><description><![CDATA[Avenida Doutor Óscar Lopes · Mo-Su 09:00-23:00; Dec 24 09:00-18:00; Dec 31 09:00-19:00]]></description>
+<Point><coordinates>-8.6879261,41.2093945,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan</name><description><![CDATA[Avenida Doutor Óscar Lopes · Mo-Sa 09:00-23:00; Su 09:00-22:00; PH 09:00-22:00; easter,Dec 25,Jan 01 off]]></description>
+<Point><coordinates>-8.6869575,41.2080505,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua João de Barros 265 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.663683,41.1549916,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua General Humberto Delgado 480 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.581011,41.1891121,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Rua José Saramago · Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5354701,41.1382831,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua de Serpa Pinto 269;271 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.621117,41.1632586,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.5809764,41.1276548,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua do Amial 831 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6149702,41.1812876,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua Companhia Portuguesa do Cobre 112 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5711068,41.1702937,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Alameda de Cartes 448 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.5747139,41.163133,0</coordinates></Point></Placemark>
+<Placemark><name>Pingo Doce</name><description><![CDATA[Mo-Su 08:00-21:00; easter 08:00-14:00]]></description>
+<Point><coordinates>-8.6118923,41.1951193,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Avenida Oliveira Martins 1195 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.5417763,41.1436165,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Doutor Carlos Moura Guedes 50 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.5369196,41.1372444,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua de Manuel da Silva Araújo 143 · Mo-Su 08:00-21:30]]></description>
+<Point><coordinates>-8.6999786,41.2007734,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua Poço de Fátima · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.508431,41.164165,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua 5 de Outubro 606 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5461732,41.2189954,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Avenida Doutor Salgado Zenha 371 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.6609106,41.1947055,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Bom Dia</name><description><![CDATA[Rua Sara Afonso 105-117 · Mo-Su 10:00-23:00]]></description>
+<Point><coordinates>-8.6553136,41.1806969,0</coordinates></Point></Placemark>
+<Placemark><name>Celeiro</name><description><![CDATA[Rua Sara Afonso · Mo-Su 10:00-23:00; Dec 24 10:00-18:00; Dec 31 10:00-19:00]]></description>
+<Point><coordinates>-8.6567462,41.1809238,0</coordinates></Point></Placemark>
+<Placemark><name>Continente</name><description><![CDATA[Rua de João Mendonça 505 · Mo-Su 08:00-23:00]]></description>
+<Point><coordinates>-8.6580026,41.1824994,0</coordinates></Point></Placemark>
+<Placemark><name>Aldi</name><description><![CDATA[Rua Júlio Dinis 2 · Mo-Su 08:00-21:00]]></description>
+<Point><coordinates>-8.5656919,41.2079612,0</coordinates></Point></Placemark>
+<Placemark><name>Celeiro</name><description><![CDATA[Avenida dos Descobrimentos 549 · Mo-Su 09:00-23:00; Dec 24 09:00-18:00; Dec 31 09:00-19:00]]></description>
+<Point><coordinates>-8.6209843,41.1186731,0</coordinates></Point></Placemark>
+<Placemark><name>Celeiro</name><description><![CDATA[Praceta do Parque Nascente 35 · Mo-Su 09:00-23:00; Dec 24 09:00-17:00; Dec 31 09:00-18:00]]></description>
+<Point><coordinates>-8.5648668,41.1750015,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan</name><description><![CDATA[Praceta do Parque Nascente 30 · Mo-Sa 09:00-23:00; Su 09:00-22:00; PH 09:00-22:00; easter,Dec 25,Jan 01 off]]></description>
+<Point><coordinates>-8.564226,41.1755548,0</coordinates></Point></Placemark>
+<Placemark><name>Mercadona</name><description><![CDATA[Rua de São Gens 3861 · Mo-Su 09:00-21:30]]></description>
+<Point><coordinates>-8.6365495,41.1924822,0</coordinates></Point></Placemark>
+<Placemark><name>Continente</name><description><![CDATA[Avenida dos Escultores 119 · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.6378612,41.1373535,0</coordinates></Point></Placemark>
+<Placemark><name>Froiz</name><description><![CDATA[Rua Doutor Plácido da Costa · Mo-Sa 09:00-22:00; PH,Su 10:00-22:00]]></description>
+<Point><coordinates>-8.603855,41.180215,0</coordinates></Point></Placemark>
+<Placemark><name>Celeiro</name><description><![CDATA[Praceta de Henrique Moreira 244 · Mo-Su 09:00-23:00; Dec 24 09:00-18:00; Dec 31 09:00-19:00]]></description>
+<Point><coordinates>-8.6367969,41.1417704,0</coordinates></Point></Placemark>
+<Placemark><name>Auchan</name><description><![CDATA[Praceta de Henrique Moreira · Mo-Sa 09:00-23:00; Su 09:00-22:00; PH 09:00-22:00; easter,Dec 25,Jan 01 off]]></description>
+<Point><coordinates>-8.6369242,41.1410227,0</coordinates></Point></Placemark>
+<Placemark><name>Continente Modelo</name><description><![CDATA[Rua Estádio do Futebol Clube de Avintes · Mo-Su 08:00-22:00]]></description>
+<Point><coordinates>-8.5549664,41.1020029,0</coordinates></Point></Placemark>
+<Placemark><name>Lidl</name><description><![CDATA[Rua Cândido dos Reis · 08:00-21:30]]></description>
+<Point><coordinates>-8.6507795,41.2003208,0</coordinates></Point></Placemark>
+<Placemark><name>Continente</name><description><![CDATA[Avenida dos Descobrimentos · Mo-Th 08:30-23:00; Fr,Sa 08:30-24:00, Su,PH 08:30-23:00]]></description>
+<Point><coordinates>-8.6206115,41.1182001,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Not mapped (no verified coordinates)</name>
+<Placemark><name>Vodafone Building</name><description><![CDATA[West Porto / Boavista — geocode landed 3km off]]></description></Placemark>
+<Placemark><name>Sta. Catarina Chapel Viewpoint</name><description><![CDATA[River and Sea — could not verify location]]></description></Placemark>
+<Placemark><name>Infante Bridge</name><description><![CDATA[River and Sea — could not verify location]]></description></Placemark>
+</Folder>
+</Document></kml>
