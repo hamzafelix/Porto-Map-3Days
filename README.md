@@ -2,7 +2,7 @@
 
 A single-file, offline-friendly map of **111 Porto destinations** — the official Visit Porto list, geocoded and enriched. Photos, opening hours, websites, halal food and supermarkets, three ready-made day routes, and a phone-first UI.
 
-**Live demo:** `https://hamzafelix.github.io/porto-map-3days/`.
+**Live demo:** `https://hamzafelix.github.io/Porto-Map-3Days/`.
 
 ![mobile preview](preview-mobile.png)
 
