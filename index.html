@@ -1,193 +1,245 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
-<meta name="theme-color" content="#12141a">
-<meta name="mobile-web-app-capable" content="yes">
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+<meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Porto City Break — Interactive Map</title>
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Porto — Interactive Map</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
 <style>
-:root{--bg:#12141a;--panel:#1b1e27;--ink:#eef1f7;--mut:#98a0b3;--line:#2b3040}
-*{box-sizing:border-box}
-html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
-#app{display:flex;height:100%;overflow:hidden}
-#side{width:350px;flex:0 0 350px;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:1000}
-#side h1{font-size:16px;margin:0;padding:16px 16px 4px}
-#side .sub{font-size:11.5px;color:var(--mut);padding:0 16px 12px}
-#search{width:100%;padding:9px 11px;border-radius:9px;border:1px solid var(--line);background:#0e1015;color:var(--ink);font-size:13px;outline:none}
-.searchwrap{padding:0 16px 10px}
-.filters{padding:0 16px 8px;display:flex;flex-wrap:wrap;gap:6px}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;padding:5px 9px;border-radius:20px;border:1px solid var(--line);cursor:pointer;user-select:none;opacity:.45;transition:.15s}
-.chip.on{opacity:1;background:#0e1015}
-.dot{width:8px;height:8px;border-radius:50%}
-.itins{padding:0 16px 10px;display:flex;gap:6px;flex-wrap:wrap}
-.itin{font-size:11.5px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:#0e1015;color:var(--ink);cursor:pointer}
-.itin.on{background:#2f6bff;border-color:#2f6bff}
-.ovl{padding:0 16px 10px;display:flex;gap:6px;flex-wrap:wrap}
-.ov{font-size:11.5px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:#0e1015;color:var(--ink);cursor:pointer;opacity:.5}
-.ov.on{opacity:1;border-color:#3a7f5f}
-#list{flex:1;overflow-y:auto;border-top:1px solid var(--line)}
-.item{padding:9px 16px;border-bottom:1px solid #222736;cursor:pointer;font-size:13px;display:flex;gap:9px;align-items:flex-start}
-.item:hover{background:#222736}
-.n{font-size:10.5px;min-width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex:0 0 20px}
-.item .meta{font-size:10.5px;color:var(--mut);margin-top:2px}
-.item img.th{width:44px;height:44px;border-radius:7px;object-fit:cover;flex:0 0 44px;background:#0e1015}
-#map{flex:1;height:100%}
-.count{font-size:11px;color:var(--mut);padding:8px 16px;border-top:1px solid var(--line)}
-.mk{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;border-radius:50%;width:22px;height:22px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.5)}
-.mk.approx{border-style:dashed}
-.leaflet-popup-content-wrapper{background:var(--panel);color:var(--ink);border-radius:12px}
-.leaflet-popup-tip{background:var(--panel)}
-.leaflet-popup-content{margin:10px 12px}
-.pop h3{margin:0 0 3px;font-size:14px}
-.pop .a{font-size:11px;color:var(--mut);margin-bottom:8px}
-.pop a.btn{display:inline-block;font-size:11.5px;padding:5px 9px;border-radius:7px;background:#2f6bff;color:#fff;text-decoration:none;margin-right:6px}
-.pop a.btn.alt{background:#2b3040}
-.pop .warn{font-size:10.5px;color:#e0a030;margin-top:6px}
-.pop .line{font-size:11.5px;color:#c9d1e0;margin:3px 0}
-.pop .line b{color:#8fa2c4;font-weight:600}
-.nearbtn{width:100%;margin-top:8px;padding:8px;border-radius:9px;border:1px solid var(--line);
- background:#0e1015;color:var(--ink);font-size:12.5px;cursor:pointer}
-.nearbtn.on{background:#2f6bff;border-color:#2f6bff}
-.gal{display:flex;gap:5px;overflow-x:auto;margin:0 0 9px;padding-bottom:3px}
-.gal img{height:104px;border-radius:8px;object-fit:cover;flex:0 0 auto;background:#0e1015}
-.gal::-webkit-scrollbar{height:5px}
-.gal::-webkit-scrollbar-thumb{background:#3a4152;border-radius:3px}
-.cred{font-size:9.5px;color:#6c7488;margin-top:7px}
-.hp{font-size:11.5px;line-height:1.55}
-.hp .tag{display:inline-block;font-size:9.5px;padding:2px 6px;border-radius:5px;margin-bottom:5px}
-.tag.cert{background:#1e6b3a;color:#d6ffe4}
-.tag.friend{background:#5c4a12;color:#ffe9b0}
-.mkwrap{width:36px;height:36px;display:flex;align-items:center;justify-content:center}
-.clwrap{background:none;border:none}
-.cl{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:12.5px;font-weight:700;color:#fff;background:rgba(47,107,255,.92);
-  border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.55)}
-.gal img{cursor:zoom-in;touch-action:manipulation}
-#lb{position:fixed;inset:0;z-index:5000;display:none;flex-direction:column;
-  background:rgba(6,8,12,.985);
-  padding:calc(8px + env(safe-area-inset-top,0px)) 8px calc(8px + env(safe-area-inset-bottom,0px))}
-#lb.on{display:flex}
-#lb .lbbar{display:flex;align-items:center;gap:10px;padding:2px 4px 8px;min-height:36px}
-#lb .lbname{font-size:12.5px;color:#c9d1e0;flex:1;overflow:hidden;text-overflow:ellipsis;
-  white-space:nowrap}
-#lb .lbcnt{font-size:11.5px;color:#8b93a7;font-variant-numeric:tabular-nums}
-#lb button{border:none;background:rgba(255,255,255,.09);color:#eef1f7;border-radius:10px;
-  width:38px;height:38px;font-size:17px;line-height:1;cursor:pointer;flex:0 0 38px;
-  touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-#lb button:active{background:rgba(255,255,255,.2)}
-#lb .stage{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-#lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;
-  transition:transform .15s ease-out,opacity .12s;will-change:transform;
-  -webkit-user-select:none;user-select:none;-webkit-user-drag:none;cursor:zoom-in}
-#lb img.zoomed{cursor:grab;transition:transform .05s linear}
-#lb img.dragging{cursor:grabbing}
-#lb .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;
-  background:rgba(12,15,22,.65)}
-#lb .nav.prev{left:2px}#lb .nav.next{right:2px}
-#lb .cap{font-size:10.5px;color:#6c7488;padding:6px 6px 0;text-align:center;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.fading{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 26px),transparent);
-  mask-image:linear-gradient(to right,#000 calc(100% - 26px),transparent)}
-#mnav{display:none}
-/* ================= MOBILE ================= */
-@media(max-width:760px){
- html,body{overscroll-behavior:none;-webkit-text-size-adjust:100%}
- #app{display:block;position:relative;height:100vh;height:100dvh}
- #map{position:absolute;inset:0;height:100%;z-index:1}
- #side{position:absolute;left:0;right:0;top:0;bottom:0;width:auto;flex:none;max-height:none;
-   border-right:none;border-bottom:none;background:var(--panel);z-index:1100;display:none;
-   padding-bottom:calc(58px + env(safe-area-inset-bottom,0px))}
- body.listmode #side{display:flex}
- body.mapmode #side{display:flex;bottom:auto;height:auto;max-height:100%;background:transparent;
-   padding-bottom:0;pointer-events:none}
- body.mapmode #side .topwrap{pointer-events:auto;margin:8px;border-radius:14px;
-   background:rgba(27,30,39,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-   border:1px solid var(--line);box-shadow:0 8px 26px rgba(0,0,0,.5)}
- body.mapmode #side .topwrap ~ *{display:none!important}
- #side h1{font-size:15px;padding:10px 12px 2px}
- #side .sub{font-size:10.5px;padding:0 12px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
- .searchwrap{padding:0 12px 8px;display:flex;gap:6px;flex-wrap:wrap}
- #search{font-size:16px;padding:10px 12px;border-radius:10px;flex:1 1 140px;min-width:0}
- .nearbtn{width:auto;flex:0 1 auto;margin-top:0;padding:0 12px;min-height:40px;font-size:12px;
-   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
- .filters{padding:0 12px 10px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
-   -webkit-overflow-scrolling:touch}
- .filters::-webkit-scrollbar{display:none}
- .chip{padding:8px 12px;font-size:12px;flex:0 0 auto;white-space:nowrap}
- .itins,.ovl{padding:0 12px 10px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
-   -webkit-overflow-scrolling:touch}
- .itins::-webkit-scrollbar,.ovl::-webkit-scrollbar{display:none}
- .itin,.ov{flex:0 0 auto;padding:10px 13px;font-size:12px}
- .item{padding:12px;gap:10px}
- .item img.th{width:54px;height:54px;flex:0 0 54px}
- .item>div>div:first-child{font-size:14px;line-height:1.3}
- .count{font-size:10.5px;padding:8px 12px}
- .pop .gal img{height:82px}
- .pop h3{font-size:15px}
- .leaflet-popup-content{margin:9px 10px;max-width:calc(100vw - 56px)!important}
- .leaflet-bottom{bottom:calc(64px + env(safe-area-inset-bottom,0px))!important}
- .leaflet-control-attribution{font-size:8.5px}
- #mnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:1300;
-   height:calc(58px + env(safe-area-inset-bottom,0px));
-   padding:0 8px env(safe-area-inset-bottom,0px);align-items:center;gap:8px;
-   background:rgba(20,23,30,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-   border-top:1px solid var(--line)}
- #mnav button{flex:1;height:44px;border-radius:11px;border:1px solid var(--line);
-   background:#0e1015;color:var(--ink);font-size:13px;font-weight:600;cursor:pointer;
-   touch-action:manipulation;-webkit-tap-highlight-color:transparent}
- #mnav button.on{background:#2f6bff;border-color:#2f6bff;color:#fff}
+:root{
+  --canvas:#fff; --ink:#222; --body:#3f3f3f; --mut:#6a6a6a; --muted-soft:#929292;
+  --line:#ddd; --line-soft:#ebebeb; --soft:#f7f7f7; --soft-2:#f2f2f2;
+  --primary:#ff385c; --primary-a:#e00b41;
+  --sh:0 0 0 1px rgba(0,0,0,.02),0 2px 6px rgba(0,0,0,.04),0 4px 8px rgba(0,0,0,.1);
+  --sh-up:0 -4px 20px rgba(0,0,0,.10);
+  --peek:302px;
 }
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--canvas);color:var(--ink);
+  font-family:"Airbnb Cereal VF",Circular,Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  -webkit-font-smoothing:antialiased}
+body{display:flex;overflow:hidden}
+button{font-family:inherit;cursor:pointer}
+a{color:inherit}
 
+/* ---------------- map ---------------- */
+#map{flex:1;height:100vh;height:100dvh;background:var(--soft);z-index:1}
+.leaflet-container{font:inherit}
+.leaflet-bar{border:none!important;box-shadow:var(--sh)!important;border-radius:999px!important;overflow:hidden}
+.leaflet-bar a{width:40px!important;height:40px!important;line-height:40px!important;color:var(--ink)!important;
+  border-color:var(--line-soft)!important;font-size:18px!important}
+.leaflet-control-attribution{background:rgba(255,255,255,.86)!important;color:var(--mut)!important;
+  font-size:10px!important;padding:2px 6px!important;border-radius:6px 0 0 0}
+.leaflet-control-layers{border:none!important;box-shadow:var(--sh)!important;border-radius:12px!important;
+  font-size:13px!important;padding:8px 10px!important;color:var(--ink)!important}
+.leaflet-control-layers-expanded{background:#fff!important}
+
+/* pins */
+.mkwrap{transform:translateZ(0)}
+.mk{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;
+  color:#fff;font-size:12px;font-weight:700;letter-spacing:-.2px;
+  border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);transition:transform .12s}
+.mk.approx{opacity:.78;border-style:dashed}
+.leaflet-marker-icon:hover .mk{transform:scale(1.12)}
+.clwrap{background:none;border:none}
+.cl{display:flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0 8px;
+  border-radius:999px;background:#fff;color:var(--ink);font-size:13px;font-weight:700;
+  border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.18)}
+
+/* ---------------- panel / sheet ---------------- */
+#sheet{position:relative;width:396px;flex:0 0 396px;background:var(--canvas);
+  border-right:1px solid var(--line-soft);display:flex;flex-direction:column;min-height:0;z-index:1100}
+.grab{display:none}
+.shead{padding:18px 18px 0;flex:0 0 auto}
+h1{margin:0;font-size:22px;font-weight:600;letter-spacing:-.2px;line-height:1.18}
+.sub{margin-top:2px;font-size:13px;color:var(--mut);line-height:1.3}
+.searchrow{display:flex;gap:8px;align-items:center;margin-top:14px}
+.searchpill{flex:1;min-width:0;display:flex;align-items:center;gap:9px;height:48px;padding:0 16px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;box-shadow:var(--sh);
+  transition:border-color .15s,box-shadow .15s}
+.searchpill:focus-within{border-color:var(--ink);box-shadow:var(--sh),0 0 0 1px var(--ink)}
+.searchpill svg{flex:0 0 16px;color:var(--ink)}
+#search{flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15px;color:var(--ink)}
+#search::placeholder{color:var(--mut)}
+#search::-webkit-search-cancel-button{-webkit-appearance:none}
+.orb{flex:0 0 48px;width:48px;height:48px;border-radius:999px;border:0;background:var(--primary);
+  color:#fff;display:grid;place-items:center;box-shadow:var(--sh);transition:background .15s,transform .1s}
+.orb:active{transform:scale(.95)}
+.orb.on{background:var(--ink)}
+.orb[disabled]{background:#ffd1da;cursor:default}
+
+.chiprow{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  padding:14px 0 2px;margin:0 -18px;padding-left:18px;padding-right:18px}
+.chiprow::-webkit-scrollbar{display:none}
+.rowwrap{position:relative}
+.rowwrap::after{content:"";position:absolute;right:0;top:0;bottom:0;width:44px;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,0),#fff 78%);opacity:1;transition:opacity .18s}
+.rowwrap.atend::after{opacity:0}
+.chiprow.days{padding-top:8px;padding-bottom:12px;border-bottom:1px solid var(--line-soft);margin-bottom:0}
+.chip,.itin{height:40px;padding:0 15px;border-radius:999px;border:1px solid var(--line);background:#fff;
+  color:var(--ink);font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:7px;
+  white-space:nowrap;flex:0 0 auto;transition:background .12s,color .12s,border-color .12s;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.chip:hover,.itin:hover{background:var(--soft)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip .dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px;box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+.chip.on .dot{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+.chip.ov{font-size:13.5px}
+.chip.ov + .chip.ov{margin-left:0}
+.chip.ov.first{margin-left:6px}
+.chip.ov.first::before{content:"";position:absolute;left:-10px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.chip.ov{position:relative}
+.itin.on{background:var(--primary);border-color:var(--primary);color:#fff}
+
+#list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;-ms-overflow-style:none}
+#list::-webkit-scrollbar{display:none}
+.item{display:flex;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line-soft);
+  cursor:pointer;align-items:center;transition:background .12s;-webkit-tap-highlight-color:transparent}
+.item:hover{background:var(--soft)}
+.item:active{background:var(--soft-2)}
+.thumbwrap{position:relative;flex:0 0 78px}
+.item img.th,.item .th{width:78px;height:78px;border-radius:12px;object-fit:cover;display:block;background:var(--soft-2)}
+.item .n{position:absolute;left:5px;top:5px;min-width:24px;height:24px;padding:0 6px;border-radius:999px;
+  color:#fff;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  border:1.5px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.item .body{min-width:0;flex:1}
+.item .t{font-size:15px;font-weight:600;line-height:1.28;color:var(--ink);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item .meta{margin-top:2px;font-size:13px;color:var(--mut);line-height:1.32;
+  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.item .hrs{margin-top:2px;font-size:12px;color:var(--muted-soft);line-height:1.3;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.count{flex:0 0 auto;padding:11px 18px;border-top:1px solid var(--line-soft);font-size:13px;
+  color:var(--mut);background:var(--canvas)}
+
+/* ---------------- popup ---------------- */
+.leaflet-popup-content-wrapper{background:#fff;color:var(--ink);border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.18);padding:0}
+.leaflet-popup-content{margin:0;padding:12px 14px 14px;width:auto!important}
+.leaflet-popup-tip{box-shadow:none}
+.pop .gal{display:flex;gap:6px;margin:-12px -14px 10px;padding:10px;overflow-x:auto;scrollbar-width:none;
+  border-radius:16px 16px 0 0;background:var(--soft)}
+.pop .gal::-webkit-scrollbar{display:none}
+.pop .gal img{height:104px;width:auto;border-radius:10px;object-fit:cover;cursor:zoom-in;flex:0 0 auto;
+  touch-action:manipulation}
+.pop h3{margin:0;font-size:16px;font-weight:600;line-height:1.25}
+.pop .a{font-size:13px;color:var(--mut);margin:2px 0 8px}
+.pop .line{font-size:13.5px;color:var(--body);margin:3px 0;line-height:1.35}
+.pop .line b{color:var(--mut);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.3px;margin-right:4px}
+.pop .btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 18px;
+  margin:10px 6px 0 0;border-radius:8px;background:var(--primary);color:#fff;font-size:14px;font-weight:500;
+  text-decoration:none;border:0}
+.pop .btn.alt{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.pop .warn{font-size:12px;color:#b32505;margin-top:8px;line-height:1.3}
+.pop .cred{font-size:10.5px;color:var(--muted-soft);margin-top:8px;line-height:1.3}
+/* halal / supermarket popups */
+.hp .tag{display:inline-block;font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:999px;
+  margin-bottom:6px;letter-spacing:.2px}
+.hp .tag.cert{background:#e8f7ec;color:#12703a;border:1px solid #bfe8cd}
+.hp .tag.friend{background:#fff6e0;color:#8a5a00;border:1px solid #f0dcae}
+
+/* ---------------- lightbox ---------------- */
+#lb{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.94);display:none;flex-direction:column;
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+#lb.on{display:flex}
+#lb .lbbar{display:flex;align-items:center;gap:12px;padding:12px 14px;color:#fff}
+#lb .lbname{font-size:14px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#lb .lbcnt{font-size:13px;color:#b9b9b9;font-variant-numeric:tabular-nums}
+#lb button{width:44px;height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.12);
+  color:#fff;font-size:18px;display:grid;place-items:center}
+#lb .stage{flex:1;position:relative;display:grid;place-items:center;overflow:hidden;touch-action:none}
+#lb-img{max-width:100%;max-height:100%;object-fit:contain;transition:opacity .16s,transform .12s;user-select:none}
+#lb-img.zoomed{cursor:grab}
+#lb-img.dragging{transition:none}
+#lb .nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;font-size:26px}
+#lb .prev{left:10px} #lb .next{right:10px}
+#lb .cap{color:#9d9d9d;font-size:11.5px;text-align:center;padding:10px 16px 14px;line-height:1.3}
+
+/* ================= MOBILE: bottom sheet ================= */
+@media(max-width:760px){
+  html,body{overscroll-behavior:none;-webkit-text-size-adjust:100%}
+  #map{position:fixed;inset:0;height:100dvh}
+  #sheet{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;flex:none;
+    height:92dvh;border-right:0;border-radius:20px 20px 0 0;box-shadow:var(--sh-up);
+    transform:translateY(calc(100% - var(--peek)));
+    transition:transform .32s cubic-bezier(.32,.72,0,1);will-change:transform}
+  #sheet.dragging{transition:none;user-select:none;-webkit-user-select:none}
+  .grab{display:grid;place-items:center;height:26px;flex:0 0 26px;touch-action:none;cursor:grab;
+    -webkit-tap-highlight-color:transparent}
+  .grab span{width:40px;height:5px;border-radius:99px;background:#d9d9d9}
+  .shead{padding:2px 16px 0;touch-action:pan-y}
+  h1,.sub{display:none}          /* the map is the hero on mobile */
+  .searchrow{margin-top:10px}
+  .searchpill{height:48px;padding:0 14px}
+  #search{font-size:16px}           /* 16px stops iOS focus zoom */
+  .chiprow{padding-top:12px;margin:0 -16px;padding-left:16px;padding-right:16px;touch-action:pan-x}
+  .chiprow.days{padding-bottom:10px}
+  .item{padding:11px 16px}
+  .thumbwrap{flex:0 0 76px}
+  .item img.th,.item .th{width:76px;height:76px;border-radius:12px}
+  .item .t{font-size:14.5px}
+  .item .meta{font-size:12.5px}
+  .count{padding:12px 16px calc(18px + env(safe-area-inset-bottom,0px));font-size:12px}
+  #list{padding-bottom:2px}
+  .leaflet-bottom{bottom:calc(var(--peek) + 6px)!important}
+  .leaflet-top .leaflet-control{margin-top:10px}
+  .leaflet-popup-content{margin:0;padding:10px 12px 12px}
+  .pop .gal{margin:-10px -12px 9px;padding:8px}
+  .pop .gal img{height:86px}
+  .pop h3{font-size:15px}
+  .leaflet-popup-content{max-width:calc(100vw - 48px)!important}
+  .leaflet-control-layers-expanded{max-width:190px;font-size:12.5px!important}
+}
+@media(min-width:761px){ #sheet{height:100vh;height:100dvh} }
 </style></head><body>
-<div id="app">
- <div id="side">
-  <div class="topwrap">
-   <h1>Porto City Break</h1>
-   <div class="sub">111 destinations · 83 with photos · official Visit Porto guide</div>
-   <div class="searchwrap"><input id="search" placeholder="Search a place…" autocomplete="off" enterkeyhint="search">
-     <button id="nearme" class="nearbtn">📍 Near me</button></div>
-   <div class="filters" id="filters"></div>
+<div id="map"></div>
+<div id="sheet" class="s-peek">
+  <div class="grab" id="grab"><span></span></div>
+  <div class="shead">
+    <h1>Porto</h1>
+    <div class="sub" id="subline"></div>
+    <div class="searchrow">
+      <label class="searchpill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path></svg>
+        <input id="search" type="search" placeholder="Search places" autocomplete="off" enterkeyhint="search"
+               aria-label="Search places">
+      </label>
+      <button id="nearme" class="orb" aria-label="Sort by distance from me">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>
+      </button>
+    </div>
+    <div class="rowwrap"><div class="chiprow" id="filters"></div></div>
+    <div class="rowwrap"><div class="chiprow days" id="itins"></div></div>
   </div>
-  <div class="itins" id="itins"></div>
-  <div class="ovl" id="ovl"></div>
   <div id="list"></div>
   <div class="count" id="count"></div>
- </div>
- <div id="map"></div>
- <div id="lb" aria-hidden="true" role="dialog" aria-label="Photo viewer">
-  <div class="lbbar">
-   <span class="lbname" id="lb-name"></span>
-   <span class="lbcnt" id="lb-cnt"></span>
-   <button id="lb-x" aria-label="Close">✕</button>
-  </div>
+</div>
+<div id="lb" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+  <div class="lbbar"><span class="lbname" id="lb-name"></span><span class="lbcnt" id="lb-cnt"></span>
+    <button id="lb-x" aria-label="Close">✕</button></div>
   <div class="stage" id="lb-stage">
-   <img id="lb-img" alt="">
-   <button class="nav prev" id="lb-prev" aria-label="Previous photo">‹</button>
-   <button class="nav next" id="lb-next" aria-label="Next photo">›</button>
+    <img id="lb-img" alt="">
+    <button class="nav prev" id="lb-prev" aria-label="Previous photo">‹</button>
+    <button class="nav next" id="lb-next" aria-label="Next photo">›</button>
   </div>
   <div class="cap" id="lb-cap"></div>
- </div>
- <nav id="mnav">
-  <button data-mode="map" class="on">🗺 Map</button>
-  <button data-mode="list">📋 List</button>
- </nav>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
 const DATA = {"pois": [{"name": "Clérigos Church and Tower", "area": "Historic Centre - Ribeira", "num": 1, "lat": 41.1456547, "lon": -8.6146275, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Torre_de_los_Cl%C3%A9rigos%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG/960px-Torre_de_los_Cl%C3%A9rigos%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Cl%C3%A9rigos_Church_%28Igreja_dos_Cl%C3%A9rigos%29_Porto%2C_horizontal.jpg/960px-Cl%C3%A9rigos_Church_%28Igreja_dos_Cl%C3%A9rigos%29_Porto%2C_horizontal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Igreja_dos_Cl%C3%A9rigos._Em_Portugal%2C_Porto.JPG/960px-Igreja_dos_Cl%C3%A9rigos._Em_Portugal%2C_Porto.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Clérigos Church", "hours": "Mo-Su 09:00-19:00", "website": "https://www.torredosclerigos.pt/", "phone": ""}, {"name": "S. Bento Railway Station", "area": "Historic Centre - Ribeira", "num": 2, "lat": 41.1454799, "lon": -8.610522, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Porto_-_S%C3%A3o_Bento.JPG/960px-Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Porto_-_S%C3%A3o_Bento.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Azuelo_and_mural%2C_S%C3%A3o_Bento_railway_station%2C_Porto%2C_Portugal.jpg/960px-Azuelo_and_mural%2C_S%C3%A3o_Bento_railway_station%2C_Porto%2C_Portugal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/São Bento railway station", "hours": "", "website": "", "phone": ""}, {"name": "Teatro Nacional S. João", "area": "Historic Centre - Ribeira", "num": 3, "lat": 41.1445633, "lon": -8.6075376, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/S%C3%A9-Teatro_de_S%C3%A3o_Jo%C3%A3o.jpg/960px-S%C3%A9-Teatro_de_S%C3%A3o_Jo%C3%A3o.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Porto%2C_Domingos_Alv%C3%A3o_69_%289289454039%29.jpg/960px-Porto%2C_Domingos_Alv%C3%A3o_69_%289289454039%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Porto_Teatro_de_Sao_Joao.JPG/960px-Porto_Teatro_de_Sao_Joao.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Porto_Teatro_de_Sao_Joao_2.JPG/960px-Porto_Teatro_de_Sao_Joao_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/São João National Theatre", "hours": "", "website": "https://www.tnsj.pt", "phone": "+351 223 401 900"}, {"name": "Portuguese Centre for Photography", "area": "Historic Centre - Ribeira", "num": 4, "lat": 41.1447171, "lon": -8.615892, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Version_2_%2838287223755%29.jpg/960px-Version_2_%2838287223755%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Centro Português de Fotografia", "hours": "", "website": "", "phone": ""}, {"name": "Church of Almas / São José das Taipas", "area": "Historic Centre - Ribeira", "num": 5, "lat": 41.1498571, "lon": -8.6056923, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas.jpg/960px-Igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas_Interior.jpg/960px-Igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas_Interior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas_Sacristia.jpg/960px-Igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas_Sacristia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Interior_da_igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas_por_Rodrigo_Tetsuo_Argenton_%2801%29.jpg/960px-Interior_da_igreja_de_S%C3%A3o_Jos%C3%A9_das_Taipas_por_Rodrigo_Tetsuo_Argenton_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "S. Bento da Vitória Monastery", "area": "Historic Centre - Ribeira", "num": 6, "lat": 41.1439239, "lon": -8.6168822, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Porto_-_S%C3%A3o_Bento.JPG/960px-Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Porto_-_S%C3%A3o_Bento.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Azuelo_and_mural%2C_S%C3%A3o_Bento_railway_station%2C_Porto%2C_Portugal.jpg/960px-Azuelo_and_mural%2C_S%C3%A3o_Bento_railway_station%2C_Porto%2C_Portugal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/São Bento railway station", "hours": "", "website": "", "phone": ""}, {"name": "Nossa Senhora da Vitória Church", "area": "Historic Centre - Ribeira", "num": 7, "lat": 41.1433754, "lon": -8.6159061, "approx": false, "color": "#c0392b", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "MMIPO - Misericórdia do Porto Museum", "area": "Historic Centre - Ribeira", "num": 8, "lat": 41.143705, "lon": -8.6147037, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Museu_da_Miseric%C3%B3rdia_do_Porto_%283%29.JPG/960px-Museu_da_Miseric%C3%B3rdia_do_Porto_%283%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Museu_da_Miseric%C3%B3rdia_do_Porto_%2837%29.JPG/960px-Museu_da_Miseric%C3%B3rdia_do_Porto_%2837%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Museu_da_Miseric%C3%B3rdia_do_Porto_%2838%29.JPG/960px-Museu_da_Miseric%C3%B3rdia_do_Porto_%2838%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Museu_da_Miseric%C3%B3rdia_do_Porto_%2850%29.JPG/960px-Museu_da_Miseric%C3%B3rdia_do_Porto_%2850%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "Mo-Su 10:00-17:30; Apr 01-Sep 30 10:00-17:30; Jan 01 off; Dec 24-25 off", "website": "https://www.mmipo.pt/", "phone": "+351 220 906 960"}, {"name": "Tourism Office - Sé", "area": "Historic Centre - Ribeira", "num": 9, "lat": 41.1426908, "lon": -8.612099, "approx": false, "color": "#c0392b", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Muralha Primitiva (Medieval Wall)", "area": "Historic Centre - Ribeira", "num": 10, "lat": 41.1430725, "lon": -8.6104704, "approx": false, "color": "#c0392b", "photos": [], "photo_src": "", "hours": "", "website": "https://portodeantanho.blogspot.com/2016/11/5-muralhas.html", "phone": ""}, {"name": "Porto Puppets Museum", "area": "Historic Centre - Ribeira", "num": 11, "lat": 41.1424526, "lon": -8.6167379, "approx": false, "color": "#c0392b", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Port and Douro Wines Institute", "area": "Historic Centre - Ribeira", "num": 12, "lat": 41.1419428, "lon": -8.6154181, "approx": true, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Oporto%2C_old_and_new_-_being_a_historical_record_of_the_port_wine_trade%2C_and_a_tribute_to_British_commercial_enterprize_in_the_north_of_Portugal_%28IA_cu31924085185100%29.pdf/page1-960px-thumbnail.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "Ferreira Borges Market / Hard Club", "area": "Historic Centre - Ribeira", "num": 13, "lat": 41.141976, "lon": -8.6149052, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/S%C3%A3o_Nicolau-Mercado_Ferreira_Borges.jpg/960px-S%C3%A3o_Nicolau-Mercado_Ferreira_Borges.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Mercado Ferreira Borges", "hours": "", "website": "", "phone": ""}, {"name": "S. Lourenço Church / Sacred Art Museum", "area": "Historic Centre - Ribeira", "num": 14, "lat": 41.1418049, "lon": -8.6123997, "approx": false, "color": "#c0392b", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Sé Cathedral", "area": "Historic Centre - Ribeira", "num": 15, "lat": 41.1427992, "lon": -8.6112059, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Porto%2C_S%C3%A9_do_Porto_%289%29.jpg/960px-Porto%2C_S%C3%A9_do_Porto_%289%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Azuelo_Mural%2C_Porto_Cathedral.jpg/960px-Azuelo_Mural%2C_Porto_Cathedral.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Lisboa_May_2013-1.jpg/960px-Lisboa_May_2013-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Porto Cathedral", "hours": "", "website": "", "phone": ""}, {"name": "Guerra Junqueiro House Museum", "area": "Historic Centre - Ribeira", "num": 16, "lat": 41.1424653, "lon": -8.6107578, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Casa-Museu_Guerra_Junqueiro_88.JPG/960px-Casa-Museu_Guerra_Junqueiro_88.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Casa-Museu Guerra Junqueiro", "hours": "Tu-Su 10:00-17:30; PH off", "website": "https://museudoporto.pt/estacao/museu-guerra-junqueiro/", "phone": "+351 222 003 689"}, {"name": "Santa Clara Church", "area": "Historic Centre - Ribeira", "num": 17, "lat": 41.1425058, "lon": -8.6092307, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Igreja_Sta_Clara_%28Porto%29.jpg/960px-Igreja_Sta_Clara_%28Porto%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Igreja de Santa Clara (Porto)", "hours": "Mo-Su 09:00-13:00,14:00-18:00; PH off", "website": "https://santaclaraporto.pt/", "phone": "+351 220 909 000"}, {"name": "Palácio da Bolsa", "area": "Historic Centre - Ribeira", "num": 18, "lat": 41.1413117, "lon": -8.6160004, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Palacio_da_Bolsa_in_Porto_%282%29.jpg/960px-Palacio_da_Bolsa_in_Porto_%282%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Jardin_do_Infante_Dom_Henrique_e_Palacio_da_Bolsa_pano.jpg/960px-Jardin_do_Infante_Dom_Henrique_e_Palacio_da_Bolsa_pano.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Palacio_da_Bolsa_in_Porto_%282%29.jpg/960px-Palacio_da_Bolsa_in_Porto_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Porto_-_Palau_de_la_borsa_-_Sala_%C3%A0rab.JPG/960px-Porto_-_Palau_de_la_borsa_-_Sala_%C3%A0rab.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Palácio da Bolsa", "hours": "", "website": "https://cciporto.com", "phone": ""}, {"name": "Feitoria Inglesa (British Factory House)", "area": "Historic Centre - Ribeira", "num": 19, "lat": 41.1414926, "lon": -8.6135438, "approx": false, "color": "#c0392b", "photos": ["https://upload.wikimedia.org/wikipedia/commons/2/2b/Feitoria_Inglesa_%28Porto%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled", "https://upload.wikimedia.org/wikipedia/commons/2/2b/Feitoria_Inglesa_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "https://upload.wikimedia.org/wikipedia/commons/c/c1/O_marques_de_pombal%2C_conde_de_Oeiras.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Porto_visto_de_gaia.JPG/960px-Porto_visto_de_gaia.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Factory House", "hours": "", "website": "", "phone": ""}, {"name": "Paço Episcopal (Bishop's Palace)", "area": "Historic Centre - Ribeira", "num": 20, "lat": 41.1419678, "lon": -8.6115473, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Paco_Episcopal_%28Porto%29.JPG/960px-Paco_Episcopal_%28Porto%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Paco_Episcopal_%28Porto%29.JPG/960px-Paco_Episcopal_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Episcopal Palace, Porto", "hours": "Mo-Su 09:00-13:00,14:00-18:00", "website": "http://www.diocese-porto.pt/index.php?option=com_content&view=article&id=3812:visitas-paco-episcopal&catid=76:noticias", "phone": "+351 910 440 044"}, {"name": "Muralha Fernandina", "area": "Historic Centre - Ribeira", "num": 21, "lat": 41.1406768, "lon": -8.6113369, "approx": false, "color": "#c0392b", "photos": [], "photo_src": "", "hours": "", "website": "https://portodeantanho.blogspot.com/2016/11/5-muralhas.html", "phone": ""}, {"name": "S. Francisco Church", "area": "Historic Centre - Ribeira", "num": 22, "lat": 41.1409824, "lon": -8.6157079, "approx": false, "color": "#c0392b", "photos": ["https://upload.wikimedia.org/wikipedia/commons/8/8d/Oporto-S-Francisco-IPPAR1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled", "https://upload.wikimedia.org/wikipedia/commons/8/8d/Oporto-S-Francisco-IPPAR1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "https://upload.wikimedia.org/wikipedia/commons/8/8c/Porto.SanFrancisco02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Porto_-_Esgl%C3%A9sia_de_Sant_Francesc_-_Interior.JPG/960px-Porto_-_Esgl%C3%A9sia_de_Sant_Francesc_-_Interior.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Church of São Francisco (Porto)", "hours": "", "website": "", "phone": ""}, {"name": "S. Nicolau Church", "area": "Historic Centre - Ribeira", "num": 23, "lat": 41.1405059, "lon": -8.6152064, "approx": false, "color": "#c0392b", "photos": ["https://upload.wikimedia.org/wikipedia/commons/1/1c/Igreja_S_Nicolau_%28Porto%29.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"], "photo_src": "pt.wikipedia.org/wiki/Igreja de São Nicolau (Porto)", "hours": "", "website": "", "phone": ""}, {"name": "Casa do Infante", "area": "Historic Centre - Ribeira", "num": 24, "lat": 41.1407174, "lon": -8.6141613, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Casa_Infante_5_%28Porto%29.JPG/960px-Casa_Infante_5_%28Porto%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://upload.wikimedia.org/wikipedia/commons/9/91/Casa_Infante_4_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Casa_Infante_5_%28Porto%29.JPG/960px-Casa_Infante_5_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://upload.wikimedia.org/wikipedia/commons/2/21/Casa_do_Infante_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"], "photo_src": "en.wikipedia.org/wiki/Casa do Infante", "hours": "Tu-Su 10:00-17:30; PH off", "website": "https://www.cm-porto.pt/cultura/museus-e-arquivos/casa-do-infante", "phone": "+351 222 060 400;+351 222 060 423"}, {"name": "Praça da Ribeira", "area": "Historic Centre - Ribeira", "num": 25, "lat": 41.1406913, "lon": -8.6130072, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Porto_July_2014-34a.jpg/960px-Porto_July_2014-34a.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Porto_July_2014-34a.jpg/960px-Porto_July_2014-34a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Ribeira_Aerial.jpg/960px-Ribeira_Aerial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Ribeira Square", "hours": "", "website": "www.ribeiradoportohotel.com", "phone": "+351 222 032097"}, {"name": "Ribeira Negra Tile Panel", "area": "Historic Centre - Ribeira", "num": 26, "lat": 41.1412796, "lon": -8.6105387, "approx": false, "color": "#c0392b", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Pênsil Bridge Columns", "area": "Historic Centre - Ribeira", "num": 27, "lat": 41.1405929, "lon": -8.6098925, "approx": false, "color": "#c0392b", "photos": ["https://upload.wikimedia.org/wikipedia/commons/4/4b/Pontes_Luis_I_Pensil_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "Luís I Bridge", "area": "Historic Centre - Ribeira", "num": 28, "lat": 41.138383, "lon": -8.6088624, "approx": false, "color": "#c0392b", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Dom_Lu%C3%ADs_I_Bridge_%2836961760686%29.jpg/960px-Dom_Lu%C3%ADs_I_Bridge_%2836961760686%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Dom_Lu%C3%ADs_I_Bridge_%2836961760686%29.jpg/960px-Dom_Lu%C3%ADs_I_Bridge_%2836961760686%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://upload.wikimedia.org/wikipedia/commons/4/4c/Le_Douro_%28vue_de_VNG%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"], "photo_src": "en.wikipedia.org/wiki/Dom Luís I Bridge", "hours": "", "website": "", "phone": ""}, {"name": "Fradelos Chapel", "area": "Baixa (City Centre)", "num": 1, "lat": 41.1461432, "lon": -8.60568, "approx": true, "color": "#8e44ad", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Trindade Church", "area": "Baixa (City Centre)", "num": 2, "lat": 41.151066, "lon": -8.6102488, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Igreja_Trindade_%28Porto%29.jpg/960px-Igreja_Trindade_%28Porto%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Igreja_da_Trindade%2C_Porto%2C_Portugal.jpg/960px-Igreja_da_Trindade%2C_Porto%2C_Portugal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Igreja_da_Trindade_in_Porto_%281%29.jpg/960px-Igreja_da_Trindade_in_Porto_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Igreja_da_Trindade_in_Porto_%284%29.jpg/960px-Igreja_da_Trindade_in_Porto_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "Paços do Concelho (City Hall)", "area": "Baixa (City Centre)", "num": 3, "lat": 41.1500931, "lon": -8.6106672, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Ayuntamiento_de_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_02.JPG/960px-Ayuntamiento_de_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_02.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Paços do Concelho do Porto", "hours": "", "website": "", "phone": ""}, {"name": "Bolhão Market", "area": "Baixa (City Centre)", "num": 4, "lat": 41.1493156, "lon": -8.606947, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Bolh%C3%A3o2023.jpg/960px-Bolh%C3%A3o2023.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Mercado do Bolhão", "hours": "Mo-Sa 08:00-20:00", "website": "https://mercadobolhao.pt/", "phone": ""}, {"name": "Almas Church", "area": "Baixa (City Centre)", "num": 5, "lat": 41.1498314, "lon": -8.6055786, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Capela_das_Almas_%28Porto%29.jpg/960px-Capela_das_Almas_%28Porto%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Capela das Almas", "hours": "Tu 03:00-05:15", "website": "", "phone": ""}, {"name": "Santo Ildefonso Church", "area": "Baixa (City Centre)", "num": 6, "lat": 41.1462029, "lon": -8.6065767, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/2025-08-07_Porto%2C_Igreja_de_Santo_Ildefonso.jpg/960px-2025-08-07_Porto%2C_Igreja_de_Santo_Ildefonso.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Iglesia_de_San_Ildefonso%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG/960px-Iglesia_de_San_Ildefonso%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Iglesia_de_San_Ildefonso%2C_Oporto%2C_Portugal%2C_2019-06-02%2C_DD_32-34_HDR.jpg/960px-Iglesia_de_San_Ildefonso%2C_Oporto%2C_Portugal%2C_2019-06-02%2C_DD_32-34_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Igreja_de_Santo_Ildefonso_4.jpg/960px-Igreja_de_Santo_Ildefonso_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "Avenida dos Aliados", "area": "Baixa (City Centre)", "num": 7, "lat": 41.1477341, "lon": -8.6109611, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Oporto_-_Metro_Aliados_-_20110424_160847.jpg/960px-Oporto_-_Metro_Aliados_-_20110424_160847.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Aliados_%2831383231902%29.jpg/960px-Aliados_%2831383231902%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Esta%C3%A7%C3%A3o_dos_Aliados_do_Metro_do_Porto.jpg/960px-Esta%C3%A7%C3%A3o_dos_Aliados_do_Metro_do_Porto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Oporto_-_Metro_Aliados_-_20110424_160847.jpg/960px-Oporto_-_Metro_Aliados_-_20110424_160847.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Aliados station", "hours": "", "website": "www.hotelaliados.com", "phone": "+351 222 004853;+351 222 004854"}, {"name": "Teatro do Bolhão", "area": "Baixa (City Centre)", "num": 8, "lat": 41.1491248, "lon": -8.6080724, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Bolh%C3%A3o2023.jpg/960px-Bolh%C3%A3o2023.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Mercado do Bolhão", "hours": "", "website": "", "phone": ""}, {"name": "Museu Nacional Soares dos Reis", "area": "Baixa (City Centre)", "num": 9, "lat": 41.1482774, "lon": -8.6213973, "approx": false, "color": "#8e44ad", "photos": ["https://upload.wikimedia.org/wikipedia/commons/8/8f/Carrancas_Porto.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Auguste_Roquemont_-_Prociss%C3%A3o_-_Google_Art_Project.jpg/960px-Auguste_Roquemont_-_Prociss%C3%A3o_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://upload.wikimedia.org/wikipedia/commons/8/8f/Carrancas_Porto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"], "photo_src": "en.wikipedia.org/wiki/Soares dos Reis National Museum", "hours": "Tu 14:00-18:00; We-Su 10:00-18:00; Jan 1 off; May 1 off; Dec 1 off", "website": "https://museusoaresdosreis.gov.pt/", "phone": "+351 223 393 770"}, {"name": "Carmo e Carmelitas Church", "area": "Baixa (City Centre)", "num": 10, "lat": 41.147456, "lon": -8.6162547, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/19._Igreja_do_Carmo_%28Porto%29.JPG/960px-19._Igreja_do_Carmo_%28Porto%29.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Igreja do Carmo (Porto)", "hours": "", "website": "", "phone": ""}, {"name": "Rua Cândido dos Reis", "area": "Baixa (City Centre)", "num": 11, "lat": 41.1469316, "lon": -8.6139437, "approx": false, "color": "#8e44ad", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Rivoli Teatro Municipal", "area": "Baixa (City Centre)", "num": 13, "lat": 41.1478215, "lon": -8.6099393, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Porto_Teatro_Rivoli_4.JPG/960px-Porto_Teatro_Rivoli_4.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Porto_Teatro_Rivoli_4.JPG/960px-Porto_Teatro_Rivoli_4.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Rivoli Theatre (Portugal)", "hours": "Tu-Sa 11:00-20:00", "website": "https://www.teatromunicipaldoporto.pt/", "phone": "+351 223 392 200"}, {"name": "Café Majestic", "area": "Baixa (City Centre)", "num": 14, "lat": 41.1471629, "lon": -8.6065817, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Porto_Cafe_Majestic.JPG/960px-Porto_Cafe_Majestic.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Cafe_Majestic_interior_%28Porto%29.jpg/960px-Cafe_Majestic_interior_%28Porto%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Porto_Cafe_Majestic.JPG/960px-Porto_Cafe_Majestic.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Café Majestic", "hours": "Mo-Sa 09:00-23:30", "website": "www.cafemajestic.com", "phone": "+351 222 003887"}, {"name": "Hospital de Santo António", "area": "Baixa (City Centre)", "num": 15, "lat": 41.147065, "lon": -8.6190983, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Hospital_Santo_Antonio_%28Porto%29.JPG/960px-Hospital_Santo_Antonio_%28Porto%29.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Hospital de Santo António", "hours": "", "website": "", "phone": ""}, {"name": "Livraria Lello", "area": "Baixa (City Centre)", "num": 17, "lat": 41.1468317, "lon": -8.6148485, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Lello_Bookshop_9_April_2026.jpg/960px-Lello_Bookshop_9_April_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/A_Livraria_Lello_e_Irm%C3%A3o-A_ponte_de_encanto.jpg/960px-A_Livraria_Lello_e_Irm%C3%A3o-A_ponte_de_encanto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Lello_Bookshop_9_April_2026.jpg/960px-Lello_Bookshop_9_April_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://upload.wikimedia.org/wikipedia/commons/4/40/Lello_Porto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"], "photo_src": "en.wikipedia.org/wiki/Livraria Lello", "hours": "Mo-Su 09:30-19:00", "website": "https://www.livrarialello.pt/", "phone": "+351 911 865 390"}, {"name": "Rua Galeria de Paris", "area": "Baixa (City Centre)", "num": 18, "lat": 41.147153, "lon": -8.614376, "approx": false, "color": "#8e44ad", "photos": ["https://upload.wikimedia.org/wikipedia/commons/1/15/Rua_Galeria_Paris_placa_%28Porto%29.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"], "photo_src": "pt.wikipedia.org/wiki/Rua da Galeria de Paris", "hours": "", "website": "", "phone": ""}, {"name": "Congregados Church", "area": "Baixa (City Centre)", "num": 20, "lat": 41.1463196, "lon": -8.6106933, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Iglesia_de_los_Congregados%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG/960px-Iglesia_de_los_Congregados%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Igreja dos Congregados", "hours": "Mo-Su 07:15-18:30", "website": "http://www.igrejacongregados.com", "phone": "+351 222 002 948"}, {"name": "Coliseu Porto Ageas", "area": "Baixa (City Centre)", "num": 21, "lat": 41.1471403, "lon": -8.6051922, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Coliseu_do_Porto.JPG/960px-Coliseu_do_Porto.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Coliseu do Porto", "hours": "", "website": "https://www.coliseu.pt/", "phone": "+351 223 394 940"}, {"name": "Jardim da Cordoaria", "area": "Baixa (City Centre)", "num": 22, "lat": 41.1456642, "lon": -8.6164778, "approx": false, "color": "#8e44ad", "photos": ["https://upload.wikimedia.org/wikipedia/commons/4/42/Cordoaria_Porto.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"], "photo_src": "pt.wikipedia.org/wiki/Jardim da Cordoaria", "hours": "24/7", "website": "", "phone": ""}, {"name": "Rectory of University of Porto", "area": "Baixa (City Centre)", "num": 23, "lat": 41.1464769, "lon": -8.6156691, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Rectory_of_the_University_of_Porto_%281%29.jpg/960px-Rectory_of_the_University_of_Porto_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Rectory_of_the_University_of_Porto_%282%29.jpg/960px-Rectory_of_the_University_of_Porto_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "Museum of Natural History (U.P.)", "area": "Baixa (City Centre)", "num": 24, "lat": 41.153623, "lon": -8.642456, "approx": false, "color": "#8e44ad", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican06ameruoft%29.pdf/page1-500px-Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican06ameruoft%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican09ameruoft%29.pdf/page1-500px-Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican09ameruoft%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican22ameruoft%29.pdf/page1-500px-Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican22ameruoft%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican24ameruoft%29.pdf/page1-500px-Bulletin_-_American_Museum_of_Natural_History_%28IA_bulletinamerican24ameruoft%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "House of Filigree", "area": "Baixa (City Centre)", "num": 25, "lat": 41.1461746, "lon": -8.6121169, "approx": false, "color": "#8e44ad", "photos": [], "photo_src": "", "hours": "Tu-Sa 10:00-19:00", "website": "https://houseoffiligree.com/", "phone": "+351 227 662 745"}, {"name": "Pharmacy Museum", "area": "West Porto / Boavista", "num": 1, "lat": 41.1751341, "lon": -8.645448, "approx": false, "color": "#1f6feb", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Paper Money Museum", "area": "West Porto / Boavista", "num": 2, "lat": 41.1644955, "lon": -8.673509, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Museu_Papel_Moeda_%28Porto%29.JPG/960px-Museu_Papel_Moeda_%28Porto%29.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Museu do Papel Moeda", "hours": "", "website": "", "phone": ""}, {"name": "Quinta da Avenida (Souto de Moura)", "area": "West Porto / Boavista", "num": 3, "lat": 41.1395342, "lon": -8.6366212, "approx": false, "color": "#1f6feb", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Bolsa de Derivados Building", "area": "West Porto / Boavista", "num": 4, "lat": 41.159757, "lon": -8.6398926, "approx": true, "color": "#1f6feb", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Oceanus Building", "area": "West Porto / Boavista", "num": 5, "lat": 41.1630672, "lon": -8.6618558, "approx": false, "color": "#1f6feb", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Foco Building", "area": "West Porto / Boavista", "num": 7, "lat": 41.1615942, "lon": -8.6482814, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Edif%C3%ADcio_Foco_Porto_%2817901892651%29.jpg/960px-Edif%C3%ADcio_Foco_Porto_%2817901892651%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "Burgo Tower", "area": "West Porto / Boavista", "num": 8, "lat": 41.1600372, "lon": -8.6452381, "approx": false, "color": "#1f6feb", "photos": ["https://upload.wikimedia.org/wikipedia/commons/1/15/Edificio_Burgo_%28Oporto%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Edificio_Burgo_Porto_%2817280893833%29.jpg/960px-Edificio_Burgo_Porto_%2817280893833%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "Bessa Stadium", "area": "West Porto / Boavista", "num": 9, "lat": 41.1621978, "lon": -8.6426013, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Est%C3%A1dio_do_Bessa_-_Porto_-_Portugal_%286488730091%29.jpg/960px-Est%C3%A1dio_do_Bessa_-_Porto_-_Portugal_%286488730091%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Est%C3%A1dio_do_Bessa_-_Porto_-_Portugal_%286488730091%29.jpg/960px-Est%C3%A1dio_do_Bessa_-_Porto_-_Portugal_%286488730091%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Est%C3%A1dio_do_Bessa_panorama.jpg/960px-Est%C3%A1dio_do_Bessa_panorama.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Estádio do Bessa", "hours": "", "website": "", "phone": ""}, {"name": "Eng. António de Almeida Foundation", "area": "West Porto / Boavista", "num": 10, "lat": 41.1619299, "lon": -8.6403021, "approx": false, "color": "#1f6feb", "photos": [], "photo_src": "", "hours": "", "website": "https://www.feaa.pt/Inicio.aspx", "phone": ""}, {"name": "Casa da Música", "area": "West Porto / Boavista", "num": 11, "lat": 41.1589025, "lon": -8.6307748, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Casa_Da_Musica_%283190746009%29.jpg/960px-Casa_Da_Musica_%283190746009%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Casa-da-musica%28interior%29.1024.jpg/960px-Casa-da-musica%28interior%29.1024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Casa_Da_Musica_%283190746009%29.jpg/960px-Casa_Da_Musica_%283190746009%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Casa_da_M%C3%BAsica._%286085724579%29.jpg/960px-Casa_da_M%C3%BAsica._%286085724579%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Casa da Música", "hours": "Mo-Su 09:30-18:00", "website": "https://www.casadamusica.com/", "phone": "+351 220120220"}, {"name": "Casa da Música Metro Station", "area": "West Porto / Boavista", "num": 12, "lat": 41.1607223, "lon": -8.6292964, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Casa_da_M%C3%BAsica_station_plaftorms.jpg/960px-Casa_da_M%C3%BAsica_station_plaftorms.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Casa_da_Musica_station_building.jpg/960px-Casa_da_Musica_station_building.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Casa_da_M%C3%BAsica_station_plaftorms.jpg/960px-Casa_da_M%C3%BAsica_station_plaftorms.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Casa da Música station", "hours": "", "website": "", "phone": ""}, {"name": "Casa Cinema Manoel de Oliveira", "area": "West Porto / Boavista", "num": 13, "lat": 41.1589949, "lon": -8.6552518, "approx": false, "color": "#1f6feb", "photos": [], "photo_src": "", "hours": "Mo-Fr 10:00-18:00; Sa,Su,PH 10:00-19:00; Apr-Sep: Mo-Fr 10:00-19:00; Apr-Sep: Sa,Su,PH 10:00-20:00", "website": "https://www.serralves.pt/", "phone": ""}, {"name": "Serralves Foundation", "area": "West Porto / Boavista", "num": 14, "lat": 41.1590425, "lon": -8.6593536, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Lonely_Dancer_%284937475766%29.jpg/960px-Lonely_Dancer_%284937475766%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Serralves", "hours": "", "website": "", "phone": ""}, {"name": "Casa das Artes", "area": "West Porto / Boavista", "num": 15, "lat": 41.1563979, "lon": -8.6431694, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_1_%28c%C3%B3digo_M08%29.jpg/960px-Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_1_%28c%C3%B3digo_M08%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_2_%28c%C3%B3digo_M08%29.jpg/960px-Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_2_%28c%C3%B3digo_M08%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_3_%28c%C3%B3digo_M08%29.jpg/960px-Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_3_%28c%C3%B3digo_M08%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_5_%28c%C3%B3digo_M08%29.jpg/960px-Casa_Porto_das_Artes_Pl%C3%A1sticas_Centro_5_%28c%C3%B3digo_M08%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "Tu-Fr 11:00-18:30; Sa 14:30-20:45", "website": "https://casadasartes.gov.pt/", "phone": "+351 220 116 350"}, {"name": "Kadoorie Mekor Haim Synagogue", "area": "West Porto / Boavista", "num": 16, "lat": 41.1559158, "lon": -8.6368867, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Kadoorie_Mekor_Haim_Synagogue.jpg/960px-Kadoorie_Mekor_Haim_Synagogue.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/201901720082-Edit.jpg/960px-201901720082-Edit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Biblioteca_Kadoorie.jpg/960px-Biblioteca_Kadoorie.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Kadoorie_Mekor_Haim_Synagogue.jpg/960px-Kadoorie_Mekor_Haim_Synagogue.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Kadoorie Synagogue", "hours": "", "website": "", "phone": ""}, {"name": "EDP Head Office", "area": "West Porto / Boavista", "num": 17, "lat": 41.1585616, "lon": -8.631933, "approx": false, "color": "#1f6feb", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Marta Ortigão Sampaio House-Museum", "area": "West Porto / Boavista", "num": 18, "lat": 41.1594273, "lon": -8.6255051, "approx": false, "color": "#1f6feb", "photos": ["https://upload.wikimedia.org/wikipedia/commons/c/c2/Sofia_martins_souza_auto_retrato_chapeu.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"], "photo_src": "pt.wikipedia.org/wiki/Casa-Museu Marta Ortigão Sampaio", "hours": "", "website": "", "phone": ""}, {"name": "Faculty of Architecture (U.P.)", "area": "West Porto / Boavista", "num": 19, "lat": 41.149674, "lon": -8.6358273, "approx": true, "color": "#1f6feb", "photos": ["https://upload.wikimedia.org/wikipedia/pt/d/d4/Arquiteturaporto.png?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"], "photo_src": "pt.wikipedia.org/wiki/Faculdade de Arquitectura da Universidade do Porto", "hours": "", "website": "", "phone": ""}, {"name": "Porto Planetarium", "area": "West Porto / Boavista", "num": 20, "lat": 41.1508285, "lon": -8.6384626, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Edificio_CAUP_%26_Planet%C3%A1rio_do_Porto.jpg/960px-Edificio_CAUP_%26_Planet%C3%A1rio_do_Porto.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Planetário do Porto", "hours": "", "website": "", "phone": ""}, {"name": "Campo Alegre Theatre", "area": "West Porto / Boavista", "num": 21, "lat": 41.1507848, "lon": -8.6395243, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Campo_Alegre_Theater.JPG/960px-Campo_Alegre_Theater.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Teatro do Campo Alegre", "hours": "", "website": "", "phone": ""}, {"name": "Botanical Garden / Biodiversity Gallery", "area": "West Porto / Boavista", "num": 22, "lat": 41.1528901, "lon": -8.6428421, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Jardim_Bot%C3%A2nico_Porto_-_tras.jpg/960px-Jardim_Bot%C3%A2nico_Porto_-_tras.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Jardim Botânico do Porto", "hours": "", "website": "", "phone": ""}, {"name": "Bom Sucesso Market", "area": "West Porto / Boavista", "num": 23, "lat": 41.1558288, "lon": -8.6291949, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Mercado_Bom_Sucesso_%28Porto%29.jpg/960px-Mercado_Bom_Sucesso_%28Porto%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Mercado_do_Bom_Sucesso_Porto_2985.jpg/960px-Mercado_do_Bom_Sucesso_Porto_2985.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "Mo-Th,Su,PH 08:00-23:00; Fr-Sa 08:00-24:00", "website": "https://www.mercadobomsucesso.pt/", "phone": "+351 226 056 610"}, {"name": "Palácio de Cristal Gardens", "area": "West Porto / Boavista", "num": 24, "lat": 41.1470339, "lon": -8.6262765, "approx": false, "color": "#1f6feb", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Porto%2C_Domingos_Alv%C3%A3o_87_%289289451845%29.jpg/960px-Porto%2C_Domingos_Alv%C3%A3o_87_%289289451845%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Palácio de Cristal (Porto)", "hours": "Oct-Mar: Mo-Su 08:00-19:00; Apr-Sep: Mo-Su 08:00-21:00", "website": "https://ambiente.cm-porto.pt/parques-e-jardins/jardins-do-palacio-de-cristal", "phone": ""}, {"name": "Holocaust Museum", "area": "West Porto / Boavista", "num": 25, "lat": 41.1531072, "lon": -8.6378592, "approx": false, "color": "#1f6feb", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "S. Francisco Xavier Fort", "area": "River and Sea", "num": 1, "lat": 41.1685311, "lon": -8.690032, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Aerial_photograph_of_Castelo_do_Queijo_%284%29.jpg/960px-Aerial_photograph_of_Castelo_do_Queijo_%284%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Castelo do Queijo", "hours": "", "website": "", "phone": ""}, {"name": "Castelo do Queijo", "area": "River and Sea", "num": 2, "lat": 41.1685311, "lon": -8.690032, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Aerial_photograph_of_Castelo_do_Queijo_%284%29.jpg/960px-Aerial_photograph_of_Castelo_do_Queijo_%284%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Forte de São Francisco Xavier do Queijo", "hours": "", "website": "", "phone": ""}, {"name": "Edifício Transparente", "area": "River and Sea", "num": 3, "lat": 41.1717645, "lon": -8.6877987, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Edificio_Transparente_%28Porto%29.JPG/960px-Edificio_Transparente_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Edificio_Transparente_2_%28Porto%29.JPG/960px-Edificio_Transparente_2_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Edif%C3%ADcio_Transparente_-_Porto_-_Portugal_%288719179025%29.jpg/960px-Edif%C3%ADcio_Transparente_-_Porto_-_Portugal_%288719179025%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "SEA LIFE Porto", "area": "River and Sea", "num": 4, "lat": 41.1687202, "lon": -8.6874591, "approx": false, "color": "#0e8a6d", "photos": [], "photo_src": "", "hours": "Mo-Fr 10:00-18:00; Sa, Su 10:00-19:00", "website": "https://www.visitsealife.com/porto/", "phone": "+351 22 619 0400"}, {"name": "Water Pavilion", "area": "River and Sea", "num": 5, "lat": 41.1714441, "lon": -8.6765582, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Pavilh%C3%A3o_da_%C3%81gua.jpg/960px-Pavilh%C3%A3o_da_%C3%81gua.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Pavilhão da Água", "hours": "", "website": "", "phone": ""}, {"name": "City Park", "area": "River and Sea", "num": 6, "lat": 41.1693616, "lon": -8.6797879, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Parque_da_Cidade_%28sunset%29.jpg/960px-Parque_da_Cidade_%28sunset%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Parque da Cidade do Porto", "hours": "", "website": "", "phone": ""}, {"name": "Pérgola da Foz", "area": "River and Sea", "num": 7, "lat": 41.1577827, "lon": -8.6830308, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Pergola_Foz_%28Porto%29.jpg/960px-Pergola_Foz_%28Porto%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Pérgola da Foz", "hours": "", "website": "", "phone": ""}, {"name": "Minigolf Foz do Douro", "area": "River and Sea", "num": 8, "lat": 41.1481185, "lon": -8.6718074, "approx": false, "color": "#0e8a6d", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "S. João Baptista Fort", "area": "River and Sea", "num": 9, "lat": 41.1488813, "lon": -8.6739554, "approx": false, "color": "#0e8a6d", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Jardim do Passeio Alegre", "area": "River and Sea", "num": 10, "lat": 41.1482984, "lon": -8.6710202, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Chalet_Sui%C3%A7o.jpg/960px-Chalet_Sui%C3%A7o.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Quiosque no Jardim do Passeio Alegre", "hours": "", "website": "https://ambiente.cm-porto.pt/parques-e-jardins/jardim-do-passeio-alegre", "phone": ""}, {"name": "S. Miguel Lighthouse", "area": "River and Sea", "num": 11, "lat": 41.1470766, "lon": -8.6667702, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/S%C3%A3o_Miguel-O-Anjo_Lighthouse_02.JPG/960px-S%C3%A3o_Miguel-O-Anjo_Lighthouse_02.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Farol de São Miguel-o-Anjo", "hours": "", "website": "", "phone": ""}, {"name": "Arrábida Bridge / Bridge Climb", "area": "River and Sea", "num": 12, "lat": 41.1474326, "lon": -8.6403404, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Ponte_da_Arr%C3%A1bida_by_Ant%C3%B3nio_Amen-2.jpg/960px-Ponte_da_Arr%C3%A1bida_by_Ant%C3%B3nio_Amen-2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Arr%C3%A1bida_%285458473006%29.jpg/960px-Arr%C3%A1bida_%285458473006%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Oporto_%288634300645%29.jpg/960px-Oporto_%288634300645%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Ponte_da_Arr%C3%A1bida_by_Ant%C3%B3nio_Amen-2.jpg/960px-Ponte_da_Arr%C3%A1bida_by_Ant%C3%B3nio_Amen-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Arrábida Bridge", "hours": "", "website": "", "phone": ""}, {"name": "Tram Museum", "area": "River and Sea", "num": 13, "lat": 41.1479791, "lon": -8.6326383, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Oporto_horse_tram_Crich_2014.JPG/960px-Oporto_horse_tram_Crich_2014.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Porto_Museu_STCP_Tram_269_Driver_Cab.JPG/960px-Porto_Museu_STCP_Tram_269_Driver_Cab.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Porto_Museu_STCP_Tram_315_Driver_Cab.JPG/960px-Porto_Museu_STCP_Tram_315_Driver_Cab.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Porto_Museu_STCP_Tram_8.JPG/960px-Porto_Museu_STCP_Tram_8.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "commons.wikimedia.org (Porto-validated)", "hours": "", "website": "", "phone": ""}, {"name": "Port Wine Museum", "area": "River and Sea", "num": 15, "lat": 41.1400698, "lon": -8.615297, "approx": false, "color": "#0e8a6d", "photos": ["https://upload.wikimedia.org/wikipedia/commons/f/f2/CRAT_1_%28Porto%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled", "https://upload.wikimedia.org/wikipedia/commons/f/f2/CRAT_1_%28Porto%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"], "photo_src": "en.wikipedia.org/wiki/Port Wine Museum", "hours": "", "website": "", "phone": ""}, {"name": "World of Discoveries", "area": "River and Sea", "num": 16, "lat": 41.1435027, "lon": -8.620811, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/World_of_Discoveries_%281%29.JPG/960px-World_of_Discoveries_%281%29.JPG?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/World of Discoveries", "hours": "", "website": "", "phone": ""}, {"name": "Transport & Communications Museum", "area": "River and Sea", "num": 17, "lat": 41.1426364, "lon": -8.6210085, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Alf%C3%A2ndega_Nova_-_Entrada_principal.jpg/960px-Alf%C3%A2ndega_Nova_-_Entrada_principal.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Museum of Transport and Communication", "hours": "", "website": "", "phone": ""}, {"name": "Maria Pia Bridge", "area": "River and Sea", "num": 20, "lat": 41.1397452, "lon": -8.5971689, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Ponte_Maria_Pia_-_Porto.JPG/960px-Ponte_Maria_Pia_-_Porto.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Maria_Pia_Bridge_detail.jpg/960px-Maria_Pia_Bridge_detail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Obras_da_Ponte_D._Maria_Pia_-_Os_Caminhos_de_Ferro_Portugueses_1856-2006.jpg/960px-Obras_da_Ponte_D._Maria_Pia_-_Os_Caminhos_de_Ferro_Portugueses_1856-2006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Ponte_Maria_Pia_-_Porto.JPG/960px-Ponte_Maria_Pia_-_Porto.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Maria Pia Bridge", "hours": "", "website": "", "phone": ""}, {"name": "S. João Bridge", "area": "River and Sea", "num": 21, "lat": 41.1388826, "lon": -8.5953414, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Ponte_S._Joao_-_Porto.JPG/960px-Ponte_S._Joao_-_Porto.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Ponte_S._Joao_-_Porto.JPG/960px-Ponte_S._Joao_-_Porto.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Ponte de São João", "hours": "", "website": "", "phone": ""}, {"name": "Freixo Bridge", "area": "River and Sea", "num": 22, "lat": 41.1423692, "lon": -8.5809157, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/A_Montante_%284381115427%29.jpg/960px-A_Montante_%284381115427%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://upload.wikimedia.org/wikipedia/commons/f/fc/25th_April_Bridge_and_boat.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/A_Montante_%284381115427%29.jpg/960px-A_Montante_%284381115427%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/FrEixo_%284386401013%29.jpg/960px-FrEixo_%284386401013%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Freixo Bridge", "hours": "", "website": "", "phone": ""}, {"name": "Press National Museum", "area": "River and Sea", "num": 23, "lat": 41.1434021, "lon": -8.5767371, "approx": false, "color": "#0e8a6d", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Palácio do Freixo", "area": "River and Sea", "num": 24, "lat": 41.1425243, "lon": -8.5748889, "approx": false, "color": "#0e8a6d", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Pal%C3%A1cio_do_Freixo_-_Fachada.jpg/960px-Pal%C3%A1cio_do_Freixo_-_Fachada.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Palácio do Freixo", "hours": "", "website": "", "phone": "+351 225 311 000"}, {"name": "Senhora da Conceição Church", "area": "East Porto", "num": 1, "lat": 41.1614016, "lon": -8.6058106, "approx": false, "color": "#d68910", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": "+351 225 072 190"}, {"name": "São Roque Park", "area": "East Porto", "num": 2, "lat": 41.1590714, "lon": -8.5890149, "approx": false, "color": "#d68910", "photos": ["https://upload.wikimedia.org/wikipedia/commons/d/d8/Quinta_da_Lameira_Porto_Henrique_Matos.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"], "photo_src": "pt.wikipedia.org/wiki/Parque de São Roque", "hours": "Apr-Sep Mo-Su 08:00-20:00; Oct-Mar Mo-Su 08:00-19:00", "website": "https://ambiente.cm-porto.pt/parques-e-jardins/parque-de-s-roque-2", "phone": ""}, {"name": "Dragão Stadium / FC Porto Museum", "area": "East Porto", "num": 3, "lat": 41.1618235, "lon": -8.5837492, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Porto_Est%C3%A1dio_do_Drag%C3%A3o_2.jpg/960px-Porto_Est%C3%A1dio_do_Drag%C3%A3o_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://upload.wikimedia.org/wikipedia/commons/4/48/Estadio_do_Dragao_20120829.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Est%C3%A1dio_do_Drag%C3%A3o_-_Porto%2C_2009_%284435817091%29.jpg/960px-Est%C3%A1dio_do_Drag%C3%A3o_-_Porto%2C_2009_%284435817091%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Estádio do Dragão", "hours": "", "website": "", "phone": ""}, {"name": "East Park", "area": "East Porto", "num": 4, "lat": 41.1599258, "lon": -8.5651222, "approx": false, "color": "#d68910", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Campo 24 de Agosto Garden", "area": "East Porto", "num": 5, "lat": 41.1495609, "lon": -8.5988973, "approx": false, "color": "#d68910", "photos": [], "photo_src": "", "hours": "24/7", "website": "", "phone": ""}, {"name": "Quinta da Bonjóia", "area": "East Porto", "num": 6, "lat": 41.1528408, "lon": -8.5768767, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Casa_de_Bonjoia-1.jpg/960px-Casa_de_Bonjoia-1.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Quinta de Bonjóia", "hours": "Mo-Su 07:00-19:00", "website": "https://ambiente.cm-porto.pt/parques-e-jardins/quinta-de-bonjoia", "phone": ""}, {"name": "Marques de Oliveira Garden", "area": "East Porto", "num": 7, "lat": 41.1459853, "lon": -8.6026142, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Jardim_de_S%C3%A3o_L%C3%A1zaro-lago.jpg/960px-Jardim_de_S%C3%A3o_L%C3%A1zaro-lago.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Jardim Marques de Oliveira", "hours": "", "website": "", "phone": ""}, {"name": "Municipal Public Library", "area": "East Porto", "num": 8, "lat": 41.1482546, "lon": -8.6269177, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Biblioteca_publica_municipal_do_Porto.jpg/960px-Biblioteca_publica_municipal_do_Porto.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Biblioteca_Municipal_do_Porto_interior.jpg/960px-Biblioteca_Municipal_do_Porto_interior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Biblioteca_Municipal_do_Porto_patio.jpg/960px-Biblioteca_Municipal_do_Porto_patio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Biblioteca_publica_municipal_do_Porto.jpg/960px-Biblioteca_publica_municipal_do_Porto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Municipal Library of Porto", "hours": "", "website": "", "phone": ""}, {"name": "Museum of Fine Arts (U.P.)", "area": "East Porto", "num": 9, "lat": 41.1453385, "lon": -8.6002243, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Faculdade_Belas_Artes_Porto.jpg/960px-Faculdade_Belas_Artes_Porto.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Faculdade_Belas_Artes_Porto.jpg/960px-Faculdade_Belas_Artes_Porto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Faculty of Fine Arts of the University of Porto", "hours": "", "website": "", "phone": ""}, {"name": "António Carneiro House Workshop", "area": "East Porto", "num": 10, "lat": 41.1494118, "lon": -8.593837, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Casa_Museu_Antonio_Carneiro_by_Henrique_Matos_02.jpg/960px-Casa_Museu_Antonio_Carneiro_by_Henrique_Matos_02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Casa_Museu_Antonio_Carneiro_by_Henrique_Matos_02.jpg/960px-Casa_Museu_Antonio_Carneiro_by_Henrique_Matos_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Casa-oficina António Carneiro", "hours": "Tu-Su 10:00-17:30; PH off", "website": "https://www.cm-porto.pt/cultura/museus-e-arquivos/casa-oficina-antonio-carneiro", "phone": "+351 225 379 668"}, {"name": "Campanhã Railway Station", "area": "East Porto", "num": 11, "lat": 41.148741, "lon": -8.5854585, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Campanh%C3%A3-Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Campanh%C3%A3.jpg/960px-Campanh%C3%A3-Esta%C3%A7%C3%A3o_Ferrovi%C3%A1ria_de_Campanh%C3%A3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://upload.wikimedia.org/wikipedia/commons/7/7a/Aviso_CFMD_Campanha_-_Diario_Illustrado_1696_1877.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"], "photo_src": "en.wikipedia.org/wiki/Campanhã railway station", "hours": "Jun-Sep: Mo-Su 09:30-18:30", "website": "", "phone": ""}, {"name": "Military Museum", "area": "East Porto", "num": 12, "lat": 41.1455784, "lon": -8.5950102, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Museu_Militar_Porto.jpg/960px-Museu_Militar_Porto.jpg?utm_source=pt.wikipedia.org&utm_campaign=api&utm_content=thumbnail"], "photo_src": "pt.wikipedia.org/wiki/Museu Militar do Porto", "hours": "", "website": "", "phone": ""}, {"name": "Parque das Águas", "area": "East Porto", "num": 13, "lat": 41.1436656, "lon": -8.5901512, "approx": false, "color": "#d68910", "photos": [], "photo_src": "", "hours": "Mo-Fr 10:00-19:00", "website": "https://portowatercity.aguasdoporto.pt/pt/parque-das-aguas/", "phone": ""}, {"name": "Quinta de Villar d'Allen", "area": "East Porto", "num": 14, "lat": 41.1437965, "lon": -8.5714005, "approx": false, "color": "#d68910", "photos": [], "photo_src": "", "hours": "Mo-Fr 08:30-18:00; Sa 09:00-17:00", "website": "https://villardallenwines.com/villar-dallen/", "phone": "+351 225 302 741"}, {"name": "Casa de São Roque", "area": "East Porto", "num": 15, "lat": 41.1577572, "lon": -8.5868487, "approx": false, "color": "#d68910", "photos": [], "photo_src": "", "hours": "", "website": "", "phone": ""}, {"name": "Casa Museu Fernando de Castro", "area": "East Porto", "num": 16, "lat": 41.1663944, "lon": -8.5959023, "approx": false, "color": "#d68910", "photos": ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Casa_Museu_Fernando_de_Castro_02.jpg/960px-Casa_Museu_Fernando_de_Castro_02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Casa_Museu_Fernando_de_Castro_02.jpg/960px-Casa_Museu_Fernando_de_Castro_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"], "photo_src": "en.wikipedia.org/wiki/Casa Museu Fernando de Castro", "hours": "", "website": "https://museusoaresdosreis.gov.pt/museu/casa-museu-fernando-de-castro/", "phone": "+351 223 393 770"}], "unmapped": [{"name": "Vodafone Building", "area": "West Porto / Boavista", "num": 6, "reason": "geocode landed 3km off"}, {"name": "Sta. Catarina Chapel Viewpoint", "area": "River and Sea", "num": 14, "reason": "could not verify location"}, {"name": "Infante Bridge", "area": "River and Sea", "num": 19, "reason": "could not verify location"}], "itins": {"Day 1 - Baixa": ["Paços do Concelho (City Hall)", "Avenida dos Aliados", "Bolhão Market", "Almas Church", "Café Majestic", "S. Bento Railway Station", "Clérigos Church and Tower", "Portuguese Centre for Photography", "Livraria Lello", "Carmo e Carmelitas Church", "Museu Nacional Soares dos Reis", "Palácio de Cristal Gardens"], "Day 2 - Ribeira": ["Jardim do Passeio Alegre", "Luís I Bridge", "Sé Cathedral", "Tourism Office - Sé", "Rua Galeria de Paris", "MMIPO - Misericórdia do Porto Museum", "Port and Douro Wines Institute", "S. Francisco Church", "Casa do Infante", "Praça da Ribeira", "Port Wine Museum", "World of Discoveries", "Palácio da Bolsa"], "Day 3 - Contemporary": ["Dragão Stadium / FC Porto Museum", "Casa da Música", "Bom Sucesso Market", "Serralves Foundation", "Pérgola da Foz", "City Park"]}, "colors": {"Historic Centre - Ribeira": "#c0392b", "Baixa (City Centre)": "#8e44ad", "West Porto / Boavista": "#1f6feb", "River and Sea": "#0e8a6d", "East Porto": "#d68910"}, "icons": {"Historic Centre - Ribeira": "🏰", "Baixa (City Centre)": "🏛️", "West Porto / Boavista": "🎨", "River and Sea": "🌊", "East Porto": "🌿"}, "halal": [{"kind": "halal_certified", "name": "Palmeira", "lat": 41.1508984, "lon": -8.6052241, "brand": "", "cuisine": "", "shop": "", "addr": "", "opening": "", "halal_tag": "yes"}, {"kind": "halal_certified", "name": "Garden Porto", "lat": 41.1506223, "lon": -8.61004, "brand": "", "cuisine": "", "shop": "", "addr": "Rua de Fernandes Tomás 979,985,987", "opening": "09:00-19:00", "halal_tag": "yes"}, {"kind": "halal_certified", "name": "Tayyebah", "lat": 41.1549876, "lon": -8.6045949, "brand": "", "cuisine": "kebab", "shop": "", "addr": "Rua de Santa Catarina 1000", "opening": "13:00-05:00", "halal_tag": "yes"}, {"kind": "halal_certified", "name": "Turmeric", "lat": 41.1490482, "lon": -8.6090446, "brand": "", "cuisine": "indian;pakistani", "shop": "", "addr": "", "opening": "", "halal_tag": "yes"}, {"kind": "halal_certified", "name": "Halal Bangla Super Shop", "lat": 41.1441753, "lon": -8.609132, "brand": "", "cuisine": "", "shop": "convenience", "addr": "Rua do Cativo 18;20", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "O Indiano", "lat": 41.1493734, "lon": -8.5864759, "brand": "", "cuisine": "kebab;pizza", "shop": "", "addr": "", "opening": "Mo-Su 09:00-22:00; Tu off", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Estambul Döner Kebap Pizza", "lat": 41.1468138, "lon": -8.6108078, "brand": "", "cuisine": "kebab", "shop": "", "addr": "Praça da Liberdade", "opening": "PH,Mo-Su 11:00-02:30", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Al-Hassan Kebab & Pizza", "lat": 41.1757536, "lon": -8.6897625, "brand": "", "cuisine": "kebab;pizza", "shop": "", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Aywa", "lat": 41.1426544, "lon": -8.6163108, "brand": "", "cuisine": "arab;kebab", "shop": "", "addr": "Rua de Belomonte", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Rocky", "lat": 41.1450665, "lon": -8.6115655, "brand": "", "cuisine": "kebab", "shop": "", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "BD Kebab", "lat": 41.1526516, "lon": -8.6079221, "brand": "", "cuisine": "kebab", "shop": "", "addr": "Rua de Guedes de Azevedo 246", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Sabores do Sebouh", "lat": 41.1501853, "lon": -8.6173453, "brand": "", "cuisine": "arab", "shop": "", "addr": "Rua de Miguel Bombarda 34", "opening": "Mo 19:30-23:30, Tu-Fr 15:00-23:30, Sa 13:00-15:30, Sa 19:30-23:30, Su 13:00-15:30", "halal_tag": ""}, {"kind": "halal_friendly", "name": "HITSS KEBAB & INDIAN RESTAURANT", "lat": 41.1467813, "lon": -8.6106258, "brand": "", "cuisine": "indian;kebab", "shop": "", "addr": "Rua de Sampaio Bruno 10", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Sabores do Sebouh", "lat": 41.1501814, "lon": -8.6173579, "brand": "", "cuisine": "arab", "shop": "", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Istambul", "lat": 41.1456182, "lon": -8.6054724, "brand": "", "cuisine": "kebab", "shop": "", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Murshid", "lat": 41.1568882, "lon": -8.6206686, "brand": "", "cuisine": "burger;kebab;pizza", "shop": "", "addr": "Rua de Oliveira Monteiro 34", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Joshua's Shoarma Grill", "lat": 41.2093673, "lon": -8.6882966, "brand": "", "cuisine": "kebab", "shop": "", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "PizzaB", "lat": 41.1781529, "lon": -8.5831617, "brand": "", "cuisine": "pizza;kebab", "shop": "", "addr": "Avenida de Fernão de Magalhães 3363", "opening": "Tu-Su 06:00-00:30", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Mega Bar Nandita 2 Silvia", "lat": 41.113457, "lon": -8.5809714, "brand": "", "cuisine": "burger;sandwich;kebab;hot_dog", "shop": "", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Sabores do Kebab", "lat": 41.1375581, "lon": -8.6387173, "brand": "", "cuisine": "kebab", "shop": "", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "halal_friendly", "name": "Joshua's Shoarma Grill", "lat": 41.1420176, "lon": -8.6365498, "brand": "", "cuisine": "kebab", "shop": "", "addr": "", "opening": "", "halal_tag": ""}], "supers": [{"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1679272, "lon": -8.5982629, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua de Aval de Baixo", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1926745, "lon": -8.6115143, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1934718, "lon": -8.6098806, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1592577, "lon": -8.6661234, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1808261, "lon": -8.6826241, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1761443, "lon": -8.5855793, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua Costa Cabral 2320", "opening": "Mo-Su 08:00-21:00; easter off", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Modelo", "lat": 41.2022293, "lon": -8.5460437, "brand": "Continente Modelo", "cuisine": "", "shop": "supermarket", "addr": "Rua das Macieiras 330", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.15945, "lon": -8.6393339, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Avenida da Boavista 1319", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1518331, "lon": -8.6772709, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1628775, "lon": -8.5929753, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Praça de Francisco Sá Carneiro 205", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1883599, "lon": -8.5964924, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-20:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lima 5 (My Super)", "lat": 41.1619685, "lon": -8.6004923, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.184446, "lon": -8.6922441, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Sa 08:30-21:00; Su 09:00-20:30", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1163894, "lon": -8.6061368, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-20:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1216493, "lon": -8.6057479, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Avenida da República 1895", "opening": "Mo-Su,PH 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Santa Justa", "lat": 41.2042485, "lon": -8.5613868, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "(unnamed)", "lat": 41.1806005, "lon": -8.5828612, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1786395, "lon": -8.6141984, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua do Amial 667/681", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1279383, "lon": -8.6058706, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Avenida da República 1174/1182", "opening": "Mo-Su 08:00-21:30; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Belpreço", "lat": 41.110272, "lon": -8.6355005, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1661217, "lon": -8.5977348, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1466839, "lon": -8.6047409, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua de Passos Manuel 221/223", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1246557, "lon": -8.6121627, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Minipreço", "lat": 41.126484, "lon": -8.6115438, "brand": "Minipreço", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1437637, "lon": -8.5344689, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Froiz", "lat": 41.15161, "lon": -8.6108579, "brand": "Froiz", "cuisine": "", "shop": "supermarket", "addr": "Avenida Heróis e Mártires Guerra de Angola 49", "opening": "Mo-Sa 09:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1538458, "lon": -8.6135705, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Praça da República 58", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1503404, "lon": -8.611532, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Fr 08:30-20:00; Sa,PH 09:00-20:00; Su off", "halal_tag": ""}, {"kind": "supermarket", "name": "Supermercado Santa Justa - Rio Tinto", "lat": 41.1890901, "lon": -8.5542204, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "Rua das Cavadas", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.198584, "lon": -8.7102619, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1487297, "lon": -8.6081158, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua de Sá da Bandeira 295", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1531756, "lon": -8.6182789, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua de Cedofeita 435", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1668866, "lon": -8.6494559, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua de São João de Brito", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Meu Super", "lat": 41.1561624, "lon": -8.6180014, "brand": "Meu Super", "cuisine": "", "shop": "supermarket", "addr": "Rua da Boavista 400", "opening": "Mo-Sa 09:00-21:00; Su 11:00-20:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan Supermercado", "lat": 41.1595736, "lon": -8.6018346, "brand": "Auchan Supermercado", "cuisine": "", "shop": "supermarket", "addr": "Rua de Latino Coelho 271", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercado Frutos E Sabores", "lat": 41.1085881, "lon": -8.6226014, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Froiz", "lat": 41.100722, "lon": -8.5890922, "brand": "Froiz", "cuisine": "", "shop": "supermarket", "addr": "Rua Salgueiro Maia 349", "opening": "Mo-Sa 09:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1359665, "lon": -8.6077774, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 09:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1511148, "lon": -8.6005336, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "Rua da Firmeza", "opening": "Mo-Su 08:00-13:00,15:00-20:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1567413, "lon": -8.6217201, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1924061, "lon": -8.6966061, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-13:00,15:00-20:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Minipreço", "lat": 41.1513342, "lon": -8.6495404, "brand": "Minipreço", "cuisine": "", "shop": "supermarket", "addr": "Rua das Condominhas", "opening": "Mo-Su 09:00-20:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1670218, "lon": -8.6268383, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua da Prelada 19", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.150003, "lon": -8.5981112, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Campo 24 Agosto 170-172", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "3 Desejos", "lat": 41.1695589, "lon": -8.6590934, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "PH,Mo-Su 08:00-19:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1512328, "lon": -8.6765189, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua da Senhora da Luz 238", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1574818, "lon": -8.6807705, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1483186, "lon": -8.6581726, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:30-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1772045, "lon": -8.6468746, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua Engenheiro Ferreira Dias 954", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Spar", "lat": 41.1596239, "lon": -8.6284866, "brand": "Spar", "cuisine": "", "shop": "supermarket", "addr": "Avenida da França 82;84", "opening": "Mo-Sa 07:30-20:00; Su off; PH 07:30-20:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1553385, "lon": -8.6288498, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Praça do Bom Sucesso 74-90", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Froiz", "lat": 41.1552405, "lon": -8.6297219, "brand": "Froiz", "cuisine": "", "shop": "supermarket", "addr": "Praça do Bom Sucesso 61", "opening": "Mo-Sa 09:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "IdealBio", "lat": 41.1615201, "lon": -8.6319925, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "Rua de Cinco de Outubro 352", "opening": "Mo-Fr 09:00-20:00; Sa 09:00-19:00; Su 09:00-17:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1165185, "lon": -8.6619305, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Avenida da Beira Mar 2363", "opening": "PH,Mo-Su 08:30-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Entrem... Entrem", "lat": 41.1551686, "lon": -8.5951607, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Sa 09:00-19:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1411812, "lon": -8.5549893, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua Engenheiro Mário Giesta 30", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1850034, "lon": -8.6811766, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-20:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Celeiro", "lat": 41.1634466, "lon": -8.5848024, "brand": "Celeiro", "cuisine": "", "shop": "supermarket", "addr": "Rua dos Campeões Europeus 28-198", "opening": "Mo-Th 10:00-23:00; Fr,Sa 10:00-00:00; Su 10:00-22:00; Dec 24 09:00-18:00; Dec 31 10:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Spar", "lat": 41.1444511, "lon": -8.6180908, "brand": "Spar", "cuisine": "", "shop": "supermarket", "addr": "Passeio das Virtudes 7", "opening": "Mo-Su 09:30-20:00; PH off", "halal_tag": ""}, {"kind": "supermarket", "name": "biorigem", "lat": 41.1614886, "lon": -8.6105678, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1782113, "lon": -8.6537569, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:30; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.2137029, "lon": -8.6848176, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua Azemel 38", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.2021552, "lon": -8.697807, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua Dom Marcos da Cruz 50", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1477005, "lon": -8.5861897, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Sa 08:30-20:00; Su 09:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Supermercado Asiático", "lat": 41.1548227, "lon": -8.6134661, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "Praça da República 103", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercado Orgânico", "lat": 41.1536257, "lon": -8.6754675, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1489582, "lon": -8.6047044, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua de Santa Catarina 312-350", "opening": "Mo-Su 10:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente", "lat": 41.1635465, "lon": -8.5847475, "brand": "Continente", "cuisine": "", "shop": "supermarket", "addr": "Rua dos Campeões Europeus 28-198", "opening": "Mo-Sa 08:00-23:00; Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Celeiro", "lat": 41.1490666, "lon": -8.6051946, "brand": "Celeiro", "cuisine": "", "shop": "supermarket", "addr": "Rua de Santa Catarina 312-350", "opening": "Mo-Su 10:00-21:00; Dec 24 10:00-18:00; Dec 31 10:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Já agora", "lat": 41.1432268, "lon": -8.606558, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Spar", "lat": 41.1465015, "lon": -8.5961728, "brand": "Spar", "cuisine": "", "shop": "supermarket", "addr": "Largo de Soares dos Reis 94", "opening": "Mo-Sa 08:00-21:30; Su 08:00-14:00; PH 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1297188, "lon": -8.6518751, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua da Quinta do Castro", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.196294, "lon": -8.6927501, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:30; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1999746, "lon": -8.6969646, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:30; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.2046067, "lon": -8.6965392, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua da Bataria 45", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.2133148, "lon": -8.5591252, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan Supermercado", "lat": 41.187523, "lon": -8.5803204, "brand": "Auchan Supermercado", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1992239, "lon": -8.6103287, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Santos Dias 725", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Modelo", "lat": 41.2005652, "lon": -8.6213207, "brand": "Continente Modelo", "cuisine": "", "shop": "supermarket", "addr": "Rua da Mainça 697", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.205115, "lon": -8.6338708, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua de Recarei", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan Supermercado", "lat": 41.2014402, "lon": -8.646059, "brand": "Auchan Supermercado", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.19813, "lon": -8.6654023, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1923788, "lon": -8.6685707, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1857023, "lon": -8.6592912, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Avenida António Domingues dos Santos 431-461", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1666414, "lon": -8.6201375, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua de Serpa Pinto 700/738", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1478267, "lon": -8.6339901, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Alameda de Basílio Teles 152", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.166833, "lon": -8.6129979, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua Luís de Aguiar 16-26", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1081901, "lon": -8.593622, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Conceição Fernandes 1339", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1496468, "lon": -8.6075876, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua de Sá da Bandeira 389", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lavradores & Co.", "lat": 41.1492515, "lon": -8.6233883, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "Rua de Miguel Bombarda 541", "opening": "Mo-Sa 10:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Intermarché", "lat": 41.1074452, "lon": -8.6374636, "brand": "Intermarché", "cuisine": "", "shop": "supermarket", "addr": "Rua de António Francisco de Sousa", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Spar", "lat": 41.1613006, "lon": -8.627943, "brand": "Spar", "cuisine": "", "shop": "supermarket", "addr": "Avenida da França 256", "opening": "Mo-Fr 07:30-18:00; Sa,Su,PH off", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1967462, "lon": -8.5773286, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua de Sangemil", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Celeiro", "lat": 41.1802754, "lon": -8.6044519, "brand": "Celeiro", "cuisine": "", "shop": "supermarket", "addr": "Rua Doutor Plácido da Costa", "opening": "Mo-Su 09:00-21:00; Dec 24,Dec 31 09:00-16:00", "halal_tag": ""}, {"kind": "supermarket", "name": "My Auchan", "lat": 41.1625943, "lon": -8.6051244, "brand": "My Auchan", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Sa 08:30-20:00; Su,PH 09:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Meireles", "lat": 41.1624315, "lon": -8.605101, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Sa 09:00-19:30; Su,PH off", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1696388, "lon": -8.6443582, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua de Manuel Pinto de Azevedo 7", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1771883, "lon": -8.6170739, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.1805383, "lon": -8.6185687, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Estrada Interior da Circunvalação 9399", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Supermercado Chen", "lat": 41.1512206, "lon": -8.607519, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Sa 10:00-19:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan", "lat": 41.15111, "lon": -8.60054, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "PrimaPrix Fernandes Tomás", "lat": 41.1501657, "lon": -8.6078933, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "Rua de Fernandes Tomás 793", "opening": "Mo-Su 09:30-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Intermarché", "lat": 41.1170448, "lon": -8.5098647, "brand": "Intermarché Super", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Intermarché", "lat": 41.1099372, "lon": -8.5530297, "brand": "Intermarché", "cuisine": "", "shop": "supermarket", "addr": "Rua Escola Central 801", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1263283, "lon": -8.6005816, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua 25 de Abril 180", "opening": "Mo-Su,PH 08:30-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Modelo", "lat": 41.2065604, "lon": -8.5607958, "brand": "Continente Modelo", "cuisine": "", "shop": "supermarket", "addr": "Avenida do Lidador da Maia", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.2127522, "lon": -8.5630768, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua Dona Maria Faria", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.2129932, "lon": -8.5507771, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1291705, "lon": -8.6298853, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua Bombeiros Voluntários de Coimbrões 99", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1103178, "lon": -8.6318366, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1975046, "lon": -8.5747648, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua da Quinta da Palmeira", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.2071363, "lon": -8.6117912, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua da Ponte da Pedra 240-302", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Modelo", "lat": 41.1744834, "lon": -8.5553023, "brand": "Continente Modelo", "cuisine": "", "shop": "supermarket", "addr": "Avenida Doutor Domingos Gonçalves de Sá", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1713992, "lon": -8.5481188, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua Infante Dom Henrique", "opening": "Mo-Su 08:00-21:30; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.2017824, "lon": -8.5074715, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:30; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "E.Leclerc", "lat": 41.1964728, "lon": -8.5113756, "brand": "E.Leclerc", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Intermarché", "lat": 41.2103506, "lon": -8.6118508, "brand": "Intermarché", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan Supermercado", "lat": 41.2056915, "lon": -8.5501816, "brand": "Auchan Supermercado", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan Supermercado", "lat": 41.1040653, "lon": -8.6036972, "brand": "Auchan Supermercado", "cuisine": "", "shop": "supermarket", "addr": "Rua Nova de Laborim 266", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1132615, "lon": -8.5904602, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Avenida Vasco da Gama", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan Supermercado", "lat": 41.1043787, "lon": -8.569662, "brand": "Auchan Supermercado", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1793783, "lon": -8.680377, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Avenida Villagarcia de Arosa", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1706344, "lon": -8.6353886, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua de João dos Santos Ferreira", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1728757, "lon": -8.6388104, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua Central de Francos 744/758", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Modelo", "lat": 41.1548049, "lon": -8.5293841, "brand": "Continente Modelo", "cuisine": "", "shop": "supermarket", "addr": "Rua Nova de Santa Eulália 300-326", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Modelo", "lat": 41.1452832, "lon": -8.5529223, "brand": "Continente Modelo", "cuisine": "", "shop": "supermarket", "addr": "Rua Luís de Camões 706", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1816653, "lon": -8.6296791, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan", "lat": 41.1321347, "lon": -8.6470474, "brand": "Auchan", "cuisine": "", "shop": "supermarket", "addr": "Rua do Emissor 236;238", "opening": "Mo-Su 08:30-21:00;easter, Dec 25, Jan 01 off", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1623108, "lon": -8.6533158, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Avenida da Boavista 2528", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1823882, "lon": -8.5375801, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Dom António Castro Meireles 243", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1693588, "lon": -8.6103476, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Professor Joaquim Bastos 182-200", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1769752, "lon": -8.6552058, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Estrada interior da Circunvalação 13941-13975", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1627283, "lon": -8.6149399, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua de Monte Pedral 31", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Santa Justa", "lat": 41.1193193, "lon": -8.5110506, "brand": "", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1856412, "lon": -8.6311102, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua Nova do Seixo 689", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1513097, "lon": -8.5160214, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1535003, "lon": -8.5163467, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Estrada Dom Miguel 1576", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1911103, "lon": -8.6363565, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1975837, "lon": -8.6369434, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1794968, "lon": -8.6909569, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Roberto Ivens 898", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1278245, "lon": -8.6513625, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Nova de Alvites 231", "opening": "Mo-Sa 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1528727, "lon": -8.5062599, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1763758, "lon": -8.6267942, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.11958, "lon": -8.6266682, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Avenida dos Descobrimentos 66", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1856252, "lon": -8.5823971, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua António Feliciano de Castilho 1171", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Supercor", "lat": 41.1512043, "lon": -8.6553254, "brand": "Supercor", "cuisine": "", "shop": "supermarket", "addr": "Rua de Aleixo Mota 306", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1579426, "lon": -8.6334517, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua de Monsenhor Fonseca Soares 291-329", "opening": "Mo-Su,PH 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Froiz", "lat": 41.1731147, "lon": -8.5516321, "brand": "Froiz", "cuisine": "", "shop": "supermarket", "addr": "Rua Fernão de Magalhães 555", "opening": "Mo-Sa 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1708725, "lon": -8.6586852, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1675453, "lon": -8.6547536, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua do Professor Mota Pinto", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1020051, "lon": -8.589175, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua das Coletividades 36", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Intermarché", "lat": 41.1220863, "lon": -8.5898447, "brand": "Intermarché Super", "cuisine": "", "shop": "supermarket", "addr": "Rua José Bonaparte", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1133317, "lon": -8.6011358, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1089646, "lon": -8.6201388, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua José Gomes Soares 249", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1611389, "lon": -8.6065853, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua João Pedro Ribeiro 694,698,700", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1266762, "lon": -8.631227, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Avenida Engenheiro Ludgero Marques 542", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1494132, "lon": -8.5942877, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Avenida de Camilo 26;32;50;56", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.184455, "lon": -8.632022, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua António Costa Reis 302", "opening": "Mo-Su 08:00-21:30", "halal_tag": "yes"}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1087425, "lon": -8.5524266, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua Escola Central 822", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan Supermercado", "lat": 41.1597609, "lon": -8.5301096, "brand": "Auchan Supermercado", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1162168, "lon": -8.6479052, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Avenida Poeta Eugenio de Andrade", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.169012, "lon": -8.5416961, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Rua Joaquim Ribeiro 30", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.1775113, "lon": -8.6820736, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Rua Sousa Aroso 705", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1527612, "lon": -8.6528498, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Diogo Botelho 440", "opening": "Mo-Su 08:30-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.1313547, "lon": -8.6453126, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Rua do Emissor 447", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1273376, "lon": -8.6235169, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:30-21:00; easter 08:30-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1255115, "lon": -8.5965538, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua Raimundo de Carvalho 727", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.1627642, "lon": -8.630006, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Rua Domingos Sequeira 225", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.123963, "lon": -8.5971636, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Rua Raimundo de Carvalho 724", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1580271, "lon": -8.664332, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.148966, "lon": -8.5995991, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua de Fernandes Tomás", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Intermarché", "lat": 41.2136571, "lon": -8.550986, "brand": "Intermarché", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.179823, "lon": -8.5806365, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Diamantina 346", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.2100959, "lon": -8.546938, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Avenida Engenheiro José Joaquim Ribeiro Teles 902", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1735513, "lon": -8.542654, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua Serafim Pereira Coutinho 56", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1019012, "lon": -8.5876422, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua das Colectividades", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.185104, "lon": -8.6083774, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Estrada Exterior da Circunvalação", "opening": "Mo-Su 08:00-21:30; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1389094, "lon": -8.5323397, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Avenida 25 de Abril 222", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1777398, "lon": -8.5914513, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "R. Henrique de Sousa Reis", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1839506, "lon": -8.5380566, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Travessa Tomás Barbosa Leão 30", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1585592, "lon": -8.5937739, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Avenida de Fernão de Magalhães 897-1009", "opening": "Mo-Fr 08:00-21:00; Sa,Su,PH 08:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1755418, "lon": -8.6885167, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua Brito Capelo 332", "opening": "Mo-Su 08:00-21:30; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.1528952, "lon": -8.6538283, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Rua da Pasteleira 263", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1285925, "lon": -8.609153, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua de Álvares Cabral 1", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.1912073, "lon": -8.5053569, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Avenida Oliveira Zina 435", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.201064, "lon": -8.6951654, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Rua das Icas 307", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Froiz", "lat": 41.1642523, "lon": -8.6214629, "brand": "Froiz", "cuisine": "", "shop": "supermarket", "addr": "Rua da Constituição 1982;1984;1986;1988;1990", "opening": "Mo-Sa 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1754186, "lon": -8.556722, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Avenida Doutor Domingos Gonçalves de Sá 381", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Celeiro", "lat": 41.2093945, "lon": -8.6879261, "brand": "Celeiro", "cuisine": "", "shop": "supermarket", "addr": "Avenida Doutor Óscar Lopes", "opening": "Mo-Su 09:00-23:00; Dec 24 09:00-18:00; Dec 31 09:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan", "lat": 41.2080505, "lon": -8.6869575, "brand": "Auchan", "cuisine": "", "shop": "supermarket", "addr": "Avenida Doutor Óscar Lopes", "opening": "Mo-Sa 09:00-23:00; Su 09:00-22:00; PH 09:00-22:00; easter,Dec 25,Jan 01 off", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1549916, "lon": -8.663683, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua João de Barros 265", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1891121, "lon": -8.581011, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua General Humberto Delgado 480", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1382831, "lon": -8.5354701, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "Rua José Saramago", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1632586, "lon": -8.621117, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua de Serpa Pinto 269;271", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1276548, "lon": -8.5809764, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1812876, "lon": -8.6149702, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua do Amial 831", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1702937, "lon": -8.5711068, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua Companhia Portuguesa do Cobre 112", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.163133, "lon": -8.5747139, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Alameda de Cartes 448", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Pingo Doce", "lat": 41.1951193, "lon": -8.6118923, "brand": "Pingo Doce", "cuisine": "", "shop": "supermarket", "addr": "", "opening": "Mo-Su 08:00-21:00; easter 08:00-14:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.1436165, "lon": -8.5417763, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Avenida Oliveira Martins 1195", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.1372444, "lon": -8.5369196, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Doutor Carlos Moura Guedes 50", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.2007734, "lon": -8.6999786, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua de Manuel da Silva Araújo 143", "opening": "Mo-Su 08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.164165, "lon": -8.508431, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua Poço de Fátima", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.2189954, "lon": -8.5461732, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua 5 de Outubro 606", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.1947055, "lon": -8.6609106, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Avenida Doutor Salgado Zenha 371", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Bom Dia", "lat": 41.1806969, "lon": -8.6553136, "brand": "Continente Bom Dia", "cuisine": "", "shop": "supermarket", "addr": "Rua Sara Afonso 105-117", "opening": "Mo-Su 10:00-23:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Celeiro", "lat": 41.1809238, "lon": -8.6567462, "brand": "Celeiro", "cuisine": "", "shop": "supermarket", "addr": "Rua Sara Afonso", "opening": "Mo-Su 10:00-23:00; Dec 24 10:00-18:00; Dec 31 10:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente", "lat": 41.1824994, "lon": -8.6580026, "brand": "Continente", "cuisine": "", "shop": "supermarket", "addr": "Rua de João Mendonça 505", "opening": "Mo-Su 08:00-23:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Aldi", "lat": 41.2079612, "lon": -8.5656919, "brand": "Aldi", "cuisine": "", "shop": "supermarket", "addr": "Rua Júlio Dinis 2", "opening": "Mo-Su 08:00-21:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Celeiro", "lat": 41.1186731, "lon": -8.6209843, "brand": "Celeiro", "cuisine": "", "shop": "supermarket", "addr": "Avenida dos Descobrimentos 549", "opening": "Mo-Su 09:00-23:00; Dec 24 09:00-18:00; Dec 31 09:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Celeiro", "lat": 41.1750015, "lon": -8.5648668, "brand": "Celeiro", "cuisine": "", "shop": "supermarket", "addr": "Praceta do Parque Nascente 35", "opening": "Mo-Su 09:00-23:00; Dec 24 09:00-17:00; Dec 31 09:00-18:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan", "lat": 41.1755548, "lon": -8.564226, "brand": "Auchan", "cuisine": "", "shop": "supermarket", "addr": "Praceta do Parque Nascente 30", "opening": "Mo-Sa 09:00-23:00; Su 09:00-22:00; PH 09:00-22:00; easter,Dec 25,Jan 01 off", "halal_tag": ""}, {"kind": "supermarket", "name": "Mercadona", "lat": 41.1924822, "lon": -8.6365495, "brand": "Mercadona", "cuisine": "", "shop": "supermarket", "addr": "Rua de São Gens 3861", "opening": "Mo-Su 09:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente", "lat": 41.1373535, "lon": -8.6378612, "brand": "Continente", "cuisine": "", "shop": "supermarket", "addr": "Avenida dos Escultores 119", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Froiz", "lat": 41.180215, "lon": -8.603855, "brand": "Froiz", "cuisine": "", "shop": "supermarket", "addr": "Rua Doutor Plácido da Costa", "opening": "Mo-Sa 09:00-22:00; PH,Su 10:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Celeiro", "lat": 41.1417704, "lon": -8.6367969, "brand": "Celeiro", "cuisine": "", "shop": "supermarket", "addr": "Praceta de Henrique Moreira 244", "opening": "Mo-Su 09:00-23:00; Dec 24 09:00-18:00; Dec 31 09:00-19:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Auchan", "lat": 41.1410227, "lon": -8.6369242, "brand": "Auchan", "cuisine": "", "shop": "supermarket", "addr": "Praceta de Henrique Moreira", "opening": "Mo-Sa 09:00-23:00; Su 09:00-22:00; PH 09:00-22:00; easter,Dec 25,Jan 01 off", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente Modelo", "lat": 41.1020029, "lon": -8.5549664, "brand": "Continente Modelo", "cuisine": "", "shop": "supermarket", "addr": "Rua Estádio do Futebol Clube de Avintes", "opening": "Mo-Su 08:00-22:00", "halal_tag": ""}, {"kind": "supermarket", "name": "Lidl", "lat": 41.2003208, "lon": -8.6507795, "brand": "Lidl", "cuisine": "", "shop": "supermarket", "addr": "Rua Cândido dos Reis", "opening": "08:00-21:30", "halal_tag": ""}, {"kind": "supermarket", "name": "Continente", "lat": 41.1182001, "lon": -8.6206115, "brand": "Continente", "cuisine": "", "shop": "supermarket", "addr": "Avenida dos Descobrimentos", "opening": "Mo-Th 08:30-23:00; Fr,Sa 08:30-24:00, Su,PH 08:30-23:00", "halal_tag": ""}]};
 const IS_MOBILE=()=>window.innerWidth<=760;
-// keep popups clear of the floating search card (top) and the tab bar (bottom)
-const PAD_TL=()=>IS_MOBILE()?[18,170]:[12,12];
-const PAD_BR=()=>IS_MOBILE()?[18,86]:[12,12];
-const map = L.map('map',{zoomControl:false}).setView([41.1520,-8.6200],13);
+const PEEK=()=>parseInt(getComputedStyle(document.documentElement).getPropertyValue('--peek'))||238;
+const map=L.map('map',{zoomControl:false,attributionControl:true}).setView([41.1520,-8.6200],13);
 L.control.zoom({position:IS_MOBILE()?'bottomright':'topleft'}).addTo(map);
-// tile.openstreetmap.org 403s unless a Referer is sent (i.e. only works off http(s)).
-// CARTO returns an "API KEY REQUIRED" watermark with HTTP 200. Esri is keyless and works.
+
+/* tile.openstreetmap.org 403s unless a Referer is sent (i.e. only works off http(s)).
+   CARTO returns an "API KEY REQUIRED" watermark with HTTP 200. Esri is keyless and works. */
 const ESRI="https://server.arcgisonline.com/ArcGIS/rest/services";
 const ATTR='Tiles &copy; Esri &mdash; Esri, HERE, Garmin, OpenStreetMap contributors';
 const STREET=L.tileLayer(ESRI+'/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:ATTR}).addTo(map);
@@ -196,54 +248,133 @@ const SAT=L.tileLayer(ESRI+'/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:
 const OSM=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'});
 
 const cluster=L.markerClusterGroup?L.markerClusterGroup({
-  maxClusterRadius:IS_MOBILE()?46:58, showCoverageOnHover:false,
-  spiderfyOnMaxZoom:true, disableClusteringAtZoom:17,
+  maxClusterRadius:IS_MOBILE()?48:58, showCoverageOnHover:false, spiderfyOnMaxZoom:true,
+  disableClusteringAtZoom:17,
   iconCreateFunction:c=>L.divIcon({html:'<div class="cl">'+c.getChildCount()+'</div>',
-    className:'clwrap', iconSize:[38,38]})}):null;
+    className:'clwrap',iconSize:[40,40]})}):null;
 if(cluster) map.addLayer(cluster);
-const halalLayer=L.layerGroup().addTo(map);
-const superLayer=L.layerGroup();
 
+/* ---- halal + supermarkets ---- */
+const halalLayer=L.layerGroup();
+const superLayer=L.layerGroup();
 DATA.halal.forEach(p=>{
   const cert=p.kind==='halal_certified';
-  L.circleMarker([p.lat,p.lon],{radius:6,color:cert?'#2ecc71':'#e0a030',weight:2,
+  L.circleMarker([p.lat,p.lon],{radius:7,color:cert?'#2ecc71':'#e0a030',weight:2,
      fillColor:cert?'#1e6b3a':'#5c4a12',fillOpacity:.9})
-   .bindPopup(`<div class="pop hp">
-     <span class="tag ${cert?'cert':'friend'}">${cert?'HALAL ✓ tagged':'halal-friendly · not certified'}</span>
-     <h3>${p.name}</h3>
-     <div class="a">${[p.cuisine&&('cuisine: '+p.cuisine),p.addr,p.opening].filter(Boolean).join(' · ')||'food'}</div>
-     <a class="btn alt" href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions</a>
-   </div>`).addTo(halalLayer);
+   .bindPopup('<div class="pop hp">'+
+     '<span class="tag '+(cert?'cert':'friend')+'">'+(cert?'HALAL ✓ tagged':'halal-friendly · not certified')+'</span>'+
+     '<h3>'+escAttr(p.name)+'</h3>'+
+     '<div class="a">'+escAttr([p.cuisine&&('cuisine: '+p.cuisine),p.addr,p.opening].filter(Boolean).join(' · ')||'food')+'</div>'+
+     '<a class="btn alt" href="https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lon+'" target="_blank" rel="noopener">Directions</a></div>')
+   .addTo(halalLayer);
 });
 DATA.supers.forEach(p=>{
   L.circleMarker([p.lat,p.lon],{radius:5,color:'#4da3ff',weight:1.5,fillColor:'#1f6feb',fillOpacity:.75})
-   .bindPopup(`<div class="pop hp"><h3>${p.name}</h3>
-     <div class="a">${[p.brand,p.addr,p.opening].filter(Boolean).join(' · ')||'supermarket'}</div>
-     <a class="btn alt" href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions</a></div>`)
+   .bindPopup('<div class="pop hp"><h3>'+escAttr(p.name)+'</h3>'+
+     '<div class="a">'+escAttr([p.brand,p.addr,p.opening].filter(Boolean).join(' · ')||'supermarket')+'</div>'+
+     '<a class="btn alt" href="https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lon+'" target="_blank" rel="noopener">Directions</a></div>')
    .addTo(superLayer);
 });
+if(DATA.halal.length) halalLayer.addTo(map);
 
-const baseLayers={'Street map (Esri)':STREET,'Topographic (Esri)':TOPO,'Satellite (Esri)':SAT};
+const baseLayers={'Street':STREET,'Topographic':TOPO,'Satellite':SAT};
 if(location.protocol.startsWith('http')) baseLayers['OpenStreetMap']=OSM;
-L.control.layers(baseLayers,{
-  ['Halal food ('+DATA.halal.length+')']:halalLayer,
-  ['Supermarkets ('+DATA.supers.length+')']:superLayer
-},{position:IS_MOBILE()?'bottomright':'topright',collapsed:true}).addTo(map);
+const overlays={};
+if(DATA.halal.length) overlays['Halal food ('+DATA.halal.length+')']=halalLayer;
+if(DATA.supers.length) overlays['Supermarkets ('+DATA.supers.length+')']=superLayer;
+L.control.layers(baseLayers,overlays,{position:IS_MOBILE()?'bottomright':'topright',collapsed:true}).addTo(map);
 
+document.getElementById('subline').textContent =
+  DATA.pois.length+' destinations · '+DATA.pois.filter(p=>p.photos.length).length+' with photos';
+
+/* ---------------- sheet ---------------- */
+const sheet=document.getElementById('sheet'),grab=document.getElementById('grab');
+let snapState=IS_MOBILE()?'peek':'desktop', sheetY=0, drag=null, rafId=0, pendY=0;
+
+function snaps(){
+  const h=sheet.offsetHeight, max=Math.max(0,h-PEEK());
+  return {full:0, half:Math.round(max*0.52), peek:max};
+}
+function paint(){ sheet.style.transform='translate3d(0,'+sheetY+'px,0)'; }
+function setSheet(s,anim){
+  if(!IS_MOBILE()){sheet.style.transform='none';snapState='desktop';return;}
+  snapState=s;
+  if(anim){ sheet.classList.remove('dragging'); }
+  else { sheet.classList.add('dragging'); }
+  sheetY=snaps()[s]||0;
+  paint();
+  if(!anim){ requestAnimationFrame(()=>requestAnimationFrame(()=>{ if(!drag) sheet.classList.remove('dragging'); })); }
+  if(s!=='full'){ const l=document.getElementById('list'); if(l) l.scrollTop=0; }
+}
+function onDown(e){
+  if(!IS_MOBILE()||drag) return;
+  if(e.target.closest('input,button,a,label,.chiprow,.rowwrap')) return;
+  drag={id:e.pointerId, y:e.clientY, base:sheetY, moved:0, t:Date.now()};
+  pendY=sheetY;
+  sheet.classList.add('dragging');
+  try{ sheet.setPointerCapture(e.pointerId); }catch(_){}
+}
+function onMove(e){
+  if(!drag||e.pointerId!==drag.id) return;
+  const dy=e.clientY-drag.y;
+  drag.moved=Math.max(drag.moved,Math.abs(dy));
+  const {peek}=snaps();
+  pendY=Math.min(Math.max(-24,drag.base+dy),peek+48);
+  if(rafId) return;
+  rafId=requestAnimationFrame(()=>{ rafId=0; sheetY=pendY; paint(); });
+}
+function onUp(e){
+  if(!drag) return;
+  if(e && e.pointerId!==undefined && e.pointerId!==drag.id) return;
+  const d=drag; drag=null;
+  if(rafId){ cancelAnimationFrame(rafId); rafId=0; }
+  sheetY=pendY; paint();
+  const sp=snaps();
+  if(d.moved<10){
+    setSheet(snapState==='peek'?'half':(snapState==='half'?'full':'peek'),true);
+    return;
+  }
+  const dt=Math.max(1,Date.now()-d.t), vel=(pendY-d.base)/dt;   // px per ms
+  let best='peek',bd=1e9;
+  Object.keys(sp).forEach(k=>{ const dd=Math.abs(sp[k]-sheetY); if(dd<bd){bd=dd;best=k;} });
+  if(Math.abs(vel)>0.55){                                       // fling: one step past
+    const order=['full','half','peek'];
+    const i=order.indexOf(best);
+    best=order[Math.min(order.length-1,Math.max(0,i+(vel>0?1:-1)))];
+  }
+  if(sheetY>=sp.peek+24) best='peek';                           // near-collapsed drag
+  if(d.moved>10){ window.__justDragged=true; setTimeout(()=>{window.__justDragged=false;},60); }
+  setSheet(best,true);
+}
+grab.addEventListener('pointerdown',onDown,{passive:false});
+document.querySelector('.shead').addEventListener('pointerdown',onDown,{passive:false});
+window.addEventListener('pointermove',onMove,{passive:false});
+window.addEventListener('pointerup',onUp);
+window.addEventListener('pointercancel',()=>{ if(!drag) return; drag=null; if(rafId){cancelAnimationFrame(rafId);rafId=0;} setSheet(snapState,true); });
+/* swallow the click that follows a drag */
+document.querySelector('.shead').addEventListener('click',e=>{
+  if(window.__justDragged){ e.stopPropagation(); e.preventDefault(); }
+},true);
+document.getElementById('search').addEventListener('focus',()=>{if(IS_MOBILE()&&snapState!=='full') setSheet('full',true);});
+
+/* ---------------- filters ---------------- */
+const AREA_SHORT={'Historic Centre - Ribeira':'Ribeira','Baixa (City Centre)':'Baixa',
+  'West Porto / Boavista':'Boavista','River and Sea':'Foz','East Porto':'East'};
 const active=new Set(Object.keys(DATA.colors));
-let query='',itinLine=null,activeItin=null;
-const markers=[];
+let query='',itinLine=null,activeItin=null,userPos=null,meDot=null;
 const fbox=document.getElementById('filters');
 Object.entries(DATA.colors).forEach(([area,col])=>{
-  const c=document.createElement('div'); c.className='chip on'; c.dataset.area=area;
-  c.innerHTML=`<span class="dot" style="background:${col}"></span>${DATA.icons[area]} ${area.split(' ')[0]}`;
+  const c=document.createElement('button'); c.className='chip on'; c.dataset.area=area;
+  c.innerHTML='<span class="dot" style="background:'+col+'"></span>'+DATA.icons[area]+' '+(AREA_SHORT[area]||area.split(' ')[0]);
   c.onclick=()=>{ if(active.has(area)){active.delete(area);c.classList.remove('on');}
                   else{active.add(area);c.classList.add('on');} render(); };
   fbox.appendChild(c);
 });
 const ibox=document.getElementById('itins');
 Object.keys(DATA.itins).forEach(d=>{
-  const b=document.createElement('button'); b.className='itin'; b.textContent=d;
+  const SHORT={'Day 1 - Baixa':'Day 1 · Baixa','Day 2 - Ribeira':'Day 2 · Ribeira',
+               'Day 3 - Contemporary':'Day 3 · Modern'};
+  const b=document.createElement('button'); b.className='itin'; b.textContent=SHORT[d]||d;
   b.onclick=()=>{
     document.querySelectorAll('.itin').forEach(x=>x.classList.remove('on'));
     if(activeItin===d){activeItin=null;if(itinLine){map.removeLayer(itinLine);itinLine=null;}}
@@ -251,62 +382,71 @@ Object.keys(DATA.itins).forEach(d=>{
   };
   ibox.appendChild(b);
 });
-const obox=document.getElementById('ovl');
-[['Halal food',halalLayer,'#2ecc71'],['Supermarkets',superLayer,'#4da3ff']].forEach(([lbl,layer,c])=>{
-  const b=document.createElement('button'); b.className='ov on'; b.textContent=lbl;
+/* overlay toggles live at the tail of the day row — no third row eating the map */
+[['Halal','🍽',halalLayer,DATA.halal.length],['Supermarkets','🛒',superLayer,DATA.supers.length]].forEach(([lbl,ic,layer,n],i)=>{
+  if(!n) return;
+  const b=document.createElement('button');
+  b.className='chip ov'+(map.hasLayer(layer)?' on':'')+(i===0?' first':'');
+  b.innerHTML=ic+' '+lbl;
   b.onclick=()=>{ if(map.hasLayer(layer)){map.removeLayer(layer);b.classList.remove('on');}
                   else{map.addLayer(layer);b.classList.add('on');} };
-  obox.appendChild(b);
+  ibox.appendChild(b);
 });
 function drawItin(d){
   if(itinLine){map.removeLayer(itinLine);itinLine=null;}
   const pts=DATA.itins[d].map(n=>DATA.pois.find(p=>p.name===n)).filter(Boolean).map(p=>[p.lat,p.lon]);
-  if(pts.length>1){itinLine=L.polyline(pts,{color:'#2f6bff',weight:4,opacity:.85,dashArray:'9 7'}).addTo(map);
-    map.fitBounds(itinLine.getBounds(),{padding:[40,40]});}
+  if(pts.length>1){
+    itinLine=L.polyline(pts,{color:'#ff385c',weight:4,opacity:.9,dashArray:'1 9',lineCap:'round'}).addTo(map);
+    map.fitBounds(itinLine.getBounds(),{padding:[40,40]});
+  }
 }
+
+/* ---------------- popups ---------------- */
+function escAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
 function popupFor(p){
-  const gm=`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}`;
-  const gal=p.photos.length?`<div class="gal" data-poi="${escAttr(p.name)}">${p.photos.map((u,i)=>`<img src="${u}" loading="lazy" alt="${escAttr(p.name)}" data-i="${i}" draggable="false">`).join('')}</div>`:'';
-  const cred=p.photo_src?`<div class="cred">Photos: ${p.photo_src} (CC)</div>`:'';
-  const hours=p.hours?`<div class="line"><b>Hours</b> ${p.hours}</div>`:'';
-  const web=p.website?`<div class="line"><a href="${p.website}" target="_blank" rel="noopener">Official site ↗</a></div>`:'';
-  const tel=p.phone?`<div class="line">${p.phone}</div>`:'';
-  return `<div class="pop">${gal}<h3>${p.name}</h3><div class="a">${p.area}</div>
-    ${hours}${tel}${web}
-    <a class="btn" href="${gm}" target="_blank" rel="noopener">Directions</a>
-    <a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lon}" target="_blank" rel="noopener">Google Maps</a>
-    ${p.approx?'<div class="warn">Approximate location — verify before walking.</div>':''}${cred}</div>`;
+  const gm='https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lon;
+  const gal=p.photos.length?('<div class="gal" data-poi="'+escAttr(p.name)+'">'+
+      p.photos.map((u,i)=>'<img src="'+u+'" loading="lazy" alt="'+escAttr(p.name)+'" data-i="'+i+'" draggable="false">').join('')+'</div>'):'';
+  const hours=p.hours?('<div class="line"><b>Hours</b> '+escAttr(p.hours)+'</div>'):'';
+  const tel=p.phone?('<div class="line"><b>Tel</b> '+escAttr(p.phone)+'</div>'):'';
+  const web=p.website?('<div class="line"><a href="'+escAttr(p.website)+'" target="_blank" rel="noopener">Official site ↗</a></div>'):'';
+  const cred=p.photo_src?('<div class="cred">Photos: '+escAttr(p.photo_src)+' (CC)</div>'):'';
+  const dist=userPos?('<div class="line"><b>Distance</b> '+fmtDist(hav(userPos,[p.lat,p.lon]))+' walk</div>'):'';
+  return '<div class="pop">'+gal+'<h3>'+escAttr(p.name)+'</h3><div class="a">'+escAttr(p.area)+'</div>'+
+    dist+hours+tel+web+
+    '<a class="btn" href="'+gm+'" target="_blank" rel="noopener">Directions</a>'+
+    '<a class="btn alt" href="https://www.google.com/maps/search/?api=1&query='+p.lat+','+p.lon+'" target="_blank" rel="noopener">Maps</a>'+
+    (p.approx?'<div class="warn">Approximate location — verify before walking.</div>':'')+cred+'</div>';
 }
-let userPos=null;
-function hav(a,b){
-  const R=6371000,r=Math.PI/180;
+function hav(a,b){const R=6371000,r=Math.PI/180;
   const dLa=(b[0]-a[0])*r,dLo=(b[1]-a[1])*r;
   const x=Math.sin(dLa/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dLo/2)**2;
-  return 2*R*Math.asin(Math.sqrt(x));
-}
-let meDot=null;
+  return 2*R*Math.asin(Math.sqrt(x));}
+function fmtDist(d){return d<950?Math.round(d)+' m':(d/1000).toFixed(1)+' km';}
+
+/* ---------------- near me ---------------- */
 document.getElementById('nearme').onclick=function(){
   const btn=this;
-  if(userPos){                                  // second tap resets the sort
-    userPos=null; btn.classList.remove('on'); btn.textContent='📍 Near me';
-    if(meDot){map.removeLayer(meDot);meDot=null;}
-    setMode(IS_MOBILE()?'map':'map'); render(); return;
+  if(userPos){
+    userPos=null;btn.classList.remove('on');btn.setAttribute('aria-label','Sort by distance from me');
+    if(meDot){map.removeLayer(meDot);meDot=null;} render(); return;
   }
-  if(!navigator.geolocation){alert('Geolocation not supported by this browser.');return;}
-  btn.textContent='📍 Locating…'; btn.disabled=true;
+  if(!navigator.geolocation){alert('Geolocation is not supported by this browser.');return;}
+  btn.disabled=true;
   navigator.geolocation.getCurrentPosition(pos=>{
     userPos=[pos.coords.latitude,pos.coords.longitude];
-    btn.disabled=false; btn.classList.add('on'); btn.textContent='📍 Sorted by distance';
-    meDot=L.circleMarker(userPos,{radius:9,color:'#fff',weight:3,fillColor:'#2f6bff',fillOpacity:1})
+    btn.disabled=false;btn.classList.add('on');
+    meDot=L.circleMarker(userPos,{radius:9,color:'#fff',weight:3,fillColor:'#ff385c',fillOpacity:1})
       .addTo(map).bindPopup('You are here');
     map.setView(userPos,15);
-    if(IS_MOBILE()) setMode('list');
+    if(IS_MOBILE()) setSheet('half',true);
     render();
-  },err=>{
-    btn.disabled=false; btn.textContent='📍 Near me';
-    alert('Could not get your location: '+err.message);
-  },{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+  },err=>{btn.disabled=false;alert('Could not get your location: '+err.message);},
+  {enableHighAccuracy:true,timeout:12000,maximumAge:60000});
 };
+
+/* ---------------- render ---------------- */
+const markers=[];
 function render(){
   markers.forEach(m=>{ if(cluster) cluster.removeLayer(m); else map.removeLayer(m); });
   markers.length=0;
@@ -318,118 +458,91 @@ function render(){
     return true;
   });
   if(userPos) rows.sort((a,b)=>hav(userPos,[a.lat,a.lon])-hav(userPos,[b.lat,b.lon]));
+  const padBottom=()=>IS_MOBILE()?[16,PEEK()+70]:[12,12];
   rows.forEach(p=>{
     shown++;
-    const m=L.marker([p.lat,p.lon],{icon:L.divIcon({className:'',iconSize:[36,36],iconAnchor:[18,18],
-      html:`<div class="mkwrap"><div class="mk ${p.approx?'approx':''}" style="background:${p.color}">${p.num}</div></div>`})});
-    m.bindPopup(popupFor(p),{maxWidth:Math.max(200,Math.min(340,window.innerWidth-56)),
-      autoPanPaddingTopLeft:PAD_TL(),autoPanPaddingBottomRight:PAD_BR()});
+    const m=L.marker([p.lat,p.lon],{icon:L.divIcon({className:'',iconSize:[30,30],iconAnchor:[15,15],
+      html:'<div class="mkwrap"><div class="mk '+(p.approx?'approx':'')+'" style="background:'+p.color+'">'+p.num+'</div></div>'})});
+    m.bindPopup(popupFor(p),{maxWidth:Math.max(220,Math.min(340,window.innerWidth-48)),
+      autoPanPaddingTopLeft:[16,16],autoPanPaddingBottomRight:padBottom()});
     if(cluster) cluster.addLayer(m); else m.addTo(map);
     markers.push(m);
+
     const d=userPos?hav(userPos,[p.lat,p.lon]):null;
-    const dstr=d===null?'':` · ${d<950?Math.round(d)+' m':(d/1000).toFixed(1)+' km'}`;
-    const it=document.createElement('div'); it.className='item';
-    it.innerHTML=`${p.photos.length?`<img class="th" src="${p.photos[0]}" loading="lazy" alt="">`:''}
-      <span class="n" style="background:${p.color}">${p.num}</span>
-      <div><div>${p.name}</div><div class="meta">${p.area}${p.approx?' · approx':''}${dstr}${p.hours?' · '+p.hours.slice(0,26):''}</div></div>`;
-    it.onclick=()=>{
-      const go=()=>{
-        // instant jump: an animated setView finishes AFTER the popup opens and
-        // re-centres it back under the floating card
-        map.setView([p.lat,p.lon],Math.max(map.getZoom(),17),{animate:false});
-        setTimeout(()=>{
-          if(m._map){ m.openPopup(); }
-          else{ // marker still inside a cluster: open the popup on the map itself
-            map.openPopup(popupFor(p),[p.lat,p.lon],
-              {maxWidth:Math.max(200,Math.min(340,window.innerWidth-56)),
-               autoPanPaddingTopLeft:PAD_TL(),autoPanPaddingBottomRight:PAD_BR()});
-          }
-        },80);
-      };
-      if(IS_MOBILE()){ setMode('map'); setTimeout(go,180); } else go();
+    const meta=[p.area+(p.approx?' · approx':''), d!==null?fmtDist(d):''].filter(Boolean).join(' · ');
+    const hrs=p.hours?('🕐 '+(p.hours.length>34?p.hours.slice(0,32)+'…':p.hours)):'';
+    const it=document.createElement('article'); it.className='item'; it.tabIndex=0;
+    it.innerHTML='<div class="thumbwrap">'+
+      (p.photos.length?'<img class="th" src="'+p.photos[0]+'" loading="lazy" alt="">':
+        '<div class="th"></div>')+
+      '<span class="n" style="background:'+p.color+'">'+p.num+'</span></div>'+
+      '<div class="body"><div class="t">'+escAttr(p.name)+'</div>'+
+      '<div class="meta">'+escAttr(meta)+'</div>'+
+      (hrs?'<div class="hrs">'+escAttr(hrs)+'</div>':'')+'</div>';
+    const go=()=>{
+      if(IS_MOBILE()) setSheet('peek',true);
+      map.setView([p.lat,p.lon],Math.max(map.getZoom(),17),{animate:false});
+      setTimeout(()=>{
+        if(m._map) m.openPopup();
+        else map.openPopup(popupFor(p),[p.lat,p.lon],
+          {maxWidth:Math.max(220,Math.min(340,window.innerWidth-48)),
+           autoPanPaddingTopLeft:[16,16],autoPanPaddingBottomRight:padBottom()});
+      },60);
     };
+    it.onclick=go;
+    it.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}};
     list.appendChild(it);
   });
-  document.getElementById('count').textContent=`${shown} of ${DATA.pois.length} shown`+
-    (DATA.unmapped.length?` · ${DATA.unmapped.length} not mappable`:'')+
-    ` · ${DATA.halal.length} halal · ${DATA.supers.length} supermarkets`;
+  let ctext=shown+' of '+DATA.pois.length+' places';
+  if(userPos) ctext+=' · nearest first';
+  if(DATA.unmapped.length) ctext+=' · '+DATA.unmapped.length+' not mappable';
+  document.getElementById('count').textContent=ctext;
 }
-function fadeRows(){
-  ['.filters','.itins','.ovl'].forEach(s=>{
-    const el=document.querySelector(s); if(!el) return;
-    el.classList.toggle('fading', IS_MOBILE() && (el.scrollWidth-el.clientWidth)>4);
-  });
-}
-function setMode(m){
-  document.body.classList.toggle('listmode',m==='list');
-  document.body.classList.toggle('mapmode',m==='map');
-  document.querySelectorAll('#mnav button').forEach(b=>b.classList.toggle('on',b.dataset.mode===m));
-  if(m==='map'){setTimeout(()=>map.invalidateSize(),60);}
-  if(m==='list'){const l=document.getElementById('list');if(l)l.scrollTop=0;
-    setTimeout(()=>map.invalidateSize(),60);}
-}
-document.querySelectorAll('#mnav button').forEach(b=>{b.onclick=()=>setMode(b.dataset.mode);});
-/* ================= image viewer ================= */
-function escAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+
+/* ---------------- lightbox ---------------- */
 const LB=document.getElementById('lb'),LBI=document.getElementById('lb-img'),
       LBN=document.getElementById('lb-name'),LBC=document.getElementById('lb-cnt'),
       LBCAP=document.getElementById('lb-cap'),LBST=document.getElementById('lb-stage');
 let lbList=[],lbIdx=0,lbName='',lbCredit='',lbZoom=1,lbPX=0,lbPY=0;
-function applyT(){LBI.style.transform=`translate(${lbPX}px,${lbPY}px) scale(${lbZoom})`;}
+function applyT(){LBI.style.transform='translate('+lbPX+'px,'+lbPY+'px) scale('+lbZoom+')';}
 function setZoom(z){lbZoom=z;if(z<=1){lbPX=0;lbPY=0;}LBI.classList.toggle('zoomed',z>1);applyT();}
 function lbPaint(fade){
-  const paint=()=>{
-    LBI.style.opacity=0;
-    setTimeout(()=>{
-      LBI.src=lbList[lbIdx];
-      LBI.alt=lbName;
-      LBN.textContent=lbName;
-      LBC.textContent=lbList.length>1?(lbIdx+1)+' / '+lbList.length:'';
-      LBCAP.textContent=lbCredit?(lbName+' — '+lbCredit):'';
-      LBI.style.opacity=1;
-    },fade?90:0);
-    setZoom(1);
-    [lbIdx-1,lbIdx+1].forEach(k=>{if(lbList[k]){const im=new Image();im.src=lbList[k];}});
-  };
-  if(fade){LBI.style.opacity=0;setTimeout(paint,90);}else paint();
+  const paint=()=>{LBI.src=lbList[lbIdx];LBI.alt=lbName;LBN.textContent=lbName;
+    LBC.textContent=lbList.length>1?(lbIdx+1)+' / '+lbList.length:'';
+    LBCAP.textContent=lbCredit?lbName+' — '+lbCredit:'';setZoom(1);
+    [lbIdx-1,lbIdx+1].forEach(k=>{if(lbList[k]){const im=new Image();im.src=lbList[k];}});};
+  if(fade){LBI.style.opacity=0;setTimeout(()=>{paint();LBI.style.opacity=1;},90);}else paint();
 }
 function openLB(name,idx){
   const p=DATA.pois.find(x=>x.name===name);
   if(!p||!p.photos||!p.photos.length) return;
-  lbList=p.photos;lbName=p.name;lbCredit=p.photo_src||'';lbIdx=Math.max(0,Math.min(idx||0,lbList.length-1));
+  lbList=p.photos;lbName=p.name;lbCredit=p.photo_src||'';
+  lbIdx=Math.max(0,Math.min(idx||0,lbList.length-1));
   LB.classList.add('on');LB.setAttribute('aria-hidden','false');
   document.getElementById('lb-prev').style.display=lbList.length>1?'':'none';
   document.getElementById('lb-next').style.display=lbList.length>1?'':'none';
   lbPaint(false);
 }
-function closeLB(){
-  LB.classList.remove('on');LB.setAttribute('aria-hidden','true');
+function closeLB(){LB.classList.remove('on');LB.setAttribute('aria-hidden','true');
   setTimeout(()=>{if(!LB.classList.contains('on')){LBI.removeAttribute('src');LBI.style.transform='';}},200);
-  lbZoom=1;lbPX=lbPY=0;
-}
-function lbGo(d){
-  if(lbList.length<2) return;
-  lbIdx=(lbIdx+d+lbList.length)%lbList.length;
-  setZoom(1);lbPaint(true);
-}
+  lbZoom=1;lbPX=lbPY=0;}
+function lbGo(d){if(lbList.length<2)return;lbIdx=(lbIdx+d+lbList.length)%lbList.length;setZoom(1);lbPaint(true);}
 document.getElementById('lb-x').onclick=closeLB;
 document.getElementById('lb-prev').onclick=e=>{e.stopPropagation();lbGo(-1);};
 document.getElementById('lb-next').onclick=e=>{e.stopPropagation();lbGo(1);};
 LB.addEventListener('click',e=>{if(e.target===LB||e.target===LBST) closeLB();});
 document.addEventListener('click',e=>{
-  const img=e.target.closest('.gal img');
-  if(!img) return;
+  const img=e.target.closest('.gal img'); if(!img) return;
   const box=img.closest('.gal');
   openLB(box.dataset.poi,parseInt(img.dataset.i||'0',10));
 });
 document.addEventListener('keydown',e=>{
   if(!LB.classList.contains('on')) return;
-  if(e.key==='Escape'){closeLB();}
-  else if(e.key==='ArrowLeft'){lbGo(-1);}
-  else if(e.key==='ArrowRight'){lbGo(1);}
-  else if(e.key==='+'||e.key==='='){setZoom(lbZoom>1?1:2.4);}
+  if(e.key==='Escape') closeLB();
+  else if(e.key==='ArrowLeft') lbGo(-1);
+  else if(e.key==='ArrowRight') lbGo(1);
+  else if(e.key==='+'||e.key==='=') setZoom(lbZoom>1?1:2.4);
 });
-/* swipe to change photo, drag to pan when zoomed, double-tap to zoom */
 let lbDrag=null,lbLastTap=0;
 LBST.addEventListener('pointerdown',e=>{
   if(e.target.closest('button')) return;
@@ -441,34 +554,46 @@ LBST.addEventListener('pointermove',e=>{
   const dx=e.clientX-lbDrag.x,dy=e.clientY-lbDrag.y;
   lbDrag.moved=Math.max(lbDrag.moved,Math.hypot(dx,dy));
   if(lbDrag.zoom>1){lbPX=lbDrag.px+dx;lbPY=lbDrag.py+dy;applyT();}
-  else if(Math.abs(dx)>6){LBI.style.transform=`translateX(${dx*0.3}px)`;}
+  else if(Math.abs(dx)>6){LBI.style.transform='translateX('+(dx*0.3)+'px)';}
 });
 LBST.addEventListener('pointerup',e=>{
   if(!lbDrag) return;
-  const d=lbDrag;lbDrag=null;
-  LBI.classList.remove('dragging');
+  const d=lbDrag;lbDrag=null;LBI.classList.remove('dragging');
   const dx=e.clientX-d.x;
-  if(d.zoom>1){ lbPX=d.px;lbPY=d.py;applyT(); if(d.moved<12) setZoom(1); return; }
+  if(d.zoom>1){lbPX=d.px;lbPY=d.py;applyT();if(d.moved<12)setZoom(1);return;}
   LBI.style.transform='';
   if(Math.abs(dx)>55){lbGo(dx<0?1:-1);return;}
-  if(d.moved<12){
-    const now=Date.now();
-    if(now-lbLastTap<330){setZoom(2.4);lbLastTap=0;}else lbLastTap=now;
-  }
+  if(d.moved<12){const now=Date.now();if(now-lbLastTap<330){setZoom(2.4);lbLastTap=0;}else lbLastTap=now;}
 });
 LBST.addEventListener('pointercancel',()=>{lbDrag=null;LBI.classList.remove('dragging');LBI.style.transform='';});
 
-document.getElementById('search').oninput=e=>{query=e.target.value;render();
-  if(IS_MOBILE()&&document.body.classList.contains('mapmode')) setMode('list');};
-let rzT;window.addEventListener('resize',()=>{clearTimeout(rzT);
-  rzT=setTimeout(()=>{map.invalidateSize();
-    if(IS_MOBILE()&&!document.body.classList.contains('listmode')
-       &&!document.body.classList.contains('mapmode')) setMode('map');},180);});
+/* ---------------- wiring ---------------- */
+let qT;
+document.getElementById('search').addEventListener('input',e=>{
+  clearTimeout(qT); const v=e.target.value;
+  qT=setTimeout(()=>{query=v;render();},90);
+});
+function fadeRows(){
+  document.querySelectorAll('.chiprow').forEach(el=>{
+    const wrap=el.closest('.rowwrap'); if(!wrap) return;
+    const more=(el.scrollWidth-el.clientWidth-el.scrollLeft)>6;
+    wrap.classList.toggle('atend',!more);
+  });
+}
+document.querySelectorAll('.chiprow').forEach(el=>el.addEventListener('scroll',fadeRows,{passive:true}));
+let rzT;
+window.addEventListener('resize',()=>{
+  clearTimeout(rzT);
+  rzT=setTimeout(()=>{
+    map.invalidateSize();
+    if(!IS_MOBILE()){sheet.style.transform='none';snapState='desktop';}
+    else if(snapState==='desktop'){setSheet('peek',false);}
+    else setSheet(snapState,false);
+    fadeRows();
+  },180);
+});
 window.addEventListener('orientationchange',()=>setTimeout(()=>map.invalidateSize(),350));
-setMode(IS_MOBILE()?'map':null);
-render();
-fadeRows(); window.addEventListener('load',fadeRows);
-document.querySelectorAll('.filters,.itins,.ovl').forEach(el=>el.addEventListener('scroll',()=>{
-  if(el.scrollLeft>4) el.classList.remove('fading');}, {passive:true}));
+if(IS_MOBILE()) setSheet('peek',false); else setSheet('desktop',false);
+render(); fadeRows(); window.addEventListener('load',fadeRows);
 setTimeout(()=>map.invalidateSize(),300);
 </script></body></html>
