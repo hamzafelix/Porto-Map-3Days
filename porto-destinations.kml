@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
 <Document>
-<name>Porto City Break - 111 destinations</name>
-<description>From the official Visit Porto 2023 city-break guide.</description>
+<name>Porto - 3 day itinerary + 123 destinations</name>
+<description>3-day Porto itinerary (Day 1 Centro, Day 2 Gaia, Day 3 Foz &amp; coast) with routes, plus 123 destinations from the official Visit Porto 2023 city-break guide. Itinerary structure after porto-north-portugal.com.</description>
 <Style id="s_7023"><IconStyle><color>ff2b39c0</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Style id="s_5701"><IconStyle><color>ffad448e</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Style id="s_7"><IconStyle><color>ffeb6f1f</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Style id="s_8775"><IconStyle><color>ff6d8a0e</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Style id="s_6135"><IconStyle><color>ff1089d6</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_gaia"><IconStyle><color>ff5b18c2</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_trip"><IconStyle><color>ff645a45</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_route"><LineStyle><color>ff5c38ff</color><width>4</width></LineStyle></Style>
 <Folder><name>Historic Centre - Ribeira</name>
 <Placemark><name>1. Clérigos Church and Tower</name>
 <description><![CDATA[<b>Clérigos Church and Tower</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Torre_de_los_Cl%C3%A9rigos%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG/960px-Torre_de_los_Cl%C3%A9rigos%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 09:00-19:00<br/><a href="https://www.torredosclerigos.pt/">Website</a><br/>
@@ -490,6 +493,14 @@
 <a href="https://www.google.com/maps/dir/?api=1&destination=41.1425243,-8.5748889">Directions</a>]]></description>
 <styleUrl>#s_8775</styleUrl>
 <Point><coordinates>-8.5748889,41.1425243,0</coordinates></Point></Placemark>
+<Placemark><name>25. Foz do Douro</name>
+<description><![CDATA[<b>Foz do Douro</b><br/>River and Sea<br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.1514067,-8.6702023">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6702023,41.1514067,0</coordinates></Point></Placemark>
+<Placemark><name>26. Praia de Matosinhos</name>
+<description><![CDATA[<b>Praia de Matosinhos</b><br/>River and Sea<br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.176484,-8.6930137">Directions</a>]]></description>
+<styleUrl>#s_8775</styleUrl>
+<Point><coordinates>-8.6930137,41.176484,0</coordinates></Point></Placemark>
 </Folder>
 <Folder><name>East Porto</name>
 <Placemark><name>1. Senhora da Conceição Church</name>
@@ -572,6 +583,74 @@
 <a href="https://www.google.com/maps/dir/?api=1&destination=41.1663944,-8.5959023">Directions</a>]]></description>
 <styleUrl>#s_6135</styleUrl>
 <Point><coordinates>-8.5959023,41.1663944,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Vila Nova de Gaia</name>
+<Placemark><name>1. Caves Cálem</name>
+<description><![CDATA[<b>Caves Cálem</b><br/>Vila Nova de Gaia<br/>Hours: Mo-Su 10:00-18:00<br/><a href="https://www.calem.pt/">Website</a><br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.1380237,-8.6109786">Directions</a>]]></description>
+<styleUrl>#s_gaia</styleUrl>
+<Point><coordinates>-8.6109786,41.1380237,0</coordinates></Point></Placemark>
+<Placemark><name>2. Caves Sandeman</name>
+<description><![CDATA[<b>Caves Sandeman</b><br/>Vila Nova de Gaia<br/>Hours: Mo-Su 10:00-18:00<br/><a href="https://www.sandeman.com/">Website</a><br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.1353522,-8.6156886">Directions</a>]]></description>
+<styleUrl>#s_gaia</styleUrl>
+<Point><coordinates>-8.6156886,41.1353522,0</coordinates></Point></Placemark>
+<Placemark><name>3. Caves Ferreira</name>
+<description><![CDATA[<b>Caves Ferreira</b><br/>Vila Nova de Gaia<br/>Hours: Mo-Su 10:00-18:00<br/><a href="https://www.sogrape.com/">Website</a><br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.1369095,-8.619293">Directions</a>]]></description>
+<styleUrl>#s_gaia</styleUrl>
+<Point><coordinates>-8.619293,41.1369095,0</coordinates></Point></Placemark>
+<Placemark><name>4. WOW Porto</name>
+<description><![CDATA[<b>WOW Porto</b><br/>Vila Nova de Gaia<br/><a href="https://www.wow.pt/">Website</a><br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.1351662,-8.6133999">Directions</a>]]></description>
+<styleUrl>#s_gaia</styleUrl>
+<Point><coordinates>-8.6133999,41.1351662,0</coordinates></Point></Placemark>
+<Placemark><name>5. Teleférico de Gaia</name>
+<description><![CDATA[<b>Teleférico de Gaia</b><br/>Vila Nova de Gaia<br/>Hours: Mo-Su 10:00-19:00<br/><a href="https://www.gaiacablecar.com/">Website</a><br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.1376167,-8.6129114">Directions</a>]]></description>
+<styleUrl>#s_gaia</styleUrl>
+<Point><coordinates>-8.6129114,41.1376167,0</coordinates></Point></Placemark>
+<Placemark><name>6. Mosteiro da Serra do Pilar</name>
+<description><![CDATA[<b>Mosteiro da Serra do Pilar</b><br/>Vila Nova de Gaia<br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.1383454,-8.608065">Directions</a>]]></description>
+<styleUrl>#s_gaia</styleUrl>
+<Point><coordinates>-8.608065,41.1383454,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day trips</name>
+<Placemark><name>1. Guimarães</name>
+<description><![CDATA[<b>Guimarães</b><br/>Day trips<br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.4417677,-8.2955712">Directions</a>]]></description>
+<styleUrl>#s_trip</styleUrl>
+<Point><coordinates>-8.2955712,41.4417677,0</coordinates></Point></Placemark>
+<Placemark><name>2. Braga - Bom Jesus do Monte</name>
+<description><![CDATA[<b>Braga - Bom Jesus do Monte</b><br/>Day trips<br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.55447,-8.37781">Directions</a>]]></description>
+<styleUrl>#s_trip</styleUrl>
+<Point><coordinates>-8.37781,41.55447,0</coordinates></Point></Placemark>
+<Placemark><name>3. Peso da Régua (Douro)</name>
+<description><![CDATA[<b>Peso da Régua (Douro)</b><br/>Day trips<br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.1637043,-7.7875821">Directions</a>]]></description>
+<styleUrl>#s_trip</styleUrl>
+<Point><coordinates>-7.7875821,41.1637043,0</coordinates></Point></Placemark>
+<Placemark><name>4. Pinhão (Douro)</name>
+<description><![CDATA[<b>Pinhão (Douro)</b><br/>Day trips<br/><a href="https://www.google.com/maps/dir/?api=1&destination=41.19105,-7.5459983">Directions</a>]]></description>
+<styleUrl>#s_trip</styleUrl>
+<Point><coordinates>-7.5459983,41.19105,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 1 - Centro</name>
+<Placemark><name>Day 1 - Centro — walking route</name>
+<description><![CDATA[1. Sé Cathedral<br/>2. S. Bento Railway Station<br/>3. Praça da Ribeira<br/>4. Luís I Bridge<br/>5. S. Francisco Church<br/>6. Palácio da Bolsa<br/>7. Bolhão Market<br/>8. Avenida dos Aliados<br/>9. Clérigos Church and Tower<br/>10. Carmo e Carmelitas Church<br/>11. Livraria Lello]]></description>
+<styleUrl>#s_route</styleUrl>
+<LineString><tessellate>1</tessellate><coordinates>-8.611206,41.142799,0 -8.610522,41.145480,0 -8.613007,41.140691,0 -8.608862,41.138383,0 -8.615708,41.140982,0 -8.616000,41.141312,0 -8.606947,41.149316,0 -8.610961,41.147734,0 -8.614627,41.145655,0 -8.616255,41.147456,0 -8.614849,41.146832,0</coordinates></LineString>
+</Placemark>
+<Placemark><name>Stops (in order)</name><description><![CDATA[1. Sé Cathedral<br/>2. S. Bento Railway Station<br/>3. Praça da Ribeira<br/>4. Luís I Bridge<br/>5. S. Francisco Church<br/>6. Palácio da Bolsa<br/>7. Bolhão Market<br/>8. Avenida dos Aliados<br/>9. Clérigos Church and Tower<br/>10. Carmo e Carmelitas Church<br/>11. Livraria Lello]]></description></Placemark>
+</Folder>
+<Folder><name>Day 2 - Gaia</name>
+<Placemark><name>Day 2 - Gaia — walking route</name>
+<description><![CDATA[1. Caves Cálem<br/>2. Caves Sandeman<br/>3. Caves Ferreira<br/>4. WOW Porto<br/>5. Teleférico de Gaia<br/>6. Mosteiro da Serra do Pilar<br/>7. Bom Sucesso Market]]></description>
+<styleUrl>#s_route</styleUrl>
+<LineString><tessellate>1</tessellate><coordinates>-8.610979,41.138024,0 -8.615689,41.135352,0 -8.619293,41.136910,0 -8.613400,41.135166,0 -8.612911,41.137617,0 -8.608065,41.138345,0 -8.629195,41.155829,0</coordinates></LineString>
+</Placemark>
+<Placemark><name>Stops (in order)</name><description><![CDATA[1. Caves Cálem<br/>2. Caves Sandeman<br/>3. Caves Ferreira<br/>4. WOW Porto<br/>5. Teleférico de Gaia<br/>6. Mosteiro da Serra do Pilar<br/>7. Bom Sucesso Market]]></description></Placemark>
+</Folder>
+<Folder><name>Day 3 - Foz</name>
+<Placemark><name>Day 3 - Foz — walking route</name>
+<description><![CDATA[1. Foz do Douro<br/>2. S. João Baptista Fort<br/>3. Jardim do Passeio Alegre<br/>4. Pérgola da Foz<br/>5. Castelo do Queijo<br/>6. Praia de Matosinhos<br/>7. Palácio de Cristal Gardens<br/>8. Serralves Foundation<br/>9. Dragão Stadium / FC Porto Museum]]></description>
+<styleUrl>#s_route</styleUrl>
+<MultiGeometry><LineString><tessellate>1</tessellate><coordinates>-8.670202,41.151407,0 -8.673955,41.148881,0 -8.671020,41.148298,0 -8.683031,41.157783,0 -8.690032,41.168531,0 -8.693014,41.176484,0</coordinates></LineString><LineString><tessellate>1</tessellate><coordinates>-8.626276,41.147034,0 -8.659354,41.159042,0</coordinates></LineString></MultiGeometry>
+</Placemark>
+<Placemark><name>Stops (in order)</name><description><![CDATA[1. Foz do Douro<br/>2. S. João Baptista Fort<br/>3. Jardim do Passeio Alegre<br/>4. Pérgola da Foz<br/>5. Castelo do Queijo<br/>6. Praia de Matosinhos<br/>7. Palácio de Cristal Gardens<br/>8. Serralves Foundation<br/>9. Dragão Stadium / FC Porto Museum]]></description></Placemark>
 </Folder>
 <Folder><name>Halal food (certified / friendly)</name>
 <Placemark><name>Palmeira</name><description><![CDATA[certified halal]]></description>
