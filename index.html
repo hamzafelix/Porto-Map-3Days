@@ -201,6 +201,12 @@ h1{margin:0;font-size:22px;font-weight:600;letter-spacing:-.2px;line-height:1.18
 .tierlegend.on{display:flex}
 .tierlegend span{display:inline-flex;align-items:center;gap:6px}
 .tierlegend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.geotoast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));z-index:4000;
+  transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;
+  max-width:min(430px,calc(100vw - 32px));padding:11px 15px;border-radius:12px;
+  background:var(--ink);color:#fff;font-size:13px;line-height:1.42;text-align:center;
+  transition:opacity .18s ease,transform .18s ease;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.geotoast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 </style></head><body>
 <div id="map"></div>
 <div id="sheet" class="s-peek">
@@ -463,14 +469,36 @@ function hav(a,b){const R=6371000,r=Math.PI/180;
 function fmtDist(d){return d<950?Math.round(d)+' m':(d/1000).toFixed(1)+' km';}
 
 /* ---------------- near me ---------------- */
+const geoToast=(msg,ms)=>{
+  let t=document.getElementById('geotoast');
+  if(!t){t=document.createElement('div');t.id='geotoast';t.className='geotoast';document.body.appendChild(t);}
+  t.textContent=msg;t.classList.add('on');
+  clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),ms||4200);
+};
+const IN_APP=/Telegram|FBAN|FBAV|Instagram|Line\/|Twitter|MicroMessenger/i.test(navigator.userAgent);
 document.getElementById('nearme').onclick=function(){
   const btn=this;
   if(userPos){
     userPos=null;btn.classList.remove('on');btn.setAttribute('aria-label','Sort by distance from me');
-    if(meDot){map.removeLayer(meDot);meDot=null;} render(); return;
+    if(meDot){map.removeLayer(meDot);meDot=null;} render(); geoToast('Location off',1600); return;
   }
-  if(!navigator.geolocation){alert('Geolocation is not supported by this browser.');return;}
-  btn.disabled=true;
+  if(!navigator.geolocation){geoToast('This browser has no location API — open the map in Safari or Chrome.');return;}
+  if(location.protocol!=='https:'&&location.hostname!=='localhost'&&!location.hostname.match(/^\d+\./)){
+    geoToast('Location needs https — open the published link, not the file.');return;
+  }
+  btn.disabled=true; geoToast('Finding you…',1100);
+  const fail=code=>{
+    btn.disabled=false;btn.classList.remove('on');
+    if(code===1){
+      geoToast(IN_APP
+        ? 'Location blocked. In-app browsers (Telegram, Instagram) refuse it — open this link in Safari or Chrome.'
+        : 'Location blocked. Allow it for this site in your browser settings, then tap again.',7000);
+    }else if(code===2){
+      geoToast('No position fix yet — switch on precise location / GPS and try again.',5200);
+    }else{
+      geoToast('Location timed out. Tap the pin again.',4000);
+    }
+  };
   navigator.geolocation.getCurrentPosition(pos=>{
     userPos=[pos.coords.latitude,pos.coords.longitude];
     btn.disabled=false;btn.classList.add('on');
@@ -479,8 +507,8 @@ document.getElementById('nearme').onclick=function(){
     map.setView(userPos,15);
     if(IS_MOBILE()) setSheet('half',true);
     render();
-  },err=>{btn.disabled=false;alert('Could not get your location: '+err.message);},
-  {enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+    geoToast('Location on · distances shown',2600);
+  },err=>fail(err&&err.code),{enableHighAccuracy:true,timeout:12000,maximumAge:0});
 };
 
 /* ---------------- render ---------------- */
