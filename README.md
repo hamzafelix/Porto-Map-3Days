@@ -18,6 +18,7 @@ A single-file, offline-friendly map of **4 walking routes through Porto, exactly
 - **Importance from the guide** — every stop is tagged *not to be missed* (blue), *important* (mustard) or *secondary* (magenta). The pin colour, the list badge and a legend under the chips all follow that scale, and each popup says which tier it's in.
 - **"Near me"** — hits your GPS, drops a blue dot, re-sorts the whole list by walking distance.
 - **Search + area filters**, and a Google Maps directions link on every pin.
+- **Vector basemap with tilt and rotate** — MapLibre GL over OpenFreeMap's OpenMapTiles style (no API key, no token): two-finger rotate, two-finger drag to pitch, built-in 3D buildings, plus a **3D** button that flips between flat and 58°. Replaces the old raster Esri/OSM tiles.
 - **Mobile-first layout** — full-screen map, floating search card, bottom Map/List tabs, 44px tap targets, safe-area padding, marker clustering so the pins don't turn into spaghetti.
 - **KML export** (`porto-destinations.kml`) — 403 placemarks in 17 folders for Google My Maps: the four routes as paths, three importance folders, plus every area, halal and supermarket layer.
 
