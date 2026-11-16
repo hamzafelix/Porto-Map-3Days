@@ -219,6 +219,18 @@ h1{margin:0;font-size:22px;font-weight:600;letter-spacing:-.2px;line-height:1.18
 .you{width:18px;height:18px;border-radius:50%;background:var(--primary);border:3px solid #fff;
   box-shadow:0 0 0 7px rgba(255,56,92,.2);pointer-events:none}
 .mkwrap{cursor:pointer}
+.viewctl{position:relative}
+.ctlview{color:var(--ink)!important;display:grid!important;place-items:center}
+.viewpanel{display:none;position:absolute;top:0;left:calc(100% + 10px);min-width:150px;background:#fff;
+  border:1px solid var(--line-soft);border-radius:12px;box-shadow:var(--sh);padding:6px;z-index:5}
+.viewpanel.open{display:block}
+.vrow{display:block;width:100%;text-align:left;border:0;background:transparent;padding:9px 11px;
+  border-radius:8px;font:500 13.5px/1.2 inherit;color:var(--ink);white-space:nowrap}
+.vrow:hover{background:var(--soft)}
+.vrow.on{background:var(--soft-2);font-weight:700}
+@media (max-width:760px){
+  .viewpanel{left:auto;right:calc(100% + 10px)}
+}
 </style></head><body>
 <div id="map"></div>
 <div id="sheet" class="s-peek">
@@ -272,6 +284,22 @@ map.addControl(new maplibregl.AttributionControl({compact:true}),'bottom-left');
 const CTRLPOS=IS_MOBILE()?'bottom-right':'top-left';
 map.addControl(new maplibregl.NavigationControl({visualizePitch:true,showCompass:true,showZoom:true}),CTRLPOS);
 
+/* ---- view modes: streets / light / satellite / topographic ---- */
+const ESRI='https://server.arcgisonline.com/ArcGIS/rest/services';
+function rasterStyle(url,maxzoom,attribution){
+  return {version:8,sources:{base:{type:'raster',tiles:[url],tileSize:256,maxzoom:maxzoom,
+          attribution:attribution}},layers:[{id:'base',type:'raster',source:'base'}]};
+}
+const VIEWS={
+  streets:{label:'Streets',style:'https://tiles.openfreemap.org/styles/liberty'},
+  light:{label:'Light',style:'https://tiles.openfreemap.org/styles/positron'},
+  satellite:{label:'Satellite',style:rasterStyle(ESRI+'/World_Imagery/MapServer/tile/{z}/{y}/{x}',19,
+    'Imagery &copy; Esri, Maxar, Earthstar Geographics')},
+  terrain:{label:'Topographic',style:rasterStyle(ESRI+'/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',19,
+    'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, OpenStreetMap contributors')}
+};
+let currentView='streets';
+
 /* ---- tilt / 3D toggle ---- */
 const TiltCtl={_b:null,
   onAdd(){
@@ -290,10 +318,41 @@ const TiltCtl={_b:null,
 map.addControl(TiltCtl,CTRLPOS);
 map.on('pitchend',()=>{ if(TiltCtl._b) TiltCtl._b.classList.toggle('on',map.getPitch()>5); });
 
+/* ---- view-mode control ---- */
+const ViewCtl={_el:null,
+  onAdd(){
+    const d=document.createElement('div'); d.className='maplibregl-ctrl maplibregl-ctrl-group viewctl';
+    const b=document.createElement('button'); b.type='button'; b.className='ctlview';
+    b.title='Map style'; b.setAttribute('aria-label','Map style');
+    b.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>';
+    const panel=document.createElement('div'); panel.className='viewpanel';
+    Object.entries(VIEWS).forEach(([k,v])=>{
+      const r=document.createElement('button'); r.type='button'; r.className='vrow'+(k===currentView?' on':'');
+      r.dataset.k=k; r.textContent=v.label;
+      r.onclick=()=>{ pickView(k); panel.classList.remove('open'); };
+      panel.appendChild(r);
+    });
+    b.onclick=e=>{ e.stopPropagation(); panel.classList.toggle('open'); };
+    d.appendChild(b); d.appendChild(panel);
+    document.addEventListener('click',()=>panel.classList.remove('open'));
+    this._el=d; return d;
+  },
+  onRemove(){ if(this._el) this._el.remove(); }
+};
+function pickView(k){
+  if(!VIEWS[k]||k===currentView) return;
+  currentView=k;
+  document.querySelectorAll('.vrow').forEach(r=>r.classList.toggle('on',r.dataset.k===k));
+  map.setStyle(VIEWS[k].style,{diff:false});
+}
+map.addControl(ViewCtl,CTRLPOS);
+
 /* ---- custom sources: the active route, halal, supermarkets ---- */
+let routeGeo={type:'FeatureCollection',features:[]};
+const OVSTATE={halal:false,supers:false};
 function ensureLayers(){
   if(!map.getSource('route')){
-    map.addSource('route',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
+    map.addSource('route',{type:'geojson',data:routeGeo});
     map.addLayer({id:'route-halo',type:'line',source:'route',
       layout:{'line-cap':'round','line-join':'round'},
       paint:{'line-color':'#ffffff','line-width':8,'line-opacity':.85}});
@@ -306,7 +365,7 @@ function ensureLayers(){
       type:'Feature',properties:{name:p.name,cert:p.kind==='halal_certified',cuisine:p.cuisine||'',
         addr:p.addr||'',opening:p.opening||'',lat:p.lat,lon:p.lon},
       geometry:{type:'Point',coordinates:[p.lon,p.lat]}}))}});
-    map.addLayer({id:'halal-dot',type:'circle',source:'halal',layout:{visibility:'none'},
+    map.addLayer({id:'halal-dot',type:'circle',source:'halal',layout:{visibility:OVSTATE.halal?'visible':'none'},
       paint:{'circle-radius':7,'circle-stroke-width':2,'circle-stroke-color':'#fff',
              'circle-color':['case',['get','cert'],'#2ecc71','#e0a030']}});
     map.on('click','halal-dot',e=>{
@@ -324,7 +383,7 @@ function ensureLayers(){
     map.addSource('supers',{type:'geojson',data:{type:'FeatureCollection',features:DATA.supers.map(p=>({
       type:'Feature',properties:{name:p.name,brand:p.brand||'',addr:p.addr||'',opening:p.opening||'',lat:p.lat,lon:p.lon},
       geometry:{type:'Point',coordinates:[p.lon,p.lat]}}))}});
-    map.addLayer({id:'supers-dot',type:'circle',source:'supers',layout:{visibility:'none'},
+    map.addLayer({id:'supers-dot',type:'circle',source:'supers',layout:{visibility:OVSTATE.supers?'visible':'none'},
       paint:{'circle-radius':5,'circle-stroke-width':1.5,'circle-stroke-color':'#fff',
              'circle-color':'#1f6feb','circle-opacity':.85}});
     map.on('click','supers-dot',e=>{
@@ -339,16 +398,19 @@ function ensureLayers(){
   }
 }
 map.on('load',()=>{ ensureLayers(); if(IS_MOBILE()) map.setPadding({bottom:Math.max(0,PEEK()-30)}); });
-map.on('styledata',ensureLayers);
+map.on('style.load',ensureLayers);
 
-function makeOverlay(ids){
-  return {_on:false,
-    isOn(){return this._on;},
-    set(v){ this._on=!!v; ids.forEach(id=>{ if(map.getLayer(id)) map.setLayoutProperty(id,'visibility',v?'visible':'none'); }); return this._on; },
-    toggle(){ return this.set(!this._on); }};
+function makeOverlay(ids,key){
+  return {
+    get _on(){ return OVSTATE[key]; },
+    isOn(){ return OVSTATE[key]; },
+    set(v){ OVSTATE[key]=!!v;
+      ids.forEach(id=>{ if(map.getLayer(id)) map.setLayoutProperty(id,'visibility',OVSTATE[key]?'visible':'none'); });
+      return OVSTATE[key]; },
+    toggle(){ return this.set(!OVSTATE[key]); }};
 }
-const halalLayer=makeOverlay(['halal-dot']);
-const superLayer=makeOverlay(['supers-dot']);
+const halalLayer=makeOverlay(['halal-dot'],'halal');
+const superLayer=makeOverlay(['supers-dot'],'supers');
 const layerState={halal:false,supers:false};
 function setOverlays(on){ halalLayer.set(on); superLayer.set(on); }
 
@@ -477,8 +539,9 @@ Object.keys(DATA.itins).forEach(d=>{
   ibox.appendChild(b);
 });
 function clearRoute(){
+  routeGeo={type:'FeatureCollection',features:[]};
   const src=map.getSource('route');
-  if(src) src.setData({type:'FeatureCollection',features:[]});
+  if(src) src.setData(routeGeo);
 }
 function drawItin(d){
   const seq=DATA.itins[d].map(n=>DATA.pois.find(p=>p.name===n)).filter(Boolean);
@@ -494,9 +557,10 @@ function drawItin(d){
     cur.push([p.lon,p.lat]);
   });
   if(cur.length>1) segs.push(cur);
+  routeGeo={type:'FeatureCollection',features:segs.map(c=>({
+    type:'Feature',properties:{},geometry:{type:'LineString',coordinates:c}}))};
   const src=map.getSource('route');
-  if(src) src.setData({type:'FeatureCollection',features:segs.map(c=>({
-    type:'Feature',properties:{},geometry:{type:'LineString',coordinates:c}}))});
+  if(src) src.setData(routeGeo);
   const b=new maplibregl.LngLatBounds();
   seq.forEach(p=>b.extend([p.lon,p.lat]));
   map.fitBounds(b,{duration:600,maxZoom:16,
