@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
 <Document>
-<name>Porto - 3 day itinerary + 123 destinations</name>
-<description>3-day Porto itinerary (Day 1 Centro, Day 2 Gaia, Day 3 Foz &amp; coast) with routes, plus 123 destinations from the official Visit Porto 2023 city-break guide. Itinerary structure after porto-north-portugal.com.</description>
+<name>Porto - 4 walking routes + 133 destinations</name>
+<description>4 walking routes (Route 1-4) with importances with routes, plus 123 destinations from the official Visit Porto 2023 city-break guide. Itinerary structure after porto-north-portugal.com.</description>
 <Style id="s_7023"><IconStyle><color>ff2b39c0</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Style id="s_5701"><IconStyle><color>ffad448e</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Style id="s_7"><IconStyle><color>ffeb6f1f</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
@@ -11,6 +11,9 @@
 <Style id="s_gaia"><IconStyle><color>ff5b18c2</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Style id="s_trip"><IconStyle><color>ff645a45</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Style id="s_route"><LineStyle><color>ff5c38ff</color><width>4</width></LineStyle></Style>
+<Style id="s_t_must"><IconStyle><color>ffb06c2b</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_t_imp"><IconStyle><color>ff2e9ac9</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+<Style id="s_t_sec"><IconStyle><color>ff8032b8</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
 <Folder><name>Historic Centre - Ribeira</name>
 <Placemark><name>1. Clérigos Church and Tower</name>
 <description><![CDATA[<b>Clérigos Church and Tower</b><br/>Historic Centre - Ribeira<br/><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Torre_de_los_Cl%C3%A9rigos%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG/960px-Torre_de_los_Cl%C3%A9rigos%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_01.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" width="240"/><br/>Hours: Mo-Su 09:00-19:00<br/><a href="https://www.torredosclerigos.pt/">Website</a><br/>
@@ -628,29 +631,167 @@
 <styleUrl>#s_trip</styleUrl>
 <Point><coordinates>-7.5459983,41.19105,0</coordinates></Point></Placemark>
 </Folder>
-<Folder><name>Day 1 - Centro</name>
-<Placemark><name>Day 1 - Centro — walking route</name>
-<description><![CDATA[1. Sé Cathedral<br/>2. S. Bento Railway Station<br/>3. Praça da Ribeira<br/>4. Luís I Bridge<br/>5. S. Francisco Church<br/>6. Palácio da Bolsa<br/>7. Bolhão Market<br/>8. Avenida dos Aliados<br/>9. Clérigos Church and Tower<br/>10. Carmo e Carmelitas Church<br/>11. Livraria Lello]]></description>
+<Folder><name>Route 1</name>
+<Placemark><name>Route 1 — walking route</name>
+<description><![CDATA[<ol><li>1. Almas Church — not to be missed</li><li>2. Rua de Santa Catarina — not to be missed</li><li>3. Café Majestic — important</li><li>4. Bolhão Market — not to be missed</li><li>5. Avenida dos Aliados — not to be missed</li><li>6. Clérigos Church and Tower — not to be missed</li><li>7. Livraria Lello — not to be missed</li><li>8. Rua Galeria de Paris — important</li><li>9. Fonte dos Leões — not to be missed</li><li>10. Carmo e Carmelitas Church — not to be missed</li><li>11. Jardim da Cordoaria — not to be missed</li><li>12. Portuguese Centre for Photography — secondary</li><li>13. Museu Nacional Soares dos Reis — secondary</li><li>14. Palácio de Cristal Gardens — important</li><li>15. Rua de Miguel Bombarda (galleries) — secondary</li><li>16. Praça de Carlos Alberto — secondary</li><li>17. Rua de Cedofeita — secondary</li></ol>]]></description>
 <styleUrl>#s_route</styleUrl>
-<LineString><tessellate>1</tessellate><coordinates>-8.611206,41.142799,0 -8.610522,41.145480,0 -8.613007,41.140691,0 -8.608862,41.138383,0 -8.615708,41.140982,0 -8.616000,41.141312,0 -8.606947,41.149316,0 -8.610961,41.147734,0 -8.614627,41.145655,0 -8.616255,41.147456,0 -8.614849,41.146832,0</coordinates></LineString>
+<LineString><tessellate>1</tessellate><coordinates>-8.605579,41.149831,0 -8.606057,41.149051,0 -8.606582,41.147163,0 -8.606947,41.149316,0 -8.610961,41.147734,0 -8.614627,41.145655,0 -8.614849,41.146832,0 -8.614376,41.147153,0 -8.615615,41.147118,0 -8.616255,41.147456,0 -8.616478,41.145664,0 -8.615892,41.144717,0 -8.621397,41.148277,0 -8.626276,41.147034,0 -8.619323,41.149852,0 -8.615884,41.148245,0 -8.618424,41.153385,0</coordinates></LineString>
 </Placemark>
-<Placemark><name>Stops (in order)</name><description><![CDATA[1. Sé Cathedral<br/>2. S. Bento Railway Station<br/>3. Praça da Ribeira<br/>4. Luís I Bridge<br/>5. S. Francisco Church<br/>6. Palácio da Bolsa<br/>7. Bolhão Market<br/>8. Avenida dos Aliados<br/>9. Clérigos Church and Tower<br/>10. Carmo e Carmelitas Church<br/>11. Livraria Lello]]></description></Placemark>
 </Folder>
-<Folder><name>Day 2 - Gaia</name>
-<Placemark><name>Day 2 - Gaia — walking route</name>
-<description><![CDATA[1. Caves Cálem<br/>2. Caves Sandeman<br/>3. Caves Ferreira<br/>4. WOW Porto<br/>5. Teleférico de Gaia<br/>6. Mosteiro da Serra do Pilar<br/>7. Bom Sucesso Market]]></description>
+<Folder><name>Route 2</name>
+<Placemark><name>Route 2 — walking route</name>
+<description><![CDATA[<ol><li>1. S. Bento Railway Station — not to be missed</li><li>2. Rua das Flores — not to be missed</li><li>3. Palácio da Bolsa — not to be missed</li><li>4. S. Francisco Church — not to be missed</li><li>5. Praça da Ribeira — not to be missed</li><li>6. Caves Sandeman — important</li></ol>]]></description>
 <styleUrl>#s_route</styleUrl>
-<LineString><tessellate>1</tessellate><coordinates>-8.610979,41.138024,0 -8.615689,41.135352,0 -8.619293,41.136910,0 -8.613400,41.135166,0 -8.612911,41.137617,0 -8.608065,41.138345,0 -8.629195,41.155829,0</coordinates></LineString>
+<LineString><tessellate>1</tessellate><coordinates>-8.610522,41.145480,0 -8.612639,41.144455,0 -8.616000,41.141312,0 -8.615708,41.140982,0 -8.613007,41.140691,0 -8.615689,41.135352,0</coordinates></LineString>
 </Placemark>
-<Placemark><name>Stops (in order)</name><description><![CDATA[1. Caves Cálem<br/>2. Caves Sandeman<br/>3. Caves Ferreira<br/>4. WOW Porto<br/>5. Teleférico de Gaia<br/>6. Mosteiro da Serra do Pilar<br/>7. Bom Sucesso Market]]></description></Placemark>
 </Folder>
-<Folder><name>Day 3 - Foz</name>
-<Placemark><name>Day 3 - Foz — walking route</name>
-<description><![CDATA[1. Foz do Douro<br/>2. S. João Baptista Fort<br/>3. Jardim do Passeio Alegre<br/>4. Pérgola da Foz<br/>5. Castelo do Queijo<br/>6. Praia de Matosinhos<br/>7. Palácio de Cristal Gardens<br/>8. Serralves Foundation<br/>9. Dragão Stadium / FC Porto Museum]]></description>
+<Folder><name>Route 3</name>
+<Placemark><name>Route 3 — walking route</name>
+<description><![CDATA[<ol><li>1. Sé Cathedral — not to be missed</li><li>2. Santa Clara Church — important</li><li>3. Luís I Bridge — not to be missed</li><li>4. Mosteiro da Serra do Pilar — not to be missed</li><li>5. Teatro Nacional S. João — important</li><li>6. Santo Ildefonso Church — important</li></ol>]]></description>
 <styleUrl>#s_route</styleUrl>
-<MultiGeometry><LineString><tessellate>1</tessellate><coordinates>-8.670202,41.151407,0 -8.673955,41.148881,0 -8.671020,41.148298,0 -8.683031,41.157783,0 -8.690032,41.168531,0 -8.693014,41.176484,0</coordinates></LineString><LineString><tessellate>1</tessellate><coordinates>-8.626276,41.147034,0 -8.659354,41.159042,0</coordinates></LineString></MultiGeometry>
+<LineString><tessellate>1</tessellate><coordinates>-8.611206,41.142799,0 -8.609231,41.142506,0 -8.608862,41.138383,0 -8.608065,41.138345,0 -8.607538,41.144563,0 -8.606577,41.146203,0</coordinates></LineString>
 </Placemark>
-<Placemark><name>Stops (in order)</name><description><![CDATA[1. Foz do Douro<br/>2. S. João Baptista Fort<br/>3. Jardim do Passeio Alegre<br/>4. Pérgola da Foz<br/>5. Castelo do Queijo<br/>6. Praia de Matosinhos<br/>7. Palácio de Cristal Gardens<br/>8. Serralves Foundation<br/>9. Dragão Stadium / FC Porto Museum]]></description></Placemark>
+</Folder>
+<Folder><name>Route 4</name>
+<Placemark><name>Route 4 — walking route</name>
+<description><![CDATA[<ol><li>1. Praça de Mouzinho de Albuquerque — important</li><li>2. Casa da Música — important</li><li>3. Serralves Foundation — secondary</li></ol>]]></description>
+<styleUrl>#s_route</styleUrl>
+<LineString><tessellate>1</tessellate><coordinates>-8.629136,41.157932,0 -8.630775,41.158903,0 -8.659354,41.159042,0</coordinates></LineString>
+</Placemark>
+</Folder>
+<Folder><name>Not to be missed (17)</name>
+<Placemark><name>Clérigos Church and Tower</name>
+<description><![CDATA[<b>Clérigos Church and Tower</b><br/>Historic Centre - Ribeira<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6146275,41.1456547,0</coordinates></Point></Placemark>
+<Placemark><name>S. Bento Railway Station</name>
+<description><![CDATA[<b>S. Bento Railway Station</b><br/>Historic Centre - Ribeira<br/>Route 2]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.610522,41.1454799,0</coordinates></Point></Placemark>
+<Placemark><name>Sé Cathedral</name>
+<description><![CDATA[<b>Sé Cathedral</b><br/>Historic Centre - Ribeira<br/>Route 3]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6112059,41.1427992,0</coordinates></Point></Placemark>
+<Placemark><name>Palácio da Bolsa</name>
+<description><![CDATA[<b>Palácio da Bolsa</b><br/>Historic Centre - Ribeira<br/>Route 2]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6160004,41.1413117,0</coordinates></Point></Placemark>
+<Placemark><name>S. Francisco Church</name>
+<description><![CDATA[<b>S. Francisco Church</b><br/>Historic Centre - Ribeira<br/>Route 2]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6157079,41.1409824,0</coordinates></Point></Placemark>
+<Placemark><name>Praça da Ribeira</name>
+<description><![CDATA[<b>Praça da Ribeira</b><br/>Historic Centre - Ribeira<br/>Route 2]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6130072,41.1406913,0</coordinates></Point></Placemark>
+<Placemark><name>Luís I Bridge</name>
+<description><![CDATA[<b>Luís I Bridge</b><br/>Historic Centre - Ribeira<br/>Route 3]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6088624,41.138383,0</coordinates></Point></Placemark>
+<Placemark><name>Bolhão Market</name>
+<description><![CDATA[<b>Bolhão Market</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.606947,41.1493156,0</coordinates></Point></Placemark>
+<Placemark><name>Almas Church</name>
+<description><![CDATA[<b>Almas Church</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6055786,41.1498314,0</coordinates></Point></Placemark>
+<Placemark><name>Avenida dos Aliados</name>
+<description><![CDATA[<b>Avenida dos Aliados</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6109611,41.1477341,0</coordinates></Point></Placemark>
+<Placemark><name>Carmo e Carmelitas Church</name>
+<description><![CDATA[<b>Carmo e Carmelitas Church</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6162547,41.147456,0</coordinates></Point></Placemark>
+<Placemark><name>Livraria Lello</name>
+<description><![CDATA[<b>Livraria Lello</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6148485,41.1468317,0</coordinates></Point></Placemark>
+<Placemark><name>Jardim da Cordoaria</name>
+<description><![CDATA[<b>Jardim da Cordoaria</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6164778,41.1456642,0</coordinates></Point></Placemark>
+<Placemark><name>Mosteiro da Serra do Pilar</name>
+<description><![CDATA[<b>Mosteiro da Serra do Pilar</b><br/>Vila Nova de Gaia<br/>Route 3]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.608065,41.1383454,0</coordinates></Point></Placemark>
+<Placemark><name>Rua de Santa Catarina</name>
+<description><![CDATA[<b>Rua de Santa Catarina</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6060568,41.1490511,0</coordinates></Point></Placemark>
+<Placemark><name>Fonte dos Leões</name>
+<description><![CDATA[<b>Fonte dos Leões</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6156151,41.1471178,0</coordinates></Point></Placemark>
+<Placemark><name>Rua das Flores</name>
+<description><![CDATA[<b>Rua das Flores</b><br/>Historic Centre - Ribeira<br/>Route 2]]></description>
+<styleUrl>#s_t_must</styleUrl>
+<Point><coordinates>-8.6126392,41.1444545,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Important (9)</name>
+<Placemark><name>Teatro Nacional S. João</name>
+<description><![CDATA[<b>Teatro Nacional S. João</b><br/>Historic Centre - Ribeira<br/>Route 3]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.6075376,41.1445633,0</coordinates></Point></Placemark>
+<Placemark><name>Santa Clara Church</name>
+<description><![CDATA[<b>Santa Clara Church</b><br/>Historic Centre - Ribeira<br/>Route 3]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.6092307,41.1425058,0</coordinates></Point></Placemark>
+<Placemark><name>Santo Ildefonso Church</name>
+<description><![CDATA[<b>Santo Ildefonso Church</b><br/>Baixa (City Centre)<br/>Route 3]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.6065767,41.1462029,0</coordinates></Point></Placemark>
+<Placemark><name>Café Majestic</name>
+<description><![CDATA[<b>Café Majestic</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.6065817,41.1471629,0</coordinates></Point></Placemark>
+<Placemark><name>Rua Galeria de Paris</name>
+<description><![CDATA[<b>Rua Galeria de Paris</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.614376,41.147153,0</coordinates></Point></Placemark>
+<Placemark><name>Casa da Música</name>
+<description><![CDATA[<b>Casa da Música</b><br/>West Porto / Boavista<br/>Route 4]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.6307748,41.1589025,0</coordinates></Point></Placemark>
+<Placemark><name>Palácio de Cristal Gardens</name>
+<description><![CDATA[<b>Palácio de Cristal Gardens</b><br/>West Porto / Boavista<br/>Route 1]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.6262765,41.1470339,0</coordinates></Point></Placemark>
+<Placemark><name>Caves Sandeman</name>
+<description><![CDATA[<b>Caves Sandeman</b><br/>Vila Nova de Gaia<br/>Route 2]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.6156886,41.1353522,0</coordinates></Point></Placemark>
+<Placemark><name>Praça de Mouzinho de Albuquerque</name>
+<description><![CDATA[<b>Praça de Mouzinho de Albuquerque</b><br/>West Porto / Boavista<br/>Route 4]]></description>
+<styleUrl>#s_t_imp</styleUrl>
+<Point><coordinates>-8.6291365,41.157932,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Secondary (6)</name>
+<Placemark><name>Portuguese Centre for Photography</name>
+<description><![CDATA[<b>Portuguese Centre for Photography</b><br/>Historic Centre - Ribeira<br/>Route 1]]></description>
+<styleUrl>#s_t_sec</styleUrl>
+<Point><coordinates>-8.615892,41.1447171,0</coordinates></Point></Placemark>
+<Placemark><name>Museu Nacional Soares dos Reis</name>
+<description><![CDATA[<b>Museu Nacional Soares dos Reis</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_sec</styleUrl>
+<Point><coordinates>-8.6213973,41.1482774,0</coordinates></Point></Placemark>
+<Placemark><name>Serralves Foundation</name>
+<description><![CDATA[<b>Serralves Foundation</b><br/>West Porto / Boavista<br/>Route 4]]></description>
+<styleUrl>#s_t_sec</styleUrl>
+<Point><coordinates>-8.6593536,41.1590425,0</coordinates></Point></Placemark>
+<Placemark><name>Rua de Miguel Bombarda (galleries)</name>
+<description><![CDATA[<b>Rua de Miguel Bombarda (galleries)</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_sec</styleUrl>
+<Point><coordinates>-8.6193228,41.1498522,0</coordinates></Point></Placemark>
+<Placemark><name>Praça de Carlos Alberto</name>
+<description><![CDATA[<b>Praça de Carlos Alberto</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_sec</styleUrl>
+<Point><coordinates>-8.6158835,41.1482452,0</coordinates></Point></Placemark>
+<Placemark><name>Rua de Cedofeita</name>
+<description><![CDATA[<b>Rua de Cedofeita</b><br/>Baixa (City Centre)<br/>Route 1]]></description>
+<styleUrl>#s_t_sec</styleUrl>
+<Point><coordinates>-8.6184243,41.1533845,0</coordinates></Point></Placemark>
 </Folder>
 <Folder><name>Halal food (certified / friendly)</name>
 <Placemark><name>Palmeira</name><description><![CDATA[certified halal]]></description>
